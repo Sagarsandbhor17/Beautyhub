@@ -1,0 +1,115 @@
+.app{
+    max-width: 1200px;
+    width: 100%;
+    margin: 100px auto;
+    box-shadow: 0 0 5px #ccc;
+  }
+  .details{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    padding: 30px 0;
+  }
+  .details .bigimg{
+    max-width: 500px;
+    min-width: 290px;
+    overflow: hidden;
+    margin: 25px;
+  }
+  .bigimg img{
+    width: 100%;
+    height: 100%;
+    max-height: 400px;
+    display: block;
+    object-fit: cover;
+   
+  }
+ .bigimg img:hover {
+    transform: scale(1.2);
+  }
+  
+  .details .box{
+    max-width: 500px;
+    min-width: 290px;
+    margin: 25px;
+  }
+  .box .row{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+  }
+  .box .row h2{
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+  .box .row span{
+    color: crimson;
+  }
+  .box .colors button{
+    width: 30px;
+    height: 30px;
+    border: 1px solid #333;
+    outline: none;
+    margin-right: 5px;
+    cursor: pointer;
+  }
+  .box p{
+    line-height: 1.5;
+    margin: 15px 0;
+  }
+  .thumb{
+    width: 100%;
+    height: 100px;
+    display: flex;
+    cursor: pointer;
+    margin: 10px 0;
+  }
+  .thumb img{
+    width: 90px;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    border: 1px solid #ddd;
+    margin-right: 5px;
+    opacity: 0.7;
+    border-radius: 5px;
+  }
+  .thumb img.active{
+    opacity: 1;
+    border: 1px solid lightseagreen;
+  }
+   .cart{
+    width:500px
+  }
+  
+  @media (max-width: 500px){
+    .thumb{
+      height: 50px;
+    }
+    .thumb img{
+      width: 50px;
+    }
+    .cart{
+        width:200px
+    }
+  }
+  .feedback{
+    width: 70%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+    border: 1px solid black;
+}
+.review_btn{
+    display: block;
+    padding: 10px;
+    background: white;
+    width: 40%;
+    margin: auto;
+    border: 1px solid black;
+
+}
