@@ -7,9 +7,11 @@ import Signup from "../Components/Login-Signup/Signup";
 const AllRoutes = () => {
   return (
     <Routes>
+
       <Route path="/" element={<Home/>}/>
       <Route path="/login" element={<Login />}/>
       <Route path="/signup" element={<Signup />}/>
+
     </Routes>
   );
 };
