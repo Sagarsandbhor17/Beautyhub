@@ -11,6 +11,7 @@ app.post("/signup", async (req, res) => {
   if (oldUser) {
     return res.send({ status: false, message: "User already exist!" });
   }
+  // --------------------------
   const user = await User.create({
     name,
     email,
