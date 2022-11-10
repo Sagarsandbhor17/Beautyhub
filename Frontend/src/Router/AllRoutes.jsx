@@ -1,17 +1,17 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import Home from "../Components/Home";
+import LandingPage from "../Components/Landing/LandingPage";
 import Login from "../Components/Login-Signup/Login";
 import Signup from "../Components/Login-Signup/Signup";
 
 const AllRoutes = () => {
   return (
     <Routes>
-
-      <Route path="/" element={<Home/>}/>
-      <Route path="/login" element={<Login />}/>
-      <Route path="/signup" element={<Signup />}/>
-
+      <Route path="/" element={<Home />} />
+      <Route path="/landing" element={<LandingPage />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/signup" element={<Signup />} />
     </Routes>
   );
 };
