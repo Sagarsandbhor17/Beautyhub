@@ -1,8 +1,13 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
+import { Cart } from "../Components/Cart/Cart";
+import Checkout from "../Components/Cart/Checkout";
+import OrderConfirm from "../Components/Cart/OrderConfirm";
+import Otp from "../Components/Cart/Otp";
 import Home from "../Components/Home";
 import Login from "../Components/Login-Signup/Login";
 import Signup from "../Components/Login-Signup/Signup";
+import SingleProduct from "../Components/SingleProduct/SingleProduct";
 
 const AllRoutes = () => {
   return (
@@ -10,7 +15,12 @@ const AllRoutes = () => {
 
       <Route path="/" element={<Home/>}/>
       <Route path="/login" element={<Login />}/>
-      <Route path="/signup" element={<Signup />}/>
+      <Route path="/signup" element={<Signup />} />
+      <Route path="/cart" element={<Cart />} />
+      <Route path="/singleproduct" element={<SingleProduct />} />
+      <Route path="/checkout" element={<Checkout />} />
+      <Route path="/otp" element={<Otp />} />
+      <Route path="/orderplaced" element={<OrderConfirm/>}/>
 
     </Routes>
   );

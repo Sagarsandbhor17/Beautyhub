@@ -1,8 +1,10 @@
-import { Box, Button, Heading, Text } from "@chakra-ui/react";
+import { Box, Button, Heading, Image, Text } from "@chakra-ui/react";
 import React from "react";
 import style from "../../Styles/SingleProduct.module.css";
 import { StarIcon } from "@chakra-ui/icons";
 import { AiOutlineHeart } from "react-icons/ai";
+import Suggest from "./Suggest";
+import Descriptionsec from "./Descriptionsec";
 let state = {
   products: [
     {
@@ -36,10 +38,10 @@ const SingleProduct = () => {
         width={"100%"}
         margin="auto"
         h="40px"
-        padding={"20px 20px 20px 20px"}
+      
         _hover={{ bg: "white", color: "black" }}
       >
-        <Text fontWeight={"bold"} textAlign="center">
+        <Text fontWeight={"bold"} textAlign="center" fontSize={'xl'} >
           15% off or 20% off when you Spend $150+ with code SAVE20 +16-Piece
           Beauty bag (Worth $174) @ $159|Shop Now
         </Text>
@@ -48,33 +50,33 @@ const SingleProduct = () => {
         <div key={index} className={style.details}>
           <div className={style.bigimg}>
             <img src={item.src[0]} />
+            <br />
+            <hr />
+            <br/>
+            <Descriptionsec/>
           </div>
           <div className={style.box}>
+            <Image src="https://s1.thcdn.com/design-assets/images/logos/shared-brands/colour/skinmedica.gif" w="20%"/>
             <div className={style.row}>
               <Heading fontWeight={"normal"}>{item.title}</Heading>
             </div>
-            <Box  w={["100%","100%","100%","100%"]} >
+            <Box w={["100%", "100%", "100%", "100%"]}>
               <StarIcon color={"#fbbc04"} /> <StarIcon color={"#fbbc04"} />{" "}
               <StarIcon color={"#fbbc04"} /> <StarIcon color={"#fbbc04"} />{" "}
               <StarIcon color={"#fbbc04"} /> 1 Reviews
             </Box>
-            {/* <div className={style.thumb}>
-              {
-                item.src.map((img,index) => (<img key={index} src={ img} alt=""/>))
-              }
-            </div> */}
             <p style={{ textAlign: "left" }}>MSRP:$70</p>
             <Heading textAlign={"left"} fontWeight={"medium"}>
               ${item.price}
             </Heading>
             <p style={{ textAlign: "left", color: "red" }}>Save:$21.00</p>
             <hr />
-            {/* <button className={style.cart}>Add to cart</button> */}
+
             <br />
             <div style={{ display: "flex", gap: "10rem" }}>
               {" "}
               <p style={{ fontWeight: "bold" }}>Quantity</p>{" "}
-              <Box w={["60%","60%","60%","100%"]}  ml={["-80px"]}>
+              <Box w={["60%", "60%", "60%", "100%"]} ml={["-80px"]}>
                 {" "}
                 <Button
                   border={"1px solid black"}
@@ -107,7 +109,7 @@ const SingleProduct = () => {
               color="white"
               width="500px"
               _hover={{ backgroundColor: "#00857c", color: "black" }}
-              w={["60%","80%","80%","100%"]}
+              w={["60%", "80%", "80%", "100%"]}
             >
               {" "}
               Add to cart{" "}
@@ -118,10 +120,14 @@ const SingleProduct = () => {
               <AiOutlineHeart mt="-20px" size={"30px"} />
               <Text fontWeight={"bold"}> Save to Wishlist</Text>
             </Box>
+            <Text textAlign={'left'}>In stock -Usaually dispatched Within 24hours</Text>
+            <Button ml="-70%"borderRadius={'none'} border="1px solid brown " bg="white" color={'brown'} _hover={{ backgroundColor: "white", color: "brown" }}>Select your Gift</Button>
           </div>
         </div>
       ))}
-
+      <Suggest/>
+      <br />
+      <br></br>
       <div className={style.feedback}>
         <h2 class="review">Customer Reviews</h2>
         <p class="small_font">
