@@ -1,0 +1,7 @@
+.readMore {
+  display: "flex";
+  color: "red";
+}
+.readless {
+  display: "hidden";
+}
