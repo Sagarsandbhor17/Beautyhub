@@ -9,7 +9,6 @@ import LandingPage from "../Components/Landing/LandingPage";
 import Skin from "../Components/Skin/Skin"
 import Login from "../Components/Login-Signup/Login";
 import Signup from "../Components/Login-Signup/Signup";
-import SingleProduct from "../Components/SingleProduct/SingleProduct";
 
 const AllRoutes = () => {
   return (
@@ -25,6 +24,7 @@ const AllRoutes = () => {
       <Route path="/checkout" element={<Checkout />} />
       <Route path="/otp" element={<Otp />} />
       <Route path="/orderplaced" element={<OrderConfirm/>}/>
+
 
     </Routes>
   );

@@ -1,0 +1,565 @@
+/* ------------------- ( Account Option) ----------------- */
+
+.AccountGrid {
+  position: fixed;
+  display: none;
+}
+
+.Account:hover + .AccountGrid {
+  display: block;
+}
+
+.AccountGrid:hover {
+  display: block;
+}
+.AccountOptionMainDiv>div:last-child{
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+/* ------------------------- (Third Row) ------------------- */
+
+.ThirdRow > p {
+  cursor: pointer;
+  margin-top: -5px;
+  padding-top: 5px;
+  padding-bottom: 15px;
+
+}
+
+.ThirdRow > p:hover {
+  background: #2e3337;
+  color: #ffffff;
+}
+
+
+
+/* ------------------- ( Holyday Option) ----------------- */
+
+.HolydayGrid {
+  background: #ffffff;
+  position: fixed;
+  width: 45%;
+  margin-top: 30px;
+  display: none;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  padding-bottom: 10px;
+}
+
+.Holyday:hover + .HolydayGrid {
+  display: block;
+}
+
+.HolydayGrid:hover {
+  display: block;
+}
+
+.HolydayOptionMainDiv > div > p {
+  margin-top: 10px;
+  font-family: "Lato-Light", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  margin-bottom: 10px;
+  cursor: auto;
+  color: black;
+  padding: 4px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.HolydayOptionMainDiv > div > p:hover {
+  background: rgba(176, 173, 173, 0.443);
+}
+
+/* ------------------- ( Sale Option) ----------------- */
+
+.SaleGrid {
+  background: #f9f7f7;
+  position: fixed;
+  width: 90%;
+  margin-top: 30px;
+  display: none;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  padding: 15px;
+  padding-bottom: 10px;
+}
+
+.Sale:hover + .SaleGrid {
+  display: block;
+}
+
+.SaleGrid:hover {
+  display: block;
+}
+
+.SaleOptionMainDiv {
+  display: grid;
+  align-items: center;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+  color: black;
+}
+
+.SaleOptionMainDiv > div {
+  background: #ffffff;
+  padding-bottom: 15px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  height: 75px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.SaleOptionMainDiv > div > img {
+  width: 45px;
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+.SaleOptionMainDiv > div > p {
+  font-weight: 500;
+  margin-left: 10px;
+  margin-top: 10px;
+}
+
+.SaleOptionMainDiv > div:hover {
+  margin-top: -4px;
+}
+
+/* ------------------- ( Skin Care Option) ----------------- */
+.skinCareGrid {
+  background: #ffffff;
+  position: fixed;
+  width: 70%;
+  margin-top: 30px;
+  display: none;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  padding-bottom: 10px;
+}
+
+.skinCare:hover + .skinCareGrid {
+  display: block;
+}
+
+.skinCareGrid:hover {
+  display: block;
+}
+
+.SkinCareOptionMainDiv > div > p:first-child {
+  margin-top: 10px;
+  font-size: 17px;
+  margin-bottom: 10px;
+  color: black;
+  cursor: auto;
+}
+
+.SkinCareOptionMainDiv > div > p {
+  margin-top: 3px;
+  color: rgba(77, 75, 75, 0.9);
+  font-family: "Lato-Light", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.SkinCareOptionMainDiv > div > p:hover {
+  background: rgba(176, 173, 173, 0.443);
+}
+
+.SkinCareOptionMainDiv > div > p:first-child:hover {
+  background: transparent;
+}
+
+/* ------------------- ( Hair Option) ----------------- */
+
+.HairGrid {
+  background: #ffffff;
+  position: fixed;
+  width: 70%;
+  margin-top: 30px;
+  display: none;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  padding-bottom: 10px;
+}
+
+.Hair:hover + .HairGrid {
+  display: block;
+}
+
+.HairGrid:hover {
+  display: block;
+}
+
+.HairOptionMainDiv > div > p:first-child {
+  margin-top: 10px;
+  font-size: 17px;
+  margin-bottom: 10px;
+  color: black;
+  cursor: auto;
+}
+
+.HairOptionMainDiv > div > p {
+  margin-top: 3px;
+  color: rgba(77, 75, 75, 0.9);
+  font-family: "Lato-Light", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.HairOptionMainDiv > div > p:hover {
+  background: rgba(176, 173, 173, 0.443);
+}
+
+.HairOptionMainDiv > div > p:first-child:hover {
+  background: transparent;
+}
+
+/* ------------------- ( Makeup Option) ----------------- */
+
+.MakeupGrid {
+  background: #ffffff;
+  position: fixed;
+  width: 60%;
+  margin-top: 30px;
+  display: none;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  padding-bottom: 10px;
+}
+
+.Makeup:hover + .MakeupGrid {
+  display: block;
+}
+
+.MakeupGrid:hover {
+  display: block;
+}
+
+.MakeupOptionMainDiv > div > p:first-child {
+  margin-top: 10px;
+  font-size: 17px;
+  margin-bottom: 10px;
+  color: black;
+  cursor: auto;
+}
+
+.MakeupOptionMainDiv > div > p {
+  margin-top: 3px;
+  color: rgba(77, 75, 75, 0.9);
+  font-family: "Lato-Light", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.MakeupOptionMainDiv > div > p:hover {
+  background: rgba(176, 173, 173, 0.443);
+}
+
+.MakeupOptionMainDiv > div > p:first-child:hover {
+  background: transparent;
+}
+
+/* ------------------- ( BathBody Option) ----------------- */
+
+.BathBodyGrid {
+  background: #ffffff;
+  position: fixed;
+  width: 70%;
+  margin-top: 30px;
+  display: none;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  padding-bottom: 10px;
+}
+
+.BathBody:hover + .BathBodyGrid {
+  display: block;
+}
+
+.BathBodyGrid:hover {
+  display: block;
+}
+
+.BathBodyOptionMainDiv > div > p:first-child {
+  margin-top: 10px;
+  font-size: 17px;
+  margin-bottom: 10px;
+  color: black;
+  cursor: auto;
+}
+
+.BathBodyOptionMainDiv > div > p {
+  margin-top: 3px;
+  color: rgba(77, 75, 75, 0.9);
+  font-family: "Lato-Light", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.BathBodyOptionMainDiv > div > p:hover {
+  background: rgba(176, 173, 173, 0.443);
+}
+
+.BathBodyOptionMainDiv > div > p:first-child:hover {
+  background: transparent;
+}
+
+/* ------------------- ( Fragrance Option) ----------------- */
+
+.FragranceGrid {
+  background: #ffffff;
+  position: fixed;
+  width: 58%;
+  margin-top: 30px;
+  margin-left: 8%;
+  display: none;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  padding-bottom: 10px;
+}
+
+.Fragrance:hover + .FragranceGrid {
+  display: block;
+}
+
+.FragranceGrid:hover {
+  display: block;
+}
+
+.FragranceOptionMainDiv > div > p:first-child {
+  margin-top: 10px;
+  font-size: 17px;
+  margin-bottom: 10px;
+  color: black;
+  cursor: auto;
+}
+
+.FragranceOptionMainDiv > div > p {
+  margin-top: 3px;
+  color: rgba(77, 75, 75, 0.9);
+  font-family: "Lato-Light", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.FragranceOptionMainDiv > div > p:hover {
+  background: rgba(176, 173, 173, 0.443);
+}
+
+.FragranceOptionMainDiv > div > p:first-child:hover {
+  background: transparent;
+}
+
+/* ------------------- ( SelfCare Option) ----------------- */
+
+.SelfCareGrid {
+  background: #ffffff;
+  position: fixed;
+  width: 58%;
+  margin-top: 30px;
+  margin-left: 13%;
+  display: none;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  padding-bottom: 10px;
+}
+
+.SelfCare:hover + .SelfCareGrid {
+  display: block;
+}
+
+.SelfCareGrid:hover {
+  display: block;
+}
+
+.SelfCareOptionMainDiv > div > p:first-child {
+  margin-top: 10px;
+  font-size: 17px;
+  margin-bottom: 10px;
+  color: black;
+  cursor: auto;
+}
+
+.SelfCareOptionMainDiv > div > p {
+  margin-top: 3px;
+  color: rgba(77, 75, 75, 0.9);
+  font-family: "Lato-Light", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.SelfCareOptionMainDiv > div > p:hover {
+  background: rgba(176, 173, 173, 0.443);
+}
+
+.SelfCareOptionMainDiv > div > p:first-child:hover {
+  background: transparent;
+}
+
+/* ------------------- ( Tools Option) ----------------- */
+
+.ToolsGrid {
+  background: #ffffff;
+  position: fixed;
+  width: 45%;
+  margin-top: 30px;
+  margin-left: 24%;
+  display: none;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  padding-bottom: 10px;
+}
+
+.Tools:hover + .ToolsGrid {
+  display: block;
+}
+
+.ToolsGrid:hover {
+  display: block;
+}
+
+.ToolsOptionMainDiv > div > p:first-child {
+  margin-top: 10px;
+  font-size: 17px;
+  margin-bottom: 10px;
+  color: black;
+  cursor: auto;
+}
+
+.ToolsOptionMainDiv > div > p {
+  margin-top: 3px;
+  color: rgba(77, 75, 75, 0.9);
+  font-family: "Lato-Light", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.ToolsOptionMainDiv > div > p:hover {
+  background: rgba(176, 173, 173, 0.443);
+}
+
+.ToolsOptionMainDiv > div > p:first-child:hover {
+  background: transparent;
+}
+
+/* ------------------- ( NewTrending Option) ----------------- */
+
+.NewTrendingGrid {
+  background: #ffffff;
+  position: fixed;
+  width: 45%;
+  margin-top: 30px;
+  margin-left: 30%;
+  display: none;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  padding-bottom: 10px;
+}
+
+.NewTrending:hover + .NewTrendingGrid {
+  display: block;
+}
+
+.NewTrendingGrid:hover {
+  display: block;
+}
+
+.NewTrendingOptionMainDiv > div > p:first-child {
+  margin-top: 10px;
+  font-size: 17px;
+  margin-bottom: 10px;
+  color: black;
+  cursor: auto;
+}
+
+.NewTrendingOptionMainDiv > div > p {
+  margin-top: 3px;
+  color: rgba(77, 75, 75, 0.9);
+  font-family: "Lato-Light", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.NewTrendingOptionMainDiv > div > p:hover {
+  background: rgba(176, 173, 173, 0.443);
+}
+
+.NewTrendingOptionMainDiv > div > p:first-child:hover {
+  background: transparent;
+}
+
+/* ------------------- ( BuiltRoutine Option) ----------------- */
+
+.BuiltRoutineGrid {
+  background: #ffffff;
+  position: fixed;
+  width: 45%;
+  margin-top: 30px;
+  margin-left: 38%;
+  display: none;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  padding-bottom: 10px;
+}
+
+.BuiltRoutine:hover + .BuiltRoutineGrid {
+  display: block;
+}
+
+.BuiltRoutineGrid:hover {
+  display: block;
+}
+
+.BuiltRoutineOptionMainDiv > div > p:first-child {
+  margin-top: 10px;
+  font-size: 17px;
+  margin-bottom: 10px;
+  color: black;
+  cursor: auto;
+}
+
+.BuiltRoutineOptionMainDiv > div > p {
+  margin-top: 3px;
+  color: rgba(77, 75, 75, 0.9);
+  font-family: "Lato-Light", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.BuiltRoutineOptionMainDiv > div > p:hover {
+  background: rgba(176, 173, 173, 0.443);
+}
+
+.BuiltRoutineOptionMainDiv > div > p:first-child:hover {
+  background: transparent;
+}
+
+/* ------------------- ( Blog Option) ----------------- */
+
+.BlogGrid {
+  background: #f9f7f7;
+  position: fixed;
+  width: 90%;
+  margin-top: 30px;
+  display: none;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  padding: 15px;
+  padding-bottom: 10px;
+}
+
+.Blog:hover + .BlogGrid {
+  display: block;
+}
+
+.BlogGrid:hover {
+  display: block;
+}
+
+.BlogOptionMainDiv {
+  display: grid;
+  align-items: center;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+  color: black;
+}
+
+.BlogOptionMainDiv > div {
+  background: #ffffff;
+  padding-bottom: 15px;
+  cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.BlogOptionMainDiv > div:hover {
+  margin-top: -4px;
+}
