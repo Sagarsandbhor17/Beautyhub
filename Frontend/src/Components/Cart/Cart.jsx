@@ -26,6 +26,7 @@ import * as React from "react";
 
 import { AiOutlineDown, AiFillLock } from "react-icons/ai";
 import style from "../../Styles/Suggest.module.css";
+import Navbar from "../Navbar/Navbar";
 import CartSuggestion from "./CartSuggestion";
 
 const cartData = [
@@ -63,7 +64,8 @@ const cartData = [
 
 export const Cart = () => (
   <Box>
-    <Box
+    <Navbar />
+    {/* <Box
       background={"#232f3e"}
       w={["100%", "100%", "100%", "100%"]}
       color="white"
@@ -75,7 +77,7 @@ export const Cart = () => (
         25% off Selectbrands with code SINGLES +free 13-piece Beauty Bag(Worth
         $117)@ $165|Shop now
       </Text>
-    </Box>
+    </Box> */}
     <br />
     <Flex gap="60%" w={["100%", "100%", "100%", "100%"]}>
       <Heading textAlign={"left"} fontWeight="normal">
