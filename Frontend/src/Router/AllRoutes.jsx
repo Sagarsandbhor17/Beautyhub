@@ -11,12 +11,13 @@ import Signup from "../Components/Login-Signup/Signup";
 import SingleProduct from "../Components/SingleProduct/SingleProduct";
 import Navbar from "../Components/Navbar/Navbar";
 import Authprovider from "../Components/Private/Authprovider";
+import DummyProduct from "../Components/SingleProduct/DummyProduct";
 
 const AllRoutes = () => {
   return (
     <Routes>
 
-      {/* <Route path="/" element={<Navbar/>}/> */}
+       {/* <Route path="/" element={<Navbar/>}/>  */}
       <Route path="/" element={<LandingPage />} />
       <Route path="/skin" element={<Skin />} />
       <Route path="/login" element={<Login />}/>
@@ -26,10 +27,12 @@ const AllRoutes = () => {
       <Cart />
       </Authprovider>
       } />
-      <Route path="/singleproduct" element={<SingleProduct />} />
+      <Route path="/products/:id" element={<SingleProduct />} />
       <Route path="/checkout" element={<Checkout />} />
       <Route path="/otp" element={<Otp />} />
-      <Route path="/orderplaced" element={<OrderConfirm/>}/>
+      <Route path="/orderplaced" element={<OrderConfirm />} />
+      {/* <Route path="/dummyproduct" element={ <DummyProduct/>}/>  */}
+      
 
 
     </Routes>
