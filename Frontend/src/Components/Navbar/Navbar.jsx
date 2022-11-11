@@ -11,7 +11,6 @@ import React from "react";
 import { BiSearchAlt2 } from "react-icons/bi";
 import { HiOutlineShoppingBag } from "react-icons/hi";
 import { BsPerson } from "react-icons/bs";
-import { AiOutlineMenu } from "react-icons/ai";
 import usaFlag from "./Image/usaFlag.png";
 import style from "./css/style.module.css";
 import SkinCare from "./Options/SkinCare";
@@ -31,14 +30,19 @@ import fourthRow1 from "./Image/fourthRow1.png";
 import fourthRow2 from "./Image/fourthRow2.png";
 import fourthRow3 from "./Image/fourthRow3.png";
 import fourthRow4 from "./Image/fourthRow4.png";
+import { Link } from "react-router-dom";
+import LeftDrawer from "./Options/LeftDrawer";
+import { useState } from "react";
 
 const Navbar = () => {
+  const [showSearch, setShowSearch] = useState(false);
+
   return (
     <div>
-      <Grid position="fixed" w="100%" bg="#ffffff">
+      <Grid position="fixed" zIndex={100} w="100%" bg="#ffffff">
         {/* --------------------------- (First row) ---------------------- */}
         <Grid
-          h={"8"}
+          h={"5"}
           w="100%"
           bg="#f2f2f2"
           display={["none", "none", "flex", "flex"]}
@@ -53,9 +57,10 @@ const Navbar = () => {
             alignItems={"center"}
             justifyContent="space-around"
             color={"gray"}
+            fontSize="13"
           >
             <Box display={"flex"} alignItems="center">
-              <Image w="4" mr="1" src={usaFlag} alt="usaFlag" />
+              <Image w="3" mr="1" src={usaFlag} alt="usaFlag" />
               <Text>us-USD</Text>
             </Box>
             <Text>Help</Text>
@@ -75,14 +80,16 @@ const Navbar = () => {
         >
           {/* -------------------------- (Search - Phone display) -------------- */}
           <Box fontSize="24" display={["block", "block", "none", "none"]}>
-            <AiOutlineMenu />
+            <LeftDrawer />
           </Box>
           <Box
             fontSize="24"
             ml="-10"
             display={["block", "block", "none", "none"]}
+            cursor="pointer"
+            onClick={() => setShowSearch(!showSearch)}
           >
-            <BiSearchAlt2 />
+            {showSearch ? <b>X</b> : <BiSearchAlt2 />}
           </Box>
 
           {/* ----------------------- (Logo SkinStore) --------------- */}
@@ -142,30 +149,33 @@ const Navbar = () => {
               <AccountOption />
             </Box>
 
-            <Box
-              cursor={"pointer"}
-              display={"flex"}
-              alignItems="center"
-              gap="1"
-              fontSize={17}
-            >
-              <Text
-                fontSize={13}
-                position={"absolute"}
-                ml="3"
-                mb="4"
-                bg="#333333"
-                color="white"
-                pl="4px"
-                pr="4px"
-                borderRadius={"50"}
-                pb="1px"
+            <Link to="/cart">
+              <Box
+                cursor={"pointer"}
+                display={"flex"}
+                alignItems="center"
+                gap="1"
+                mt="2"
+                fontSize={17}
               >
-                0
-              </Text>
-              <HiOutlineShoppingBag style={{ fontSize: "25" }} />
-              <Text display={["none", "none", "none", "block"]}>Cart</Text>
-            </Box>
+                <Text
+                  fontSize={13}
+                  position={"absolute"}
+                  ml="3"
+                  mb="4"
+                  bg="#333333"
+                  color="white"
+                  pl="4px"
+                  pr="4px"
+                  borderRadius={"50"}
+                  pb="1px"
+                >
+                  0
+                </Text>
+                <HiOutlineShoppingBag style={{ fontSize: "25" }} />
+                <Text display={["none", "none", "none", "block"]}>Cart</Text>
+              </Box>
+            </Link>
           </Box>
         </Grid>
 
@@ -181,145 +191,67 @@ const Navbar = () => {
             display="flex"
             className={style.ThirdRow}
           >
-            <Text
-              ml="12px"
-              mr={["12px", "12px", "2px", "12px"]}
-              className={style.Holyday}
-            >
-              Brand
-            </Text>
+            <Text className={style.Holyday}>Brand</Text>
             <Box className={style.HolydayGrid}>
               <HolydayOption />
             </Box>
 
-            <Text
-              ml="12px"
-              mr={["12px", "12px", "2px", "12px"]}
-              className={style.Holyday}
-            >
-              Holyday
-            </Text>
+            <Text className={style.Holyday}>Holyday</Text>
             <Box className={style.HolydayGrid}>
               <HolydayOption />
             </Box>
 
-            <Text
-              ml="12px"
-              mr={["12px", "12px", "2px", "12px"]}
-              className={style.Sale}
-            >
-              Sale
-            </Text>
+            <Text className={style.Sale}>Sale</Text>
             <Box className={style.SaleGrid}>
               <SaleOption />
             </Box>
 
-            <Text
-              ml="12px"
-              mr={["12px", "12px", "2px", "12px"]}
-              className={style.skinCare}
-            >
-              Skin Care
-            </Text>
+            <Text className={style.skinCare}>Skin Care</Text>
             <Box className={style.skinCareGrid}>
               <SkinCare />
             </Box>
 
-            <Text
-              ml="12px"
-              mr={["12px", "12px", "2px", "12px"]}
-              className={style.Hair}
-            >
-              Hair
-            </Text>
+            <Text className={style.Hair}>Hair</Text>
             <Box className={style.HairGrid}>
               <HairOption />
             </Box>
 
-            <Text
-              ml="12px"
-              mr={["12px", "12px", "2px", "12px"]}
-              className={style.Makeup}
-            >
-              Makeup
-            </Text>
+            <Text className={style.Makeup}>Makeup</Text>
             <Box className={style.MakeupGrid}>
               <MakeupOption />
             </Box>
 
-            <Text
-              ml="12px"
-              mr={["12px", "12px", "2px", "12px"]}
-              className={style.BathBody}
-            >
-              Bath & Body
-            </Text>
+            <Text className={style.BathBody}>Bath & Body</Text>
             <Box className={style.BathBodyGrid}>
               <BathBodyOption />
             </Box>
 
-            <Text
-              ml="12px"
-              mr={["12px", "12px", "2px", "12px"]}
-              className={style.Fragrance}
-            >
-              Fragrance
-            </Text>
+            <Text className={style.Fragrance}>Fragrance</Text>
             <Box className={style.FragranceGrid}>
               <FragranceOption />
             </Box>
 
-            <Text
-              ml="12px"
-              mr={["12px", "12px", "2px", "12px"]}
-              className={style.SelfCare}
-            >
-              Self Care
-            </Text>
+            <Text className={style.SelfCare}>Self Care</Text>
             <Box className={style.SelfCareGrid}>
               <SelfCareOption />
             </Box>
 
-            <Text
-              ml="12px"
-              mr={["12px", "12px", "2px", "12px"]}
-              className={style.Tools}
-            >
-              Tools
-            </Text>
+            <Text className={style.Tools}>Tools</Text>
             <Box className={style.ToolsGrid}>
               <ToolsOption />
             </Box>
 
-            <Text
-              ml="12px"
-              mr={["12px", "12px", "2px", "12px"]}
-              className={style.NewTrending}
-            >
-              New & Trending
-            </Text>
+            <Text className={style.NewTrending}>New & Trending</Text>
             <Box className={style.NewTrendingGrid}>
               <NewTrendingOption />
             </Box>
 
-            <Text
-              ml="12px"
-              mr={["12px", "12px", "2px", "12px"]}
-              className={style.BuiltRoutine}
-            >
-              Built a Routine
-            </Text>
+            <Text className={style.BuiltRoutine}>Built a Routine</Text>
             <Box className={style.BuiltRoutineGrid}>
               <BuiltRoutineOption />
             </Box>
 
-            <Text
-              ml="12px"
-              mr={["12px", "12px", "2px", "12px"]}
-              className={style.Blog}
-            >
-              Blog
-            </Text>
+            <Text className={style.Blog}>Blog</Text>
             <Box className={style.BlogGrid}>
               <BlogOption />
             </Box>
@@ -354,12 +286,41 @@ const Navbar = () => {
         </Grid>
       </Grid>
 
+      {/* --------------------------- (Search mobile) -------------------- */}
+      <Box
+        pt={10}
+        h="16"
+        position={"fixed"}
+        zIndex="90"
+        w="95%"
+        ml="5"
+        mt="1"
+        display={showSearch ? ["block","block","none","none"] : "none"}
+      >
+        <InputGroup
+          border="1px solid grey"
+          bg="#ffffff"
+          mt="3"
+          borderRadius={8}
+          w="95%"
+          m="auto"
+        >
+          <Input
+            placeholder="Search for a product or brand..."
+            borderRadius={8}
+            h="12"
+          />
+          <InputRightElement fontSize={28} pt="5" children={<BiSearchAlt2 />} />
+        </InputGroup>
+      </Box>
+
       {/* ------------------------- (5th row/ Banner) --------------------- */}
       <Grid
-        p="3"
-        pt={["10", "10", "0", "0"]}
+        pt={showSearch ? ["24", "24", "0", "0"] : ["10", "10", "0", "0"]}
         display={"block"}
-        w="100%"
+        w="90%"
+        m="auto"
+        mb="2"
         bg="#2e3337"
         color={"#ffffff"}
         _hover={{
@@ -367,9 +328,9 @@ const Navbar = () => {
           bg: "#ffffff",
         }}
       >
-        <Text p="2" fontSize={20} fontWeight="600">
+        <Text p="2" fontSize={[16, 16, 18, 20]} fontWeight="600">
           25% off select brands with code SINGLES + free 13-piece Beauty Bag
-          (Worth $117) @ $165 | Shop now
+          (Worth $117) @ $165 | Shop now {">"}
         </Text>
       </Grid>
     </div>

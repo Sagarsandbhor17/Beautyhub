@@ -28,7 +28,7 @@ app.post("/login", async (req, res) => {
 
   const user = await User.findOne({ email, password });
   if (!user) {
-    return res.send({ status: false, message: "Wrong Credential!" });
+    return res.send({ Token: "", message: "Wrong Credential!" });
   }
 
   const Token = jwt.sign(
@@ -46,7 +46,7 @@ app.post("/login", async (req, res) => {
 
   // const refreshToken = jwt.sign({}, "REFRESH");
   return res.send({
-    Token,
+    Token: Token,
     message: "You have signup Successfully",
   });
 });
