@@ -1,16 +1,19 @@
 const express = require("express");
 const Cart = require("./cart.model");
-const User = require("../user/user.model");
+const User = require("../users/users.model");
 const jwt=require('jsonwebtoken');
 
 const authMiddleware = async (req, res, next) => {
   let token = req.headers.authorization;
 
   if (token) {
-    let {id, email, password} = jwt.decode(token);
+    let {id,email} = jwt.decode(token);
+    console.log(email)
     let user = await User.findById(id);
 
-    if (user.email === email && user.password === password) {
+    if (user.email === email) {
+      const verification=jwt.verify(token,"Secret");
+      console.log(verification)
       req.userId = id;
       next();
     } else {
@@ -22,8 +25,7 @@ const authMiddleware = async (req, res, next) => {
     res.status(401).send("Cannot Perform this opertation, missing persmission");
   }
 };
-
-const app = express.Router();
+const app=express.Router();
 app.use(authMiddleware);
 
 app.get("/", async (req, res) => {
@@ -44,12 +46,6 @@ app.post("/", async (req, res) => {
       product: req.body.product,
     }).populate("product");
 
-    if (cartItem.product.quantity < req.body.quantity) {
-      return res.send(
-        `This item is not able in the required quanitity, max quanity allowed is ${cartItem.product.quantity}`
-      );
-    }
-
     if (cartItem) {
       let item = await Cart.findByIdAndUpdate(
         cartItem.id,
@@ -65,6 +61,7 @@ app.post("/", async (req, res) => {
       let item = await Cart.create({
         ...req.body,
         user: req.userId,
+        quantity:1
       });
       return res.send(item);
     }
@@ -88,7 +85,7 @@ app.delete('/:id',async(req,res)=>{
   let {id}=req.params;
     try{
         await Cart.deleteOne({_id:id});
-        res.Status(204).send("Product Deleted");
+        res.status(204).send("Product Deleted");
     }
     catch(e){
         res.status(400).send(e.message);

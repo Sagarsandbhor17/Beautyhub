@@ -8,12 +8,12 @@ const productSchema=new mongoose.Schema({
     product_tag_text:{type:String},
     star_rating:{type:Number},
     product_reviews:{type:Number},
-    product_price:{type:Number},
-    description:{type:Number},
+    product_price:{type:String},
+    description:{type:String},
     product_ingredients:{type:String},
     product_type:{type:String},
     product_subtype:{type:String},
-    item_logo:{ttype:String}
+    item_logo:{type:String}
 })
 
 const Product = mongoose.model("product", productSchema);

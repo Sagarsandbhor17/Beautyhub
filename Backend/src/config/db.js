@@ -1,5 +1,7 @@
-const mongoose=require('mongoose');
+const mongoose = require("mongoose")
 
-export const connect=()=>{
-    return mongoose.connect('');
-}
+const connect = () =>{
+    return mongoose.connect("mongodb://127.0.0.1:27017/beutyhub")
+};
+
+module.exports = connect;
