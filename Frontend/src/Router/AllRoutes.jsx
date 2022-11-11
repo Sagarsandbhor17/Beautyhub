@@ -7,20 +7,22 @@ import Otp from "../Components/Cart/Otp";
 import Home from "../Components/Home";
 import Login from "../Components/Login-Signup/Login";
 import Signup from "../Components/Login-Signup/Signup";
+import DummyProduct from "../Components/SingleProduct/DummyProduct";
 import SingleProduct from "../Components/SingleProduct/SingleProduct";
 
 const AllRoutes = () => {
   return (
     <Routes>
 
-      <Route path="/" element={<Home/>}/>
+     
       <Route path="/login" element={<Login />}/>
       <Route path="/signup" element={<Signup />} />
       <Route path="/cart" element={<Cart />} />
-      <Route path="/singleproduct" element={<SingleProduct />} />
+      <Route path="/products/:id" element={<SingleProduct />} />
       <Route path="/checkout" element={<Checkout />} />
       <Route path="/otp" element={<Otp />} />
-      <Route path="/orderplaced" element={<OrderConfirm/>}/>
+      <Route path="/orderplaced" element={<OrderConfirm />} />
+      {/* <Route path="/dummyproduct" element={ <DummyProduct/>}/> */}
 
     </Routes>
   );

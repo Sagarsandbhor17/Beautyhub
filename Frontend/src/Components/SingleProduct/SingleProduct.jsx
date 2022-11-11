@@ -1,33 +1,54 @@
 import { Box, Button, Heading, Image, Text } from "@chakra-ui/react";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import style from "../../Styles/SingleProduct.module.css";
 import { StarIcon } from "@chakra-ui/icons";
 import { AiOutlineHeart } from "react-icons/ai";
 import Suggest from "./Suggest";
 import Descriptionsec from "./Descriptionsec";
-let state = {
-  products: [
-    {
-      _id: "1",
-      title: "Grow Gorgeous Hair Density Serum Original Duo 2 x 60ml",
-      src: [
-        "https://static.thcdn.com/images/large/webp//productimg/1600/1600/12448076-1564739111169792.jpg",
-        "https://static.thcdn.com/images/large/webp//productimg/1600/1600/12448076-6894739111151729.jpg",
-        "https://static.thcdn.com/images/large/webp//productimg/1600/1600/12448076-8695002190173929.jpg",
-      ],
-      rating: "1",
-
-      price: 23.0,
-
-      rating: 1,
-    },
-  ],
-  index: 0,
-};
+import { useParams } from "react-router-dom";
+import axios from "axios";
+import { useDispatch } from "react-redux";
+import { ADD, REMOVE } from "../../redux/actions/action";
+import { useToast } from "@chakra-ui/react";
 
 const SingleProduct = () => {
-  const { products } = state;
-  console.log(products);
+  const { id } = useParams();
+
+  const [Product, setProduct] = useState([]);
+  const [qty1, setqty] = useState(0);
+  const [Loading, setloading] = useState(false);
+  const dispatch = useDispatch();
+  const toast = useToast();
+  useEffect(() => {
+    const getproducts = async () => {
+      setloading(true);
+      const response = await axios.get(`http://localhost:8080/products/${id}`);
+      setProduct(await response.data);
+      setloading(false);
+    };
+
+    getproducts();
+  }, []);
+  // console.log(Product)
+  function send(e) {
+    dispatch(ADD(e));
+    toast({
+      title: "Product Added to Cart",
+      position: "top",
+
+      status: "success",
+      duration: 9000,
+      isClosable: true,
+    });
+  }
+
+  function qty(e) {
+    dispatch(ADD(e));
+  }
+  function qtydec(item) {
+    console.log(item.quantity);
+    dispatch(REMOVE(item));
+  }
 
   return (
     <div>
@@ -38,94 +59,110 @@ const SingleProduct = () => {
         width={"100%"}
         margin="auto"
         h="40px"
-      
         _hover={{ bg: "white", color: "black" }}
       >
-        <Text fontWeight={"bold"} textAlign="center" fontSize={'xl'} >
+        <Text fontWeight={"bold"} textAlign="center" fontSize={"xl"}>
           15% off or 20% off when you Spend $150+ with code SAVE20 +16-Piece
           Beauty bag (Worth $174) @ $159|Shop Now
         </Text>
       </Box>
-      {products.map((item, index) => (
-        <div key={index} className={style.details}>
-          <div className={style.bigimg}>
-            <img src={item.src[0]} />
-            <br />
-            <hr />
-            <br/>
-            <Descriptionsec/>
-          </div>
-          <div className={style.box}>
-            <Image src="https://s1.thcdn.com/design-assets/images/logos/shared-brands/colour/skinmedica.gif" w="20%"/>
-            <div className={style.row}>
-              <Heading fontWeight={"normal"}>{item.title}</Heading>
-            </div>
-            <Box w={["100%", "100%", "100%", "100%"]}>
-              <StarIcon color={"#fbbc04"} /> <StarIcon color={"#fbbc04"} />{" "}
-              <StarIcon color={"#fbbc04"} /> <StarIcon color={"#fbbc04"} />{" "}
-              <StarIcon color={"#fbbc04"} /> 1 Reviews
-            </Box>
-            <p style={{ textAlign: "left" }}>MSRP:$70</p>
-            <Heading textAlign={"left"} fontWeight={"medium"}>
-              ${item.price}
-            </Heading>
-            <p style={{ textAlign: "left", color: "red" }}>Save:$21.00</p>
-            <hr />
 
-            <br />
-            <div style={{ display: "flex", gap: "10rem" }}>
-              {" "}
-              <p style={{ fontWeight: "bold" }}>Quantity</p>{" "}
-              <Box w={["60%", "60%", "60%", "100%"]} ml={["-80px"]}>
-                {" "}
-                <Button
-                  border={"1px solid black"}
-                  bg="white"
-                  borderRadius="none"
-                >
-                  -
-                </Button>
-                <Button
-                  disabled
-                  border={"1px solid black"}
-                  borderRadius="none"
-                  bg="white"
-                >
-                  1
-                </Button>
-                <Button
-                  border={"1px solid black"}
-                  bg="white"
-                  borderRadius="none"
-                >
-                  +
-                </Button>
-              </Box>
-            </div>
-
-            <Button
-              className={style.cart}
-              bg={"#333"}
-              color="white"
-              width="500px"
-              _hover={{ backgroundColor: "#00857c", color: "black" }}
-              w={["60%", "80%", "80%", "100%"]}
-            >
-              {" "}
-              Add to cart{" "}
-            </Button>
-            <br />
-            <br />
-            <Box display="flex" gap="2rem">
-              <AiOutlineHeart mt="-20px" size={"30px"} />
-              <Text fontWeight={"bold"}> Save to Wishlist</Text>
-            </Box>
-            <Text textAlign={'left'}>In stock -Usaually dispatched Within 24hours</Text>
-            <Button ml="-70%"borderRadius={'none'} border="1px solid brown " bg="white" color={'brown'} _hover={{ backgroundColor: "white", color: "brown" }}>Select your Gift</Button>
-          </div>
+      <div className={style.details}>
+        <div className={style.bigimg}>
+          <img src={Product.product_image} />
+          <br />
+          <hr />
+          <br />
+          <Descriptionsec
+            description={Product.description}
+            product_ingredients={Product.product_ingredients}
+          />
         </div>
-      ))}
-      <Suggest/>
+        <div className={style.box}>
+          <Image src={Product.item_logo} w="20%" />
+          <div className={style.row}>
+            <Heading fontWeight={"normal"}>{Product.productName}</Heading>
+          </div>
+          <Box w={["100%", "100%", "100%", "100%"]}>
+            <StarIcon color={"#fbbc04"} /> <StarIcon color={"#fbbc04"} />{" "}
+            <StarIcon color={"#fbbc04"} /> <StarIcon color={"#fbbc04"} />{" "}
+            <StarIcon color={"#fbbc04"} /> {Product.product_reviews} Reviews
+          </Box>
+          <p style={{ textAlign: "left" }}>MSRP:$70</p>
+          <Heading textAlign={"left"} fontWeight={"medium"}>
+            ${Product.product_price}
+          </Heading>
+          <p style={{ textAlign: "left", color: "red" }}>Save:$21.00</p>
+          <hr />
+
+          <br />
+          <div style={{ display: "flex", gap: "10rem" }}>
+            {" "}
+            <p style={{ fontWeight: "bold" }}>Quantity</p>{" "}
+            <Box w={["60%", "60%", "60%", "100%"]} ml={["-80px"]}>
+              {" "}
+              <Button
+                border={"1px solid black"}
+                bg="white"
+                borderRadius="none"
+                onClick={() => qtydec(Product)}
+              >
+                -
+              </Button>
+              <Button
+                disabled
+                border={"1px solid black"}
+                borderRadius="none"
+                bg="white"
+              >
+                {qty1}
+              </Button>
+              <Button
+                border={"1px solid black"}
+                bg="white"
+                borderRadius="none"
+                onClick={() => qty(Product)}
+              >
+                +
+              </Button>
+            </Box>
+          </div>
+
+          <Button
+            className={style.cart}
+            bg={"#333"}
+            color="white"
+            width="500px"
+            _hover={{ backgroundColor: "#00857c", color: "black" }}
+            w={["60%", "80%", "80%", "100%"]}
+            onClick={() => send(Product)}
+          >
+            {" "}
+            Add to cart{" "}
+          </Button>
+          <br />
+          <br />
+          <Box display="flex" gap="2rem">
+            <AiOutlineHeart mt="-20px" size={"30px"} />
+            <Text fontWeight={"bold"}> Save to Wishlist</Text>
+          </Box>
+          <Text textAlign={"left"}>
+            In stock -Usaually dispatched Within 24hours
+          </Text>
+          <Button
+            ml="-70%"
+            borderRadius={"none"}
+            border="1px solid brown "
+            bg="white"
+            color={"brown"}
+            _hover={{ backgroundColor: "white", color: "brown" }}
+          >
+            Select your Gift
+          </Button>
+        </div>
+      </div>
+
+      <Suggest />
       <br />
       <br></br>
       <div className={style.feedback}>
