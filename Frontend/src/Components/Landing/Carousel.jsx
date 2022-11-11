@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import {Box,Button,Heading,Text} from "@chakra-ui/react"
+import { Box, Image, Text } from "@chakra-ui/react";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -21,11 +21,28 @@ const carousel = [
 export default function App() {
   return (
     <>
+      <Box
+        w="90%"
+        m="auto"
+        pl="2.5%"
+        pr="2.5%"
+        color="white"
+        bgColor="black"
+        height="2rem"
+        pt=".2rem"
+        pb=".2rem"
+        className="offer"
+      >
+        <Text fontWeight="600">
+          25% off select brands with code SINGLES + free 13-piece Beauty Bag
+          (Worth $117) @ $165 | Shop now
+        </Text>
+      </Box>
       <Swiper
         spaceBetween={30}
         centeredSlides={true}
         autoplay={{
-          delay: 2500000,
+          delay: 5000,
           disableOnInteraction: false,
         }}
         pagination={{
@@ -37,12 +54,12 @@ export default function App() {
       >
         <SwiperSlide>
           <Box display="flex" position="relative">
-            <img src={carousel[0]} />
+            <Image src={carousel[0]} />
           </Box>
         </SwiperSlide>
         <SwiperSlide>
           <Box display="flex" position="relative">
-            {/* <Box w="20vw" position="absolute" top="2vw" left="3vw">
+            {/* <Box w=""20vw"" position="absolute" top="2vw" left="3vw">
               <Heading>
                 the <br />
                 Holiday Edit
@@ -55,20 +72,16 @@ export default function App() {
               </Text>
               <Button>Shop Now</Button>
             </Box> */}
-            <img src={carousel[1]} />
+            <Image height="20vw" src={carousel[1]} />
           </Box>
         </SwiperSlide>
         <SwiperSlide>
-          <img src={carousel[2]} />
+          <Image src={carousel[2]} />
         </SwiperSlide>
         <SwiperSlide>
-          <img src={carousel[3]} />
+          <Image src={carousel[3]} />
         </SwiperSlide>
       </Swiper>
     </>
   );
 }
-
-
-
-
