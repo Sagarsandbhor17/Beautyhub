@@ -7,6 +7,17 @@ app.get('/',async(req,res)=>{
      res.status(201).send(products);
 });
 
+app.get('/:id',async(req,res)=>{
+    let {id}=req.params;
+    try{
+        let item=await Product.findById(id);
+        res.status(201).send(item);
+    }
+    catch(e){
+        res.status(401).send(e.message);
+    }
+})
+
 app.post('',async(req,res)=>{
     try{let product=await Product.create(req.body);
     res.send("Product Added Scuccessfully");
