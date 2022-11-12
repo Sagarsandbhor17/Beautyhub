@@ -91,24 +91,24 @@ const Signup = () => {
   return (
     <div>
       <Link to="/">
-      <Box
-        w="100%"
-        p="4"
-        pt="0"
-        pl={["0", "0", "28", "28"]}
-        textAlign={["center", "center", "left", "left"]}
-        position={"fixed"}
-        bg="#ffffff"
-        zIndex={100}
-      >
-        <Text fontSize={"48"} fontWeight={600}>
-          SkinStore
-        </Text>
-        <Text mt="-4" ml={["0", "0", "3", "3"]} fontSize={"13"}>
-          part of the <span style={{ color: "#2fc6f7" }}>look</span>
-          <span style={{ color: "grey" }}>fantastic</span> group
-        </Text>
-      </Box>
+        <Box
+          w="100%"
+          p="4"
+          pt="0"
+          pl={["0", "0", "28", "28"]}
+          textAlign={["center", "center", "left", "left"]}
+          position={"fixed"}
+          bg="#ffffff"
+          zIndex={100}
+        >
+          <Text fontSize={"48"} fontWeight={600}>
+            BeautyHub
+          </Text>
+          <Text mt="-3" ml={["0", "0", "3", "3"]} fontSize={"13"}>
+            Skin care with <span style={{ color: "#2fc6f7" }}>Beauty</span>
+            <span style={{ color: "grey" }}>Hub</span> group
+          </Text>
+        </Box>
       </Link>
 
       <Grid bg={"#f2f2f2"} pt="144" pb="10">
