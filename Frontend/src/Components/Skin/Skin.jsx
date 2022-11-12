@@ -1,48 +1,124 @@
-import React from 'react'
-import {Box,Heading,Text,SimpleGrid} from "@chakra-ui/react"
-import { useState } from 'react';
-import style from "./Skin.module.css"
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { addtoCart, getData } from "../Redux/skinRedux/skin.action";
+import {
+  Box,
+  SimpleGrid,
+  Image,
+  Text,
+  Button,
+  MenuButton,
+  MenuItem,
+  Menu,
+  MenuList,
+} from "@chakra-ui/react";
+import Navbar from "../Navbar/Navbar";
+import { ChevronDownIcon } from "@chakra-ui/icons";
+import Footer from "../Footer/Footer";
+import jwt_decode from "jwt-decode";
+
 const Skin = () => {
-  const [read, setRead] = useState(false)
+  const [brands, setBrands] = useState("");
+  const [skinCare, setskinCare] = useState("");
+  const [skinType, setskinType] = useState("");
+  const [page, setPage] = useState(1);
+  const { skinData } = useSelector((store) => store.skinProducts);
+  const { token } = useSelector((store) => store.UserLogin.data);
+  const [tokenData, setTokenData] = useState({});
+  const dispatch = useDispatch();
+  // console.log(tokenData);
+  // console.log(token);
+  // const filter={brands,skinCare,skinType}
+  const handleCart = (elem) => {
+    // console.log(id);
+    alert("Product Added");
+    dispatch(addtoCart(elem));
+  };
+
+  useEffect(() => {
+    dispatch(getData());
+  }, [page]);
+
   return (
-    <Box display="flex">
-      <Box>
-        <Heading>Refine</Heading>
-        
-      </Box>
-      <Box>
-        <Heading>Skin Cleansers</Heading>
-        <Text>
-          Keep your skin clean and refreshed with our extensive range of skin
-          cleansers. We have a thorough choice of cleansers, micellar waters and
-          make-up removers designed to cater for each individual skin type and
-          concern, from a wide range of brands. Whether you suffer from
-          sensitive, oily or acne prone skin, you can achieve the results you
-          require from our tailored choices. For a professional cleanse, try our
-          range of premium brands such as Caudalie, Avene and Decleor. For a
-          more medicated, specialized cleanse, why not check out SkinCeuticals,
-          Murad or Paula's Choice? Remove dirt, grime and impurities effectively
-          by ensuring one of our cleansers is incorporated into your daily skin
-          care regime.
-          <Text className={read ? "style.readMore" : "style.readless"}>
-            not check out SkinCeuticals, Murad or Paula's Choice? Remove dirt,
-            grime and impurities effectively by ensuring one of our cleansers is
-            incorporated into your daily skin care regime
-          </Text>
-          <Text
-            onClick={() => {
-              setRead(false);
-            }}
-          >
-            read ? "style.readMore" : "style.readless"
-          </Text>
-        </Text>
-        <SimpleGrid columns={[2, null, 3]} spacing="40px">
-          <Box bg="tomato" height="80px"></Box>
+    <div>
+      <Navbar />
+      <Box
+        display="flex"
+        flexDirection="row"
+        gap="10"
+        border="1px solid"
+        mt="2rem"
+      >
+        <Box w="25vw">
+          <Box w="25vw" mb="2rem">
+            <Menu>
+              <MenuButton w="15vw" as={Button} rightIcon={<ChevronDownIcon />}>
+                Brands
+              </MenuButton>
+              <MenuList
+                onClick={(e) => {
+                  setBrands(e.target.value);
+                }}
+              >
+                <MenuItem value="111SKIN">111SKIN</MenuItem>
+                <MenuItem value="Aesop">Aesop</MenuItem>
+                <MenuItem value="Beauty ORA">Beauty ORA</MenuItem>
+                <MenuItem value="AHAVA">AHAVA</MenuItem>
+                <MenuItem value="3LAB">3LAB</MenuItem>
+              </MenuList>
+            </Menu>
+          </Box>
+          <Box w="25vw" mb="2rem">
+            <Menu>
+              <MenuButton w="15vw" as={Button} rightIcon={<ChevronDownIcon />}>
+                Skincare Product Type
+              </MenuButton>
+              <MenuList
+                onClick={(e) => {
+                  setBrands(e.target.value);
+                }}
+              >
+                <MenuItem value="Toners">Toners</MenuItem>
+                <MenuItem value="Masks">Masks</MenuItem>
+                <MenuItem value="Cleansers">Cleansers</MenuItem>
+                <MenuItem value="Serums">Serums</MenuItem>
+                <MenuItem value="Moisturizers">Moisturizers</MenuItem>
+              </MenuList>
+            </Menu>
+          </Box>
+          <Box w="25vw" mb="2rem">
+            <Menu>
+              <MenuButton w="15vw" as={Button} rightIcon={<ChevronDownIcon />}>
+                Skin Type
+              </MenuButton>
+              <MenuList
+                onClick={(e) => {
+                  setBrands(e.target.value);
+                }}
+              >
+                <MenuItem value="">All</MenuItem>
+                <MenuItem value="">Combination</MenuItem>
+                <MenuItem value="">Dry</MenuItem>
+                <MenuItem value="">Mature</MenuItem>
+                <MenuItem value="">Dehydrated</MenuItem>
+              </MenuList>
+            </Menu>
+          </Box>
+        </Box>
+        <SimpleGrid columns={[2, null, 3]} spacing={[5, null, 10]}>
+          {skinData.map((elem) => (
+            <Box key={elem.id}>
+              <Image w="20vw" src={elem.product_image} />
+              <Text>{elem.productName}</Text>
+              <Text>$ {elem.product_price}</Text>
+              <Button onClick={() => handleCart(elem)}>SHOP NOW</Button>
+            </Box>
+          ))}
         </SimpleGrid>
       </Box>
-    </Box>
+      <Footer />
+    </div>
   );
-}
+};
 
-export default Skin
+export default Skin;
