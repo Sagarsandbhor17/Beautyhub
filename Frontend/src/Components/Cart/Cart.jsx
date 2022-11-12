@@ -95,19 +95,21 @@ export const Cart = () => {
     <Box>
     <Navbar/>
       <br />
-      <Flex gap="60%" w={["100%", "100%", "100%", "100%"]} marginLeft="2rem">
+      <Flex gap="60%" marginLeft="2rem">
         <Heading textAlign={"start"} fontWeight="bold">
           Your Cart:
         </Heading>
+        <NavLink to="/checkout">
         <Button
           bg={"#333"}
           color="white"
           _hover={{ backgroundColor: "#00857c", color: "black" }}
-          w={["100%", "100%", "100%", "15%"]}
+          w={["100%", "100%", "100%", "100%"]}
         >
           <AiFillLock />
           Checkout Securely Now
-        </Button>{" "}
+          </Button>{" "}
+          </NavLink>
       </Flex>
       <br />
       <Flex className={style.flexcontainer}>
@@ -202,7 +204,7 @@ export const Cart = () => {
 #2594af"
         _hover={{ bg: "#03a9f4" }}
         color="white"
-        w={["100%", "100%", "100%", "15%"]}
+        w={["80%", "20%", "20%", "15%"]}
       >
         Get Coupon Code here <MdOutlineCelebration color="white" size={"md"} />
       </Button>
@@ -227,15 +229,17 @@ export const Cart = () => {
             Continue Shopping
           </Button>
         </NavLink>
+        <NavLink to="/checkout">
         <Button
           bg={"#333"}
           color="white"
           _hover={{ backgroundColor: "#00857c", color: "black" }}
-          w={["100%", "100%", "100%", "15%"]}
+          w={["100%", "100%", "100%", "100%"]}
         >
           <AiFillLock />
           Checkout Securely Now
-        </Button>
+          </Button>
+          </NavLink>
       </Flex>
       <br />
 

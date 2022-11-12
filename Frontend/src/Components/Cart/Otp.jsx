@@ -1,6 +1,7 @@
 import { Flex, FormControl, ChakraProvider, theme, Button, Heading } from "@chakra-ui/react";
 import * as React from "react";
 import { OTPInput } from "chakra-otp-input";
+import { NavLink } from "react-router-dom";
 
 export default function Otp() {
   const handleOTPInput = (value) => {
@@ -14,7 +15,7 @@ export default function Otp() {
         <FormControl w="60">
                   <OTPInput noInputs={6} onChange={handleOTPInput} />
                   <br/>
-                  <Button bg={'#52c29d'} color="white">Verify</Button>
+               <NavLink to="/orderplaced"> <Button bg={'#52c29d'} color="white">Verify</Button></NavLink>  
         </FormControl>
       </Flex>
     </ChakraProvider>
