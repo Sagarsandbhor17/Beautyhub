@@ -8,12 +8,12 @@ const authMiddleware = async (req, res, next) => {
 
   if (token) {
     let {id,email} = jwt.decode(token);
-    console.log(email)
+    
     let user = await User.findById(id);
 
     if (user.email === email) {
       const verification=jwt.verify(token,"Secret");
-      console.log(verification)
+      // console.log(verification)
       req.userId = id;
       next();
     } else {
@@ -26,7 +26,7 @@ const authMiddleware = async (req, res, next) => {
   }
 };
 const app=express.Router();
-app.use(authMiddleware);
+// app.use(authMiddleware);
 
 app.get("/", async (req, res) => {
   try {

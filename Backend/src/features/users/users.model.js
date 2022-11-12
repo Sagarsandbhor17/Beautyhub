@@ -6,7 +6,8 @@ const userSchema = new mongoose.Schema({
   password: { type: String, required: true },
   number: { type: Number, required: false },
   referral: { type: String, required: false },
-  role: { type: String, required: true },
+  role: { type: String, enum: ["user", "admin"], required: true },
+  
 });
 
 const User = mongoose.model("user", userSchema);

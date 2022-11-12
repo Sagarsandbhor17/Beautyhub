@@ -4,6 +4,12 @@ const jwt = require("jsonwebtoken");
 
 const app = express.Router();
 
+
+app.get('',async(req,res)=>{
+  let users=await User.find();
+  res.status(201).send(users);
+})
+
 app.post("/signup", async (req, res) => {
   const { name, email, password, number, referral } = req.body;
 
