@@ -19,6 +19,7 @@ const AllRoutes = () => {
       {/* <Route path="/" element={<Navbar/>}/>  */}
       <Route path="/" element={<LandingPage />} />
       <Route path="/skin" element={<Skin />} />
+      <Route path="/skin" element={<Skin />} />
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<Signup />} />
       <Route
@@ -62,6 +63,7 @@ const AllRoutes = () => {
         }
       />
       <Route path="/dummyproduct" element={<DummyProduct />} />
+      {/* <Route path="/dummyproduct" element={ <DummyProduct/>}/>   */}
     </Routes>
   );
 };
