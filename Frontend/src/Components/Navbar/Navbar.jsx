@@ -6,6 +6,7 @@ import {
   InputGroup,
   InputRightElement,
   Text,
+  useToast,
 } from "@chakra-ui/react";
 import React from "react";
 import { BiSearchAlt2 } from "react-icons/bi";
@@ -33,9 +34,24 @@ import fourthRow4 from "./Image/fourthRow4.png";
 import { Link } from "react-router-dom";
 import LeftDrawer from "./Options/LeftDrawer";
 import { useState } from "react";
+import { useSelector } from "react-redux";
 
 const Navbar = () => {
   const [showSearch, setShowSearch] = useState(false);
+  const { Token, gAuth } = useSelector((store) => store.UserLogin.data);
+  const toast = useToast();
+
+  const cartCheck = () => {
+    if (!Token && !gAuth) {
+      toast({
+        title: "Please Login First !",
+        status: "error",
+        duration: 1200,
+        isClosable: true,
+        position: "top",
+      });
+    }
+  };
 
   return (
     <div>
@@ -94,15 +110,23 @@ const Navbar = () => {
 
           {/* ----------------------- (Logo SkinStore) --------------- */}
           <Box pt="0" bg="#ffffff" ml={["12%", "12%", "-10", "4"]}>
-            <Text fontSize={["30", "30", "48", "48"]} fontWeight={700} mt="-3">
-              SkinStore
-            </Text>
-            <Text
-              mt={["-3", "-3", "-4", "-4"]}
-              fontSize={["8", "8", "12", "12"]}
-            >
-              part of the <b>LOOKFANTASTIC</b> group
-            </Text>
+            <Link to="/">
+              <Text
+                fontSize={["30", "30", "48", "48"]}
+                fontWeight={700}
+                mt="-3"
+              >
+                SkinStore
+              </Text>
+            </Link>
+            <Link to="/">
+              <Text
+                mt={["-3", "-3", "-4", "-4"]}
+                fontSize={["8", "8", "12", "12"]}
+              >
+                part of the <b>LOOKFANTASTIC</b> group
+              </Text>
+            </Link>
           </Box>
 
           {/* --------------------------- (Search) -------------------- */}
@@ -157,6 +181,7 @@ const Navbar = () => {
                 gap="1"
                 mt="2"
                 fontSize={17}
+                onClick={cartCheck}
               >
                 <Text
                   fontSize={13}
@@ -206,7 +231,7 @@ const Navbar = () => {
               <SaleOption />
             </Box>
 
-            <Text className={style.skinCare}>Skin Care</Text>
+            <Text className={style.skinCare}> <Link to="/skin">Skin Care</Link></Text>
             <Box className={style.skinCareGrid}>
               <SkinCare />
             </Box>
@@ -295,7 +320,7 @@ const Navbar = () => {
         w="95%"
         ml="5"
         mt="1"
-        display={showSearch ? ["block","block","none","none"] : "none"}
+        display={showSearch ? ["block", "block", "none", "none"] : "none"}
       >
         <InputGroup
           border="1px solid grey"
