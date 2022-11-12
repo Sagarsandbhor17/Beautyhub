@@ -21,7 +21,27 @@ const carousel = [
 export default function App() {
   return (
     <>
+<<<<<<< HEAD
 
+=======
+      {/* <Box
+        w="90%"
+        m="auto"
+        pl="2.5%"
+        pr="2.5%"
+        color="white"
+        bgColor="black"
+        height="2rem"
+        pt=".2rem"
+        pb=".2rem"
+        className="offer"
+      >
+        <Text fontWeight="600">
+          25% off select brands with code SINGLES + free 13-piece Beauty Bag
+          (Worth $117) @ $165 | Shop now
+        </Text>
+      </Box> */}
+>>>>>>> 9402392129bf0d5c191e29aa611218c7008c5b99
       <Swiper
         spaceBetween={30}
         centeredSlides={true}

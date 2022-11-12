@@ -31,7 +31,7 @@ const app=express.Router();
 app.get("/", async (req, res) => {
   try {
     let items = await Cart.find({
-      user: req.userId,
+      // user: req.userId,
     }).populate(["user", "product"]);
     res.send(items);
   } catch (e) {
@@ -60,7 +60,6 @@ app.post("/", async (req, res) => {
     } else {
       let item = await Cart.create({
         ...req.body,
-        user: req.userId,
         quantity:1
       });
       return res.send(item);
@@ -90,6 +89,17 @@ app.delete('/:id',async(req,res)=>{
     catch(e){
         res.status(400).send(e.message);
     }
+})
+
+app.get('/:id',async(req,res)=>{
+  let {id}=req.params;
+  try{
+    let item=await Cart.findById(id);
+    res.status(201).send(item);
+  }
+  catch(e){
+    res.status(401).send(e.message);
+  }
 })
 
 module.exports = app;
