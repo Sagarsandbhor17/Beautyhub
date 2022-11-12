@@ -12,6 +12,7 @@ import SingleProduct from "../Components/SingleProduct/SingleProduct";
 import Navbar from "../Components/Navbar/Navbar";
 import Authprovider from "../Components/Private/Authprovider";
 import DummyProduct from "../Components/SingleProduct/DummyProduct";
+import AdminForm from "../Components/admin/admin";
 
 const AllRoutes = () => {
   return (
@@ -64,6 +65,7 @@ const AllRoutes = () => {
       />
       <Route path="/dummyproduct" element={<DummyProduct />} />
       {/* <Route path="/dummyproduct" element={ <DummyProduct/>}/>   */}
+      <Route path="/admin" element={<AdminForm/>} />
     </Routes>
   );
 };
