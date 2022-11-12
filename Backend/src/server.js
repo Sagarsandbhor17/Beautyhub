@@ -15,7 +15,11 @@ app.use(bodyParser.json());
 app.use(express.json());
 app.use("/users", user);
 app.use("/products",product);
-app.use('/cart',cart)
+app.use('/cart',cart);
+app.get('/' , (req , res) => {
+  res.send("<div> <h1>LIFE IS AWESOME...</h1> <h3> You are watching backend of Beauty hub a clone of Skin Store </h3> </div>")
+})
+
 app.listen(PORT, async () => {
   await dbConnect();
   console.log(`Listening on http://localhost:${PORT}`);
