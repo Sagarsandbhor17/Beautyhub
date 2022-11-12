@@ -9,7 +9,7 @@ let rootReducer = combineReducers({
   UserSignup: signupReducer,
   UserLogin: LoginReducer,
   skinProducts:skinReducer,
-  // cartreducer
+  cartreducer
 });
 
 export const store = legacy_createStore(rootReducer, applyMiddleware(thunk));

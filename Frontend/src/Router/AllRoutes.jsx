@@ -16,25 +16,31 @@ import DummyProduct from "../Components/SingleProduct/DummyProduct";
 const AllRoutes = () => {
   return (
     <Routes>
-
-       {/* <Route path="/" element={<Navbar/>}/>  */}
+      {/* <Route path="/" element={<Navbar/>}/>  */}
       <Route path="/" element={<LandingPage />} />
-      {/* <Route path="/skin" element={<Skin />} />
-      <Route path="/login" element={<Login />}/>
+      <Route
+        path="/skin"
+        element={
+          // <Authprovider>
+            <Skin />
+          // {/* </Authprovider> */}
+        }
+      />
+      <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<Signup />} />
-      <Route path="/cart" element={
-      <Authprovider>
-      <Cart />
-      </Authprovider>
-      } />
+      <Route
+        path="/cart"
+        element={
+          // <Authprovider>
+            <Cart />
+          // </Authprovider>
+        }
+      />
       <Route path="/products/:id" element={<SingleProduct />} />
       <Route path="/checkout" element={<Checkout />} />
       <Route path="/otp" element={<Otp />} />
-      <Route path="/orderplaced" element={<OrderConfirm />} /> */}
+      <Route path="/orderplaced" element={<OrderConfirm />} />
       {/* <Route path="/dummyproduct" element={ <DummyProduct/>}/>  */}
-      
-
-
     </Routes>
   );
 };
