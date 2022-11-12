@@ -9,8 +9,9 @@ import { useState } from "react";
 import { useEffect } from "react";
 
 const AccountOption = () => {
-  const { Token } = useSelector((store) => store.UserLogin.data);
+  const { Token, gAuth } = useSelector((store) => store.UserLogin.data);
   const [tokenData, setTokenData] = useState({});
+  
   const dispatch = useDispatch();
   const toast = useToast();
   const navigate = useNavigate();
@@ -18,6 +19,8 @@ const AccountOption = () => {
   useEffect(() => {
     if (Token) {
       setTokenData(jwt_decode(Token));
+    } else if (gAuth) {
+      setTokenData(gAuth);
     }
   }, []);
 
@@ -51,7 +54,7 @@ const AccountOption = () => {
         >
           <Link to="/login">
             <Button
-              display={Token ? "none" : "block"}
+              display={Token || gAuth ? "none" : "block"}
               bg={"#2e3337"}
               color="#ffffff"
               w={"200px"}
@@ -62,7 +65,7 @@ const AccountOption = () => {
           </Link>
           {/* -------------------- (Profile after LogIn) ---------- */}
           <Text
-            display={Token ? "block" : "none"}
+            display={Token || gAuth ? "block" : "none"}
             fontSize="13px"
             fontWeight={500}
             p="2"
@@ -84,7 +87,7 @@ const AccountOption = () => {
           {/* -------------------- (Logout) ---------- */}
           <Button
             onClick={Logout}
-            display={Token ? "block" : "none"}
+            display={Token || gAuth ? "block" : "none"}
             mt={"20px"}
             bg={"#2e3337"}
             color="#ffffff"
@@ -98,7 +101,7 @@ const AccountOption = () => {
           {/* ----------------------------------- */}
           <Link to="/signup">
             <Button
-              display={Token ? "none" : "block"}
+              display={Token || gAuth ? "none" : "block"}
               mt={"20px"}
               bg={"#ffffff"}
               border="1px"
