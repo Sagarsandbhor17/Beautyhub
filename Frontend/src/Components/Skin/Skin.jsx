@@ -12,10 +12,10 @@ import {
   Menu,
   MenuList,
 } from "@chakra-ui/react";
-import { userLogin } from "../Redux/userRedux/login.action";
 import Navbar from "../Navbar/Navbar";
 import { ChevronDownIcon } from "@chakra-ui/icons";
 import Footer from "../Footer/Footer";
+import jwt_decode from "jwt-decode";
 
 const Skin = () => {
   const [brands, setBrands] = useState("");
@@ -24,9 +24,11 @@ const Skin = () => {
   const [page, setPage] = useState(1);
   const { skinData } = useSelector((store) => store.skinProducts);
   const { token } = useSelector((store) => store.UserLogin.data);
+  const [tokenData, setTokenData] = useState({});
   const dispatch = useDispatch();
-  console.log(brands);
-// const filter={brands,skinCare,skinType}
+  // console.log(tokenData);
+  // console.log(token);
+  // const filter={brands,skinCare,skinType}
   const handleCart = (elem) => {
     // console.log(id);
     alert("Product Added");
@@ -106,14 +108,15 @@ const Skin = () => {
         <SimpleGrid columns={[2, null, 3]} spacing={[5, null, 10]}>
           {skinData.map((elem) => (
             <Box key={elem.id}>
-              <Image w="20vw" src={elem.url} />
-              <Text>{elem.url}</Text>
+              <Image w="20vw" src={elem.product_image} />
+              <Text>{elem.productName}</Text>
+              <Text>$ {elem.product_price}</Text>
               <Button onClick={() => handleCart(elem)}>SHOP NOW</Button>
             </Box>
           ))}
         </SimpleGrid>
       </Box>
-      <Footer/>
+      <Footer />
     </div>
   );
 };

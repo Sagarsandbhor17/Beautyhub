@@ -3,8 +3,9 @@ import axios from "axios";
 
 export const getData = () => async (dispatch) => {
   try {
+    const token = localStorage.getItem("token");
     const response = await axios.get(
-      `https://jsonplaceholder.typicode.com/albums/1/photos`
+      `http://localhost:8080/products/skincare`,{Authorization:token}
     );
     console.log(response);
     dispatch({
@@ -23,7 +24,7 @@ export const addtoCart = (elem) => async(dispatch) => {
 try {
   const token = localStorage.getItem("token");
   const response = await axios.post(
-      `http://localhost:8080/cart`,{product:elem,header:token}
+      `http://localhost:8080/cart`,{product:elem,Authorization:token}
     );
     console.log(response);
     dispatch({

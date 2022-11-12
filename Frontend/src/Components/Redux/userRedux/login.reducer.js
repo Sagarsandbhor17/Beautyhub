@@ -9,7 +9,11 @@ import {
 export const loginInitial = {
   loading: false,
   error: false,
-  data: { Token:localStorage.getItem("token") || "", message: "" },
+  data: {
+    userId: localStorage.getItem("userId") || "",
+    Token: localStorage.getItem("token") || "",
+    message: "",
+  },
 };
 
 export const LoginReducer = (state = loginInitial, { type, payload }) => {
