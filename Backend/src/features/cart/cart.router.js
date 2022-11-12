@@ -94,7 +94,7 @@ app.delete('/:id',async(req,res)=>{
 app.get('/:id',async(req,res)=>{
   let {id}=req.params;
   try{
-    let item=await Cart.findById(id);
+    let item=await Cart.findById(id).populate("product");
     res.status(201).send(item);
   }
   catch(e){
