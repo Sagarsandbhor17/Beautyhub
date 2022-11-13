@@ -36,8 +36,8 @@ import { NavLink } from "react-router-dom";
 import { MdOutlineCelebration } from "react-icons/md";
 import Navbar from "../Navbar/Navbar"
 
-export const Cart = () => {
-  const cart = useSelector((state) => state.cartreducer.carts);
+export const Cart = () => { 
+ const cart = useSelector((state) => state.cartreducer.carts);
   // console.log(cart);
   let dispatch = useDispatch();
   const toast = useToast();
