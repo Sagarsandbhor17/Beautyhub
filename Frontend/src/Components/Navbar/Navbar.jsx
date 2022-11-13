@@ -39,7 +39,7 @@ import axios from "axios";
 import { useEffect } from "react";
 
 const getLength = () => {
-  return axios.get("http://localhost:8080/cart");
+  return axios.get("https://backend-beautyhub-production.up.railway.app/cart");
 };
 
 const Navbar = () => {
