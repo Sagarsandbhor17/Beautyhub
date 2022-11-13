@@ -32,7 +32,9 @@ const InitialState = {
   referral: "",
 };
 
-const Checkout= () => {
+const Checkout = () => {
+  const cart = useSelector((state) => state.cartreducer.carts);
+  const [price,setprice]=useState(0)
  
   const [otp, setotp] = useState(0);
   const toast = useToast();
@@ -51,6 +53,7 @@ const Checkout= () => {
     })
     navigate("/otp")
 }
+
 
   return (
     <div>
@@ -334,17 +337,17 @@ const Checkout= () => {
         <Box boxShadow={'md'} bg="white" h="400px"   mt="10rem" w={{ md: '30%',sm:"50%",base:"20%" }} padding= "1em 4px 35px 7px">
           <Flex gap="4rem" justifyItems={'normal'} ml="1rem">
             <Text fontWeight={'semibold'}>Order Summary</Text>
-            <Text>7 items</Text>
+            <Text>{cart.length} items</Text>
           </Flex>
           <br></br>
           <Box overflow={'scroll'} h="200px">
           <Flex>
-              <Image src="https://s1.thcdn.com/productimg/70/70/12078744-1264670675571219.jpg" />
+              <Image src={cart.product_image} />
               <Flex flexDirection={'column'}>
-                <Text>Christophe Robin Cleansing Volumizing Paste 12ml (Free Gift)
+                <Text>{cart.product_name}
                 </Text>
                 <Text>
-                Quantity: 1
+                Quantity: {cart.quantity}
                 </Text>
                 <Text>
                 $0.00

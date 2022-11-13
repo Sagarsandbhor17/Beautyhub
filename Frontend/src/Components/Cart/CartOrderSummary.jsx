@@ -9,8 +9,10 @@ import {
   } from '@chakra-ui/react'
   import * as React from 'react'
   import { FaArrowRight } from 'react-icons/fa'
+import { useSelector } from 'react-redux'
   import { formatPrice } from './PriceTag'
-  const OrderSummaryItem = (props) => {
+const OrderSummaryItem = (props) => {
+  const cart = useSelector((state) => state.cartreducer.carts);
     const { label, value, children } = props
     return (
       <Flex justify="space-between" fontSize="sm">

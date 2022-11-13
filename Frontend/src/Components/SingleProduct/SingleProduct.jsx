@@ -25,7 +25,7 @@ const SingleProduct = () => {
       setloading(true);
 
       await axios
-        .get(`http://localhost:8080/products/hairs/${id}`)
+        .get(`http://localhost:8080/products/${id}`)
         .then((res) => setProduct(res.data));
 
       setloading(false);
