@@ -12,8 +12,8 @@ import SingleProduct from "../Components/SingleProduct/SingleProduct";
 import Navbar from "../Components/Navbar/Navbar";
 import Authprovider from "../Components/Private/Authprovider";
 import DummyProduct from "../Components/SingleProduct/DummyProduct";
-// import AdminForm from "../Components/admin/admin";
-import Multistep from "../Components/admin/admin";
+import AdminForm from "../Components/admin/admin";
+// import Multistep from "../Components/admin/admin";
 
 
 const AllRoutes = () => {
@@ -67,8 +67,8 @@ const AllRoutes = () => {
       />
       <Route path="/dummyproduct" element={<DummyProduct />} />
       {/* <Route path="/dummyproduct" element={ <DummyProduct/>}/>   */}
-      {/* <Route path="/admin" element={<AdminForm/>} /> */}
-      <Route path="/admin" element={<Multistep/>} />
+      <Route path="/admin" element={<AdminForm/>} />
+      {/* <Route path="/admin" element={<Multistep/>} /> */}
     </Routes>
   );
 };
