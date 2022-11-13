@@ -20,22 +20,24 @@ export const getData = () => async (dispatch) => {
   }
 };
 
-
-export const addtoCart = (elem) => async(dispatch) => {
+export const addtoCart = (elem) => async (dispatch) => {
   try {
-    const token = localStorage.getItem("token");
+    const Token = localStorage.getItem("token");
     // console.log("product",elem._id);
-    const tokenData = jwt_decode(token)
+    let tokenData = "";
+    if (Token) {
+      tokenData = jwt_decode(Token);
+    }
     // console.log(tokenData.id);
-  const response = await axios.post(
-    `https://backend-beautyhub-production.up.railway.app/cart`,
-    { product:  elem._id, user: tokenData.id,Id:tokenData.id  },
-    { headers: { Authorization: token } }
-  );
+    const response = await axios.post(
+      `https://backend-beautyhub-production.up.railway.app/cart`,
+      { product: elem._id, user: tokenData.id, Id: tokenData.id },
+      { headers: { Authorization: Token } }
+    );
     console.log(response);
     dispatch({
       type: ADD_TO_CART,
-      payload: response.data
+      payload: response.data,
     });
     return response.data;
   } catch (r) {

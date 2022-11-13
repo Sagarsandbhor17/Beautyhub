@@ -66,8 +66,10 @@ export const Cart = () => {
   }, []);
 
   const showData = () => {
-    const userId = jwt_decode(Token);
-
+    let userId = "";
+    if (Token) {
+      userId = jwt_decode(Token);
+    }
     getCart(userId.id).then((res) => {
       setCart(res.data);
     });

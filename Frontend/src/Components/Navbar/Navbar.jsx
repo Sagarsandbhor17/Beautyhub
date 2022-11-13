@@ -52,7 +52,10 @@ const Navbar = () => {
   const toast = useToast();
 
   useEffect(() => {
-    const userId = jwt_decode(Token);
+    let userId = "";
+    if (Token) {
+      userId = jwt_decode(Token);
+    }
     getCart(userId.id).then((res) => {
       setLength(res.data.length);
     });
