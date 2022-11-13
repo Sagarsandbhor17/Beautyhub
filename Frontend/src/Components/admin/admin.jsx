@@ -39,7 +39,7 @@ const AdminForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log('submit')
-        let res = await axios.post("http://localhost:8080/products", product);
+        let res = await axios.post("https://backend-beautyhub-production.up.railway.app/products", product);
         console.log("res:" , res)
   }
   console.log("product: " ,product);
