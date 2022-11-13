@@ -9,7 +9,7 @@ import {
   FormErrorMessage,
   FormHelperText,
 } from '@chakra-ui/react'
-import { log } from 'console';
+// import { log } from 'console';
 
 const AdminForm = () => { 
   const initialStateProduct = {
@@ -35,8 +35,8 @@ const AdminForm = () => {
     //   let { name, value } = e.target;
     //   setForm();
     // };
-    console.log("product: " ,product);
   };
+  console.log("product: " ,product);
   // console.log()
 
     return(
@@ -48,9 +48,33 @@ const AdminForm = () => {
         padding="20px"
         >
           <FormControl>
-            <Flex>
-              <FormLabel>Product Name</FormLabel>
+            <Flex marginTop=".5rem">
+              <FormLabel width="30vw">Product Name</FormLabel>
               <Input type='text' name="productName" onChange={handleChange} />
+            </Flex>
+            <Flex marginTop=".5rem">
+              <FormLabel width="30vw">Product Image </FormLabel>
+              <Input type='text' name="product_image" onChange={handleChange} />
+            </Flex>
+            <Flex marginTop=".5rem">
+              <FormLabel width="30vw">Product Tag </FormLabel>
+              <Input type='text' name="product_tag" onChange={handleChange} />
+            </Flex>
+            <Flex marginTop=".5rem">
+              <FormLabel width="30vw">Product Tag Description</FormLabel>
+              <Input type='text' name="product_tag_text" onChange={handleChange} />
+            </Flex>
+            <Flex marginTop=".5rem">
+              <FormLabel width="30vw">Product Tag Description</FormLabel>
+              <Input type='text' name="product_tag_text" onChange={handleChange} />
+            </Flex>
+            <Flex marginTop=".5rem">
+              <FormLabel width="30vw">Star Rating</FormLabel>
+              <Input type='text' name="star_rating" onChange={handleChange} />
+            </Flex>
+            <Flex marginTop=".5rem">
+              <FormLabel width="30vw">Product Review</FormLabel>
+              <Input type='text' name="product_reviews" onChange={handleChange} />
             </Flex>
           </FormControl>
         </Box>
