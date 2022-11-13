@@ -15,6 +15,7 @@ import {
 import Navbar from "../Navbar/Navbar";
 import { ChevronDownIcon } from "@chakra-ui/icons";
 import Footer from "../Footer/Footer";
+import {Link} from "react-router-dom"
 import { PRODUCT_TYPE } from "../Redux/skinRedux/skin.types";
 
 const Skin = () => {
@@ -126,15 +127,18 @@ const Skin = () => {
               border="1px solid"
               key={elem.id}
             >
-              <Image
-                display="block"
-                m="auto"
-                boxSize="20vw"
-                src={elem.product_image}
-              />
+                <Image
+                  display="block"
+                  m="auto"
+                  boxSize="20vw"
+                  src={elem.product_image}
+                />
+              
               <Text>{elem.productName}</Text>
               <Text>$ {elem.product_price}</Text>
-              <Button mb=".5rem"onClick={() => handleCart(elem)}>SHOP NOW</Button>
+              <Button mb=".5rem" onClick={() => handleCart(elem)}>
+                SHOP NOW
+              </Button>
             </Box>
           ))}
         </SimpleGrid>
