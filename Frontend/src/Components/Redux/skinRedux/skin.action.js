@@ -29,7 +29,7 @@ export const addtoCart = (elem) => async(dispatch) => {
     // console.log(tokenData.id);
   const response = await axios.post(
     `https://backend-beautyhub-production.up.railway.app/cart`,
-    { product:  elem._id, user: tokenData.id  },
+    { product:  elem._id, user: tokenData.id,Id:tokenData.id  },
     { headers: { Authorization: token } }
   );
     console.log(response);
