@@ -86,11 +86,11 @@ console.log(Token)
           zIndex={100}
         >
           <Text fontSize={"48"} fontWeight={600}>
-            SkinStore
+            BeautyHub
           </Text>
-          <Text mt="-4" ml={["0", "0", "3", "3"]} fontSize={"13"}>
-            part of the <span style={{ color: "#2fc6f7" }}>look</span>
-            <span style={{ color: "grey" }}>fantastic</span> group
+          <Text mt="-3" ml={["0", "0", "3", "3"]} fontSize={"13"}>
+            Skin care with <span style={{ color: "#2fc6f7" }}>Beauty</span>
+            <span style={{ color: "grey" }}>Hub</span> group
           </Text>
         </Box>
       </Link>

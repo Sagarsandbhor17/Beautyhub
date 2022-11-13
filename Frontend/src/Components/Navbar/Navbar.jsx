@@ -116,15 +116,15 @@ const Navbar = () => {
                 fontWeight={700}
                 mt="-3"
               >
-                SkinStore
+                BeautyHub
               </Text>
             </Link>
             <Link to="/">
               <Text
-                mt={["-3", "-3", "-4", "-4"]}
+                mt={["-2", "-2", "-3", "-3"]}
                 fontSize={["8", "8", "12", "12"]}
               >
-                part of the <b>LOOKFANTASTIC</b> group
+                Skin care with <b>BeautyHub</b> group
               </Text>
             </Link>
           </Box>
