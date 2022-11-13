@@ -1,5 +1,7 @@
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
-import { auth } from "../../";
+
+import { auth } from "../../Firebase/firebase";
+
 import axios from "axios";
 import {
   user_login_loading,

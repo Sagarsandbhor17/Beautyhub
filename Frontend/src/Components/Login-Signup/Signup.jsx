@@ -16,7 +16,8 @@ import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { SignupApi } from "../Redux/userRedux/signup.action";
 import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { Sigup_google } from "../Redux/userRedux/login.action";
 
 const InitialState = {
   name: "",
@@ -34,6 +35,22 @@ const Signup = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { payload } = useSelector((store) => store.UserSignup.data);
+  const { gAuth, message } = useSelector((store) => store.UserLogin.data);
+
+  const handleGoogle = () => {
+    dispatch(Sigup_google());
+  };
+
+  if (gAuth) {
+    navigate("/");
+    toast({
+      title: message,
+      status: "success",
+      duration: 1200,
+      isClosable: true,
+      position: "top",
+    });
+  }
 
   useEffect(() => {
     if (payload)
@@ -43,7 +60,7 @@ const Signup = () => {
           status: "success",
           duration: 1200,
           isClosable: true,
-          position: "top"
+          position: "top",
         });
         navigate("/login");
       } else if (payload.message == "User already exist!") {
@@ -52,7 +69,7 @@ const Signup = () => {
           status: "error",
           duration: 1200,
           isClosable: true,
-          position: "top"
+          position: "top",
         });
       }
   }, [payload]);
@@ -73,24 +90,26 @@ const Signup = () => {
 
   return (
     <div>
-      <Box
-        w="100%"
-        p="4"
-        pt="0"
-        pl={["0", "0", "28", "28"]}
-        textAlign={["center", "center", "left", "left"]}
-        position={"fixed"}
-        bg="#ffffff"
-        zIndex={100}
-      >
-        <Text fontSize={"48"} fontWeight={600}>
-          SkinStore
-        </Text>
-        <Text mt="-4" ml={["0", "0", "3", "3"]} fontSize={"13"}>
-          part of the <span style={{ color: "#2fc6f7" }}>look</span>
-          <span style={{ color: "grey" }}>fantastic</span> group
-        </Text>
-      </Box>
+      <Link to="/">
+        <Box
+          w="100%"
+          p="4"
+          pt="0"
+          pl={["0", "0", "28", "28"]}
+          textAlign={["center", "center", "left", "left"]}
+          position={"fixed"}
+          bg="#ffffff"
+          zIndex={100}
+        >
+          <Text fontSize={"48"} fontWeight={600}>
+            BeautyHub
+          </Text>
+          <Text mt="-3" ml={["0", "0", "3", "3"]} fontSize={"13"}>
+            Skin care with <span style={{ color: "#2fc6f7" }}>Beauty</span>
+            <span style={{ color: "grey" }}>Hub</span> group
+          </Text>
+        </Box>
+      </Link>
 
       <Grid bg={"#f2f2f2"} pt="144" pb="10">
         <Grid
@@ -130,6 +149,7 @@ const Signup = () => {
               border={"1px"}
               p={["6", "6", "8", "8"]}
               w="50%"
+              onClick={handleGoogle}
             >
               <FcGoogle style={{ marginRight: "4px", fontSize: "25px" }} />
               Google
@@ -199,8 +219,10 @@ const Signup = () => {
               borderRadius="10px"
             >
               <Input
-                required
                 type={show2 ? "text" : "password"}
+                pattern=".{8,15}"
+                required
+                title="Please enter password of Length 8 to 15 !"
                 h="50px"
                 mb="23px"
               />

@@ -16,7 +16,7 @@ import style from "./style.module.css";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { userLogin } from "../Redux/userRedux/login.action";
+import { Sigup_google, userLogin } from "../Redux/userRedux/login.action";
 
 const InitialState = {
   email: "",
@@ -30,15 +30,22 @@ const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const { Token, message } = useSelector((store) => store.UserLogin.data);
+  const { Token, message, gAuth } = useSelector(
+    (store) => store.UserLogin.data
+  );
 
-  if (Token) {
+  const handleGoogle = () => {
+    dispatch(Sigup_google());
+  };
+
+  if (Token || gAuth) {
     navigate("/");
     toast({
       title: message,
       status: "success",
       duration: 1200,
       isClosable: true,
+      position: "top",
     });
   }
 
@@ -49,6 +56,7 @@ const Login = () => {
         status: "error",
         duration: 1200,
         isClosable: true,
+        position: "top",
       });
   }, [message]);
 
@@ -66,24 +74,26 @@ const Login = () => {
 
   return (
     <div>
-      <Box
-        w="100%"
-        p="4"
-        pt="0"
-        pl={["0", "0", "28", "28"]}
-        textAlign={["center", "center", "left", "left"]}
-        position={"fixed"}
-        bg="#ffffff"
-        zIndex={100}
-      >
-        <Text fontSize={"48"} fontWeight={600}>
-          SkinStore
-        </Text>
-        <Text mt="-4" ml={["0", "0", "3", "3"]} fontSize={"13"}>
-          part of the <span style={{ color: "#2fc6f7" }}>look</span>
-          <span style={{ color: "grey" }}>fantastic</span> group
-        </Text>
-      </Box>
+      <Link to="/">
+        <Box
+          w="100%"
+          p="4"
+          pt="0"
+          pl={["0", "0", "28", "28"]}
+          textAlign={["center", "center", "left", "left"]}
+          position={"fixed"}
+          bg="#ffffff"
+          zIndex={100}
+        >
+          <Text fontSize={"48"} fontWeight={600}>
+            BeautyHub
+          </Text>
+          <Text mt="-3" ml={["0", "0", "3", "3"]} fontSize={"13"}>
+            Skin care with <span style={{ color: "#2fc6f7" }}>Beauty</span>
+            <span style={{ color: "grey" }}>Hub</span> group
+          </Text>
+        </Box>
+      </Link>
 
       <Grid bg={"#f2f2f2"} pt="154" pb="20">
         <Grid
@@ -182,6 +192,7 @@ const Login = () => {
                 border={"1px"}
                 p={["4", "4", "6", "6"]}
                 w="50%"
+                onClick={handleGoogle}
               >
                 <FcGoogle style={{ marginRight: "4px", fontSize: "25px" }} />
                 Google
