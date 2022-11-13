@@ -1,6 +1,7 @@
 import { Box, Text, SimpleGrid, Image, Button } from "@chakra-ui/react";
 import React from "react";
 import { HiOutlineShoppingBag } from "react-icons/hi";
+import { Link } from "react-router-dom";
 
 const Middle = () => {
   return (
@@ -71,7 +72,7 @@ const Middle = () => {
           <Image
             borderRadius="50%"
             display="block"
-            boxSize={["35vw","25vw"]}
+            boxSize={["35vw", "25vw"]}
             src="https://static.thcdn.com/images/small/webp/widgets/121-us/39/17_1009_CucumberExtract_US17_1009_CucumberExtract_US-014239.jpg"
           />
           <Text>Skin Ceuticals Gift</Text>
@@ -79,7 +80,9 @@ const Middle = () => {
             Receive a SkinCeuticals Triple Lipid Restore 2:4:2 Sample when you
             spend $150 or more on the brand.
           </Text>
-          <Button mt="auto" bgColor="white" borderRadius="0px" >SHOP NOW</Button>
+          <Button mt="auto" bgColor="white" borderRadius="0px">
+            SHOP NOW
+          </Button>
         </Box>
         <Box
           alignSelf="normal"
@@ -99,7 +102,9 @@ const Middle = () => {
             potential of your skin and restore its best qualities to enhance
             your natural beauty.
           </Text>
-          <Button mt="auto" bgColor="white" borderRadius="0px" >SHOP NOW</Button>
+          <Button mt="auto" bgColor="white" borderRadius="0px">
+            SHOP NOW
+          </Button>
         </Box>
         <Box
           alignSelf="normal"
@@ -119,7 +124,9 @@ const Middle = () => {
             full potential with an extensive portfolio designed to brighten,
             protect, and enhance skin tone and texture.
           </Text>
-          <Button mt="auto" bgColor="white" borderRadius="0px" >SHOP NOW</Button>
+          <Button mt="auto" bgColor="white" borderRadius="0px">
+            SHOP NOW
+          </Button>
         </Box>
         <Box
           alignSelf="normal"
@@ -138,7 +145,9 @@ const Middle = () => {
             TriPollar uses clinical expertise to create home-use devices that
             encourage skin regeneration and enhance natural beauty.
           </Text>
-          <Button mt="auto" bgColor="white" borderRadius="0px" >SHOP NOW</Button>
+          <Button mt="auto" bgColor="white" borderRadius="0px">
+            SHOP NOW
+          </Button>
         </Box>
         <Box
           alignSelf="normal"
@@ -158,7 +167,9 @@ const Middle = () => {
             their collection can create: a new, youthful complexion that is
             visibly smoother and firmer to the touch.
           </Text>
-          <Button mt="auto" bgColor="white" borderRadius="0px" >SHOP NOW</Button>
+          <Button mt="auto" bgColor="white" borderRadius="0px">
+            SHOP NOW
+          </Button>
         </Box>
         <Box
           alignSelf="normal"
@@ -177,7 +188,9 @@ const Middle = () => {
             Receive a Christophe Robin Cleansing Volumizing Deluxe Paste 12ml
             (Free Gift) when you spend $80 or more.
           </Text>
-          <Button mt="auto" bgColor="white" borderRadius="0px" >SHOP NOW</Button>
+          <Button mt="auto" bgColor="white" borderRadius="0px">
+            SHOP NOW
+          </Button>
         </Box>
         <Box
           alignSelf="normal"
@@ -197,7 +210,9 @@ const Middle = () => {
             innovation, we're happy to announce that Estee Lauder is now
             available at SkinStore!
           </Text>
-          <Button mt="auto" bgColor="white" borderRadius="0px" >SHOP NOW</Button>
+          <Button mt="auto" bgColor="white" borderRadius="0px">
+            SHOP NOW
+          </Button>
         </Box>
         <Box
           alignSelf="normal"
@@ -216,7 +231,9 @@ const Middle = () => {
             Discover olive oil based skincare and makeup with 25% off Japanese
             beauty expert, DHC.
           </Text>
-          <Button mt="auto" bgColor="white" borderRadius="0px" >SHOP NOW</Button>
+          <Button mt="auto" bgColor="white" borderRadius="0px">
+            SHOP NOW
+          </Button>
         </Box>
         <Box
           alignSelf="normal"
@@ -235,7 +252,10 @@ const Middle = () => {
             Perricone MD is a cosmeceutical line that helps to repair skin
             damage using nutrient antioxidants.
           </Text>
-          <Button mt="auto" bgColor="white" borderRadius="0px" >SHOP NOW</Button>
+
+          <Button mt="auto" bgColor="white" borderRadius="0px">
+            SHOP NOW
+          </Button>
         </Box>
       </SimpleGrid>
       <Text pt="2.5%" fontSize="3rem" textAlign="center">
@@ -274,11 +294,13 @@ const Middle = () => {
             Epionce Luminous Eye Serum 0.53ml
           </Text>
           <Text textAlign="center">$67</Text>
-          <Button width="13rem" mt="auto" bgColor="black" color="white">
-            {" "}
-            <HiOutlineShoppingBag />
-            &nbsp; SHOP NOW
-          </Button>
+          <Link to="/skin">
+            <Button width="13em" mt="auto" bgColor="black" color="white">
+              {" "}
+              <HiOutlineShoppingBag />
+              &nbsp; SHOP NOW
+            </Button>
+          </Link>
         </Box>
         <Box
           alignSelf="normal"
@@ -305,11 +327,13 @@ const Middle = () => {
             Grow Gorgeous Hair Density Serum Original Duo 2 x 60ml
           </Text>
           <Text textAlign="center">$49</Text>
-          <Button width="13rem" mt="auto" bgColor="black" color="white">
-            {" "}
-            <HiOutlineShoppingBag />
-            &nbsp; SHOP NOW
-          </Button>
+          <Link to="/skin">
+            <Button width="13em" mt="auto" bgColor="black" color="white">
+              {" "}
+              <HiOutlineShoppingBag />
+              &nbsp; SHOP NOW
+            </Button>
+          </Link>
         </Box>
         <Box
           alignSelf="normal"
@@ -337,11 +361,13 @@ const Middle = () => {
             (Worth $151.00)
           </Text>
           <Text textAlign="center">$98</Text>
-          <Button width="13em" mt="auto" bgColor="black" color="white">
-            {" "}
-            <HiOutlineShoppingBag />
-            &nbsp; SHOP NOW
-          </Button>
+          <Link to="/skin">
+            <Button width="13em" mt="auto" bgColor="black" color="white">
+              {" "}
+              <HiOutlineShoppingBag />
+              &nbsp; SHOP NOW
+            </Button>
+          </Link>
         </Box>
         <Box
           alignSelf="normal"
@@ -366,7 +392,8 @@ const Middle = () => {
             TriPollar STOP X Device - Rose Gold
           </Text>
           <Text textAlign="center">$199.75</Text>
-          <Button width="13rem" mt="auto" bgColor="black" color="white">
+
+          <Button width="13em" mt="auto" bgColor="black" color="white">
             {" "}
             <HiOutlineShoppingBag />
             &nbsp; SHOP NOW
@@ -452,7 +479,9 @@ const Middle = () => {
             Receive a SkinCeuticals Triple Lipid Restore 2:4:2 Sample when you
             spend $150 or more on the brand.
           </Text>
-          <Button mt="auto" bgColor="white" borderRadius="0px" >SHOP NOW</Button>
+          <Button mt="auto" bgColor="white" borderRadius="0px">
+            SHOP NOW
+          </Button>
         </Box>
         <Box
           alignSelf="normal"
@@ -471,7 +500,9 @@ const Middle = () => {
             Receive a SkinCeuticals Triple Lipid Restore 2:4:2 Sample when you
             spend $150 or more on the brand.
           </Text>
-          <Button mt="auto" bgColor="white" borderRadius="0px" >SHOP NOW</Button>
+          <Button mt="auto" bgColor="white" borderRadius="0px">
+            SHOP NOW
+          </Button>
         </Box>
         <Box
           alignSelf="normal"
@@ -490,7 +521,9 @@ const Middle = () => {
             Receive a SkinCeuticals Triple Lipid Restore 2:4:2 Sample when you
             spend $150 or more on the brand.
           </Text>
-          <Button mt="auto" bgColor="white" borderRadius="0px" >SHOP NOW</Button>
+          <Button mt="auto" bgColor="white" borderRadius="0px">
+            SHOP NOW
+          </Button>
         </Box>
       </SimpleGrid>
     </Box>
