@@ -12,13 +12,15 @@ import SingleProduct from "../Components/SingleProduct/SingleProduct";
 import Navbar from "../Components/Navbar/Navbar";
 import Authprovider from "../Components/Private/Authprovider";
 import DummyProduct from "../Components/SingleProduct/DummyProduct";
+import AdminForm from "../Components/admin/admin";
+// import Multistep from "../Components/admin/admin";
+
 
 const AllRoutes = () => {
   return (
     <Routes>
       {/* <Route path="/" element={<Navbar/>}/>  */}
       <Route path="/" element={<LandingPage />} />
-      <Route path="/skin" element={<Skin />} />
       <Route path="/skin" element={<Skin />} />
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<Signup />} />
@@ -66,9 +68,9 @@ const AllRoutes = () => {
           </Authprovider>
         }
       />
-    
-     
-
+      {/* <Route path="/dummyproduct" element={ <DummyProduct/>}/>   */}
+      <Route path="/admin" element={<AdminForm/>} />
+      {/* <Route path="/admin" element={<Multistep/>} /> */}
     </Routes>
   );
 };
