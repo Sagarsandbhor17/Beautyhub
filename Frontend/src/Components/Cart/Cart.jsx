@@ -34,82 +34,90 @@ import { ImBin } from "react-icons/im";
 import { useToast } from "@chakra-ui/react";
 import { NavLink } from "react-router-dom";
 import { MdOutlineCelebration } from "react-icons/md";
-import Navbar from "../Navbar/Navbar"
+import Navbar from "../Navbar/Navbar";
+import axios from "axios";
+import { useEffect } from "react";
+import { useState } from "react";
+import jwt_decode from "jwt-decode";
+import CartData from "./CartData";
 
-export const Cart = () => { 
- const cart = useSelector((state) => state.cartreducer.carts);
-  // console.log(cart);
-  let dispatch = useDispatch();
+const getCart = (id) => {
+  return axios.get(
+    `https://backend-beautyhub-production.up.railway.app/cart/${id}`
+  );
+};
+
+const deleteCart = (id) => {
+  return axios.delete(
+    `https://backend-beautyhub-production.up.railway.app/cart/${id}`
+  );
+};
+
+export const Cart = () => {
   const toast = useToast();
-  const [price, setprice] = React.useState(0);
+  const [TotalPrice, setTotalPrice] = React.useState(0);
   const [value, sevalue] = React.useState("");
   const [value1, setvalue] = React.useState("");
-  console.log(price);
-  //delete function
-  function dlt(id) {
-    dispatch(DEL(id));
-    toast({
-      title: "Removed Item from Cart",
-      position: "top",
+  const [cart, setCart] = useState([]);
+  const { Token } = useSelector((store) => store.UserLogin.data);
 
-      status: "success",
-      duration: 9000,
-      isClosable: true,
+  useEffect(() => {
+    showData();
+  }, []);
+
+  const showData = () => {
+    const userId = jwt_decode(Token);
+
+    getCart(userId.id).then((res) => {
+      setCart(res.data);
     });
-  }
+  };
+
+  const deleteData = (id) => {
+    deleteCart(id).then((res) => {
+      showData();
+      toast({
+        title: "Removed Item from Cart",
+        position: "top",
+        status: "success",
+        duration: 9000,
+        isClosable: true,
+      });
+    });
+  };
+
   function clear() {
     setvalue(value);
     sevalue("");
   }
 
-  //total price
- 
-  React.useEffect(() => {
-    function total() {
-      let price = 0;
-      cart.map((ele, k) =>
-        value1 === "Beautyhub30"
-          ? (price =
-              Math.ceil(
-                (Number(Math.ceil(ele.product_price * ele.quantity)) + price) /
-                  100
-              ) * 30)
-          : (price = Number(Math.ceil(ele.product_price * ele.quantity)) + price)
-      );
-  
-      setprice(price);
-    }
-    total();
-  
-  }, [price,value1,cart]);
-
-  function qty(e) {
-    dispatch(ADD(e));
-  }
-  //remove one
-  function qtydec(item) {
-    dispatch(REMOVE(item));
-  }
+  useEffect(() => {
+    let sum = 0;
+    cart.map((el) => {
+      sum = sum + Number(el.product.product_price);
+    });
+    setTotalPrice(sum);
+  });
 
   return (
     <Box>
-    <Navbar/>
+      <Navbar />
       <br />
       <Flex gap="60%" marginLeft="2rem">
         <Heading textAlign={"start"} fontWeight="bold">
           Your Cart:
         </Heading>
         <NavLink to="/checkout">
-        <Button
-          bg={"#333"}
-          color="white"
-          _hover={{ backgroundColor: "#00857c", color: "black" }}
-          w={["100%", "100%", "100%", "100%"]}
-        >
-          <AiFillLock />
-          Checkout Securely Now
+          <Button
+            bg={"#333"}
+            color="white"
+            _hover={{ backgroundColor: "#00857c", color: "black" }}
+            w={["100%", "100%", "100%", "100%"]}
+          >
+            <AiFillLock />
+            Checkout Securely Now
           </Button>{" "}
-          </NavLink>
+        </NavLink>
       </Flex>
       <br />
       <Flex className={style.flexcontainer}>
@@ -125,42 +133,13 @@ export const Cart = () => {
             </Thead>
             <Tbody>
               {cart.map((items) => (
-                <Tr key={items.id}>
-                  <Td>
-                    <Image src={items.product_image} w="40%" />
-                  </Td>
-                  <Td>${items.product_price}</Td>
-                  <Td>
-                    {" "}
-                    <Button
-                      disabled={items.quantity === 1}
-                      onClick={() => qtydec(items)}
-                    >
-                      -
-                    </Button>
-                    <Button
-                      borderRadius="none"
-                      bg="white"
-                      _hover={{ bg: "white" }}
-                    >
-                      {items.quantity}
-                    </Button>
-                    <Button onClick={() => qty(items)}>+</Button>
-                  </Td>
-                  <Td>${Math.ceil(items.quantity * items.product_price)}</Td>
-                  <Td>
-                    <Button bg="white" onClick={() => dlt(items.id)}>
-                      <ImBin color="red" />
-                    </Button>
-                  </Td>
+                <Tr>
+                  <CartData {...items} deleteData={deleteData} />
                 </Tr>
               ))}
               <Tr>
-                <Th></Th>
-                <Th></Th>
-                <Th></Th>
                 <Th textAlign={"right"} fontSize="lg">
-                  Subtotal : ${price}
+                  Subtotal : ${TotalPrice}
                 </Th>
               </Tr>
             </Tbody>
@@ -200,8 +179,7 @@ export const Cart = () => {
             isClosable: true,
           })
         }
-        bg="
-#2594af"
+        bg="#2594af"
         _hover={{ bg: "#03a9f4" }}
         color="white"
         w={["80%", "20%", "20%", "15%"]}
@@ -222,7 +200,7 @@ export const Cart = () => {
       </Button>
       <br />
       <br />
-      <Flex gap="30%" marginLeft={'2rem'}>
+      <Flex gap="30%" marginLeft={"2rem"}>
         <NavLink to="/">
           <Button w={["100%", "100%", "100%", "100%"]}>
             <AiFillLock />
@@ -230,16 +208,16 @@ export const Cart = () => {
           </Button>
         </NavLink>
         <NavLink to="/checkout">
-        <Button
-          bg={"#333"}
-          color="white"
-          _hover={{ backgroundColor: "#00857c", color: "black" }}
-          w={["100%", "100%", "100%", "100%"]}
-        >
-          <AiFillLock />
-          Checkout Securely Now
+          <Button
+            bg={"#333"}
+            color="white"
+            _hover={{ backgroundColor: "#00857c", color: "black" }}
+            w={["100%", "100%", "100%", "100%"]}
+          >
+            <AiFillLock />
+            Checkout Securely Now
           </Button>
-          </NavLink>
+        </NavLink>
       </Flex>
       <br />
 

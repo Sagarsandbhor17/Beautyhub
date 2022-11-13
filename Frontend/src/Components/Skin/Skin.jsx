@@ -15,7 +15,10 @@ import {
 import Navbar from "../Navbar/Navbar";
 import { ChevronDownIcon } from "@chakra-ui/icons";
 import Footer from "../Footer/Footer";
+import jwt_decode from "jwt-decode";
+import { NavLink } from "react-router-dom";
 import { PRODUCT_TYPE } from "../Redux/skinRedux/skin.types";
+
 
 const Skin = () => {
   const { skinData, originalData } = useSelector((store) => store.skinProducts);
@@ -126,12 +129,12 @@ const Skin = () => {
               border="1px solid"
               key={elem.id}
             >
-              <Image
+             <NavLink to={`/products/${elem._id}`} ><Image
                 display="block"
                 m="auto"
                 boxSize="20vw"
                 src={elem.product_image}
-              />
+              /></NavLink>
               <Text>{elem.productName}</Text>
               <Text>$ {elem.product_price}</Text>
               <Button mb=".5rem"onClick={() => handleCart(elem)}>SHOP NOW</Button>
