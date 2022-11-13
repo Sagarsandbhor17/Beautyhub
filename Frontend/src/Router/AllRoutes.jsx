@@ -28,10 +28,20 @@ const AllRoutes = () => {
           <Authprovider>
             <Cart />
           </Authprovider>
+
+    
+      } />
+    
+   
+       <Route path="/dummyproduct" element={ <DummyProduct/>}/>  
+      
+
+
+
         }
       />
       <Route
-        path="/products/:id"
+        path="/products/hairs/:id"
         element={
           <Authprovider>
             <SingleProduct />
@@ -62,8 +72,9 @@ const AllRoutes = () => {
           </Authprovider>
         }
       />
-      <Route path="/dummyproduct" element={<DummyProduct />} />
-      {/* <Route path="/dummyproduct" element={ <DummyProduct/>}/>   */}
+    
+     
+
     </Routes>
   );
 };
