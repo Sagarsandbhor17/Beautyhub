@@ -33,7 +33,7 @@ const Login = () => {
   const { Token, message, gAuth } = useSelector(
     (store) => store.UserLogin.data
   );
-
+console.log(Token)
   const handleGoogle = () => {
     dispatch(Sigup_google());
   };

@@ -1,8 +1,9 @@
-import { GET_PRODUCT, ADD_TO_CART } from "./skin.types";
+import { GET_PRODUCT, ADD_TO_CART, PRODUCT_TYPE } from "./skin.types";
 
 const initialState = {
   skinData: [],
-  page: 1,
+  originalData:[],
+  
 };
 const skinReducer = (state = initialState, { type, payload }) => {
   // console.log(totalPages);
@@ -11,12 +12,18 @@ const skinReducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         skinData: payload,
+        originalData:payload,
+      };
+    }
+    case PRODUCT_TYPE: {
+      return {
+        ...state,
+        skinData: payload,
       };
     }
     case ADD_TO_CART: {
       return {
         ...state,
-       skinData:payload
       };
     }
 

@@ -15,29 +15,31 @@ import {
 import Navbar from "../Navbar/Navbar";
 import { ChevronDownIcon } from "@chakra-ui/icons";
 import Footer from "../Footer/Footer";
-import jwt_decode from "jwt-decode";
+import { PRODUCT_TYPE } from "../Redux/skinRedux/skin.types";
 
 const Skin = () => {
-  const [brands, setBrands] = useState("");
-  const [skinCare, setskinCare] = useState("");
-  const [skinType, setskinType] = useState("");
-  const [page, setPage] = useState(1);
-  const { skinData } = useSelector((store) => store.skinProducts);
-  const { token } = useSelector((store) => store.UserLogin.data);
-  const [tokenData, setTokenData] = useState({});
+  const { skinData, originalData } = useSelector((store) => store.skinProducts);
   const dispatch = useDispatch();
-  // console.log(tokenData);
-  // console.log(token);
-  // const filter={brands,skinCare,skinType}
+
   const handleCart = (elem) => {
-    // console.log(id);
     alert("Product Added");
     dispatch(addtoCart(elem));
   };
 
+  const filterProductType = (e) => {
+    const filterSkin = originalData.filter((x) => {
+      return x.product_subtype == e;
+    });
+    dispatch({ type: PRODUCT_TYPE, payload: filterSkin });
+  };
+
+//   const sortProduct = () => {
+//   if()
+// }
+
   useEffect(() => {
     dispatch(getData());
-  }, [page]);
+  }, []);
 
   return (
     <div>
@@ -50,50 +52,59 @@ const Skin = () => {
         mt="2rem"
       >
         <Box w="25vw">
-          <Box w="25vw" mb="2rem">
+          <Box w="25vw" fontSize={[".7rem", null, "1rem"]} mb="2rem">
             <Menu>
-              <MenuButton w="15vw" as={Button} rightIcon={<ChevronDownIcon />}>
-                Brands
+              <MenuButton
+                w="20vw"
+                fontSize={[".7rem", null, "1rem"]}
+                as={Button}
+                rightIcon={<ChevronDownIcon />}
+              >
+                Product Type
               </MenuButton>
               <MenuList
                 onClick={(e) => {
-                  setBrands(e.target.value);
+                  filterProductType(e.target.value);
                 }}
               >
-                <MenuItem value="111SKIN">111SKIN</MenuItem>
-                <MenuItem value="Aesop">Aesop</MenuItem>
-                <MenuItem value="Beauty ORA">Beauty ORA</MenuItem>
-                <MenuItem value="AHAVA">AHAVA</MenuItem>
-                <MenuItem value="3LAB">3LAB</MenuItem>
-              </MenuList>
-            </Menu>
-          </Box>
-          <Box w="25vw" mb="2rem">
-            <Menu>
-              <MenuButton w="15vw" as={Button} rightIcon={<ChevronDownIcon />}>
-                Skincare Product Type
-              </MenuButton>
-              <MenuList
-                onClick={(e) => {
-                  setBrands(e.target.value);
-                }}
-              >
-                <MenuItem value="Toners">Toners</MenuItem>
-                <MenuItem value="Masks">Masks</MenuItem>
                 <MenuItem value="Cleansers">Cleansers</MenuItem>
-                <MenuItem value="Serums">Serums</MenuItem>
                 <MenuItem value="Moisturizers">Moisturizers</MenuItem>
+                <MenuItem value="Serums">Serums</MenuItem>
+                <MenuItem value="Masks">Masks</MenuItem>
+                <MenuItem value="Oils">Oils</MenuItem>
+                <MenuItem value="Lip Care">Lip Care</MenuItem>
               </MenuList>
             </Menu>
           </Box>
+          <Box w="25vw" fontSize={[".7rem", null, "1rem"]} mb="2rem">
+            {/* <Menu>
+              <MenuButton
+                w="20vw"
+                textAlign="center"
+                fontSize={[".7rem", null, "1rem"]}
+                as={Button}
+                rightIcon={<ChevronDownIcon />}
+              >
+                Sort by price
+              </MenuButton>
+              <MenuList
+              // onClick={(e) => {
+              //   sortProduct(e.target.value);
+              // }}
+              >
+                <MenuItem value="low">Low to High</MenuItem>
+                <MenuItem value="high">High to Low</MenuItem>
+              </MenuList>
+            </Menu> */}
+          </Box>
           <Box w="25vw" mb="2rem">
-            <Menu>
+            {/* <Menu>
               <MenuButton w="15vw" as={Button} rightIcon={<ChevronDownIcon />}>
                 Skin Type
               </MenuButton>
               <MenuList
                 onClick={(e) => {
-                  setBrands(e.target.value);
+                  // setBrands(e.target.value);
                 }}
               >
                 <MenuItem value="">All</MenuItem>
@@ -102,16 +113,28 @@ const Skin = () => {
                 <MenuItem value="">Mature</MenuItem>
                 <MenuItem value="">Dehydrated</MenuItem>
               </MenuList>
-            </Menu>
+            </Menu> */}
           </Box>
         </Box>
         <SimpleGrid columns={[2, null, 3]} spacing={[5, null, 10]}>
           {skinData.map((elem) => (
-            <Box key={elem.id}>
-              <Image w="20vw" src={elem.product_image} />
+            <Box
+              alignSelf="normal"
+              display="flex"
+              flexDirection="column"
+              alignItems="center"
+              border="1px solid"
+              key={elem.id}
+            >
+              <Image
+                display="block"
+                m="auto"
+                boxSize="20vw"
+                src={elem.product_image}
+              />
               <Text>{elem.productName}</Text>
               <Text>$ {elem.product_price}</Text>
-              <Button onClick={() => handleCart(elem)}>SHOP NOW</Button>
+              <Button mb=".5rem"onClick={() => handleCart(elem)}>SHOP NOW</Button>
             </Box>
           ))}
         </SimpleGrid>
