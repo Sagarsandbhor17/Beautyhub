@@ -7,25 +7,38 @@ import Suggest from "./Suggest";
 import Descriptionsec from "./Descriptionsec";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { ADD, REMOVE } from "../../redux/actions/action";
 import { useToast } from "@chakra-ui/react";
+import jwt_decode from "jwt-decode";
+import Navbar from "../Navbar/Navbar";
+
+const addTocart = (productID, userId, Id) => {
+  axios.post(`https://backend-beautyhub-production.up.railway.app/cart`, {
+    product: productID,
+    user: userId,
+    Id: Id,
+  });
+};
 
 const SingleProduct = () => {
   const { id } = useParams();
   console.log(id);
 
   const [Product, setProduct] = useState({});
-  const [qty1, setqty] = useState(0);
+  const [qty1, setqty] = useState(1);
   const [Loading, setloading] = useState(false);
   const dispatch = useDispatch();
+  const { Token } = useSelector((store) => store.UserLogin.data);
   const toast = useToast();
   useEffect(() => {
     const getproducts = async () => {
       setloading(true);
 
       await axios
-        .get(`http://localhost:8080/products/${id}`)
+        .get(
+          `https://backend-beautyhub-production.up.railway.app/products/${id}`
+        )
         .then((res) => setProduct(res.data));
 
       setloading(false);
@@ -33,6 +46,14 @@ const SingleProduct = () => {
 
     getproducts();
   }, []);
+
+  const addCart = () => {
+    const userId = jwt_decode(Token);
+    addTocart(Product._id, userId.id, userId.id).then((res) => {
+      alert("Product added!");
+    });
+  };
+
   // console.log(Product)
   function send(e) {
     dispatch(ADD(e));
@@ -56,6 +77,7 @@ const SingleProduct = () => {
 
   return (
     <div>
+      <Navbar />
       <Box
         background={"#232f3e"}
         w={["100%", "100%", "100%", "100%"]}
@@ -139,7 +161,7 @@ const SingleProduct = () => {
             width="500px"
             _hover={{ backgroundColor: "#00857c", color: "black" }}
             w={["60%", "80%", "80%", "100%"]}
-            onClick={() => send(Product)}
+            onClick={addCart}
           >
             {" "}
             Add to cart{" "}

@@ -37,19 +37,23 @@ import { useState } from "react";
 import { useSelector } from "react-redux";
 import axios from "axios";
 import { useEffect } from "react";
+import jwt_decode from "jwt-decode";
 
-const getLength = () => {
-  return axios.get("https://backend-beautyhub-production.up.railway.app/cart");
+const getCart = (id) => {
+  return axios.get(
+    `https://backend-beautyhub-production.up.railway.app/cart/${id}`
+  );
 };
 
 const Navbar = () => {
   const [showSearch, setShowSearch] = useState(false);
-  const [length, setLength] = useState(0)
+  const [length, setLength] = useState(0);
   const { Token, gAuth } = useSelector((store) => store.UserLogin.data);
   const toast = useToast();
 
   useEffect(() => {
-    getLength().then((res) => {
+    const userId = jwt_decode(Token);
+    getCart(userId.id).then((res) => {
       setLength(res.data.length);
     });
   });

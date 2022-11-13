@@ -16,6 +16,7 @@ import Navbar from "../Navbar/Navbar";
 import { ChevronDownIcon } from "@chakra-ui/icons";
 import Footer from "../Footer/Footer";
 import jwt_decode from "jwt-decode";
+import { NavLink } from "react-router-dom";
 
 const Skin = () => {
   const [brands, setBrands] = useState("");
@@ -108,7 +109,7 @@ const Skin = () => {
         <SimpleGrid columns={[2, null, 3]} spacing={[5, null, 10]}>
           {skinData.map((elem) => (
             <Box key={elem.id}>
-              <Image w="20vw" src={elem.product_image} />
+             <NavLink to={`/products/${elem._id}`} >  <Image w="20vw" src={elem.product_image} /></NavLink>
               <Text>{elem.productName}</Text>
               <Text>$ {elem.product_price}</Text>
               <Button onClick={() => handleCart(elem)}>SHOP NOW</Button>
