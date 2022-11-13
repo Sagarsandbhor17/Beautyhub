@@ -50,7 +50,7 @@ const DummyProduct = () => {
       <Dummynav/>
 DummyProduct
           {loading ? <SimpleGrid columns={[1, 2, 3, 4]}> {data.map(item => <Box>
-            <NavLink to={`/products/${item.id}`}> <Image src={item.product_image} /></NavLink>
+            <NavLink to={`/products/hairs/${item._id}`}> <Image src={item.product_image} /></NavLink>
               <Text>{item.productName}</Text>
               <p>{item.product_price}</p>
              <Button onClick={()=>send(item)}> Add to cart</Button>
