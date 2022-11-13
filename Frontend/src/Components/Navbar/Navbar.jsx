@@ -35,11 +35,24 @@ import { Link } from "react-router-dom";
 import LeftDrawer from "./Options/LeftDrawer";
 import { useState } from "react";
 import { useSelector } from "react-redux";
+import axios from "axios";
+import { useEffect } from "react";
+
+const getLength = () => {
+  return axios.get("https://backend-beautyhub-production.up.railway.app/cart");
+};
 
 const Navbar = () => {
   const [showSearch, setShowSearch] = useState(false);
+  const [length, setLength] = useState(0)
   const { Token, gAuth } = useSelector((store) => store.UserLogin.data);
   const toast = useToast();
+
+  useEffect(() => {
+    getLength().then((res) => {
+      setLength(res.data.length);
+    });
+  });
 
   const cartCheck = () => {
     if (!Token && !gAuth) {
@@ -195,7 +208,7 @@ const Navbar = () => {
                   borderRadius={"50"}
                   pb="1px"
                 >
-                  0
+                  {length}
                 </Text>
                 <HiOutlineShoppingBag style={{ fontSize: "25" }} />
                 <Text display={["none", "none", "none", "block"]}>Cart</Text>
@@ -231,7 +244,10 @@ const Navbar = () => {
               <SaleOption />
             </Box>
 
-            <Text className={style.skinCare}> <Link to="/skin">Skin Care</Link></Text>
+            <Text className={style.skinCare}>
+              {" "}
+              <Link to="/skin">Skin Care</Link>
+            </Text>
             <Box className={style.skinCareGrid}>
               <SkinCare />
             </Box>

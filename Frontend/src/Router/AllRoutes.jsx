@@ -22,7 +22,6 @@ const AllRoutes = () => {
       {/* <Route path="/" element={<Navbar/>}/>  */}
       <Route path="/" element={<LandingPage />} />
       <Route path="/skin" element={<Skin />} />
-      <Route path="/skin" element={<Skin />} />
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<Signup />} />
       <Route
@@ -31,8 +30,12 @@ const AllRoutes = () => {
           <Authprovider>
             <Cart />
           </Authprovider>
-        }
-      />
+
+    
+      } />
+    
+   
+       <Route path="/dummyproduct" element={ <DummyProduct/>}/>  
       <Route
         path="/products/:id"
         element={
@@ -65,7 +68,6 @@ const AllRoutes = () => {
           </Authprovider>
         }
       />
-      <Route path="/dummyproduct" element={<DummyProduct />} />
       {/* <Route path="/dummyproduct" element={ <DummyProduct/>}/>   */}
       <Route path="/admin" element={<AdminForm/>} />
       {/* <Route path="/admin" element={<Multistep/>} /> */}

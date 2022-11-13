@@ -13,8 +13,9 @@ import { useToast } from "@chakra-ui/react";
 
 const SingleProduct = () => {
   const { id } = useParams();
+  console.log(id);
 
-  const [Product, setProduct] = useState([]);
+  const [Product, setProduct] = useState({});
   const [qty1, setqty] = useState(0);
   const [Loading, setloading] = useState(false);
   const dispatch = useDispatch();
@@ -22,8 +23,11 @@ const SingleProduct = () => {
   useEffect(() => {
     const getproducts = async () => {
       setloading(true);
-      const response = await axios.get(`http://localhost:8080/products/${id}`);
-      setProduct(await response.data);
+
+      await axios
+        .get(`http://localhost:8080/products/${id}`)
+        .then((res) => setProduct(res.data));
+
       setloading(false);
     };
 
