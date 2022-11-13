@@ -137,7 +137,9 @@ const Skin = () => {
               /></NavLink>
               <Text>{elem.productName}</Text>
               <Text>$ {elem.product_price}</Text>
-              <Button mb=".5rem"onClick={() => handleCart(elem)}>SHOP NOW</Button>
+              <Button mb=".5rem" onClick={() => handleCart(elem)}>
+                SHOP NOW
+              </Button>
             </Box>
           ))}
         </SimpleGrid>
