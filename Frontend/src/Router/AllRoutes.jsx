@@ -35,7 +35,7 @@ const AllRoutes = () => {
    
        <Route path="/dummyproduct" element={ <DummyProduct/>}/>  
       <Route
-        path="/products/hairs/:id"
+        path="/products/:id"
         element={
           <Authprovider>
             <SingleProduct />
