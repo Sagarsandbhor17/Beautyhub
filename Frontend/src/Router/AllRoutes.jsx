@@ -34,12 +34,6 @@ const AllRoutes = () => {
     
    
        <Route path="/dummyproduct" element={ <DummyProduct/>}/>  
-      
-
-
-
-        }
-      />
       <Route
         path="/products/hairs/:id"
         element={
