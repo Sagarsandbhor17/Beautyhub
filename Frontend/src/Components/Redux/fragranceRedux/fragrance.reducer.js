@@ -3,7 +3,7 @@ import { GET_PRODUCT, ADD_TO_CART, PRODUCT_TYPE } from "./fragrance.type";
 const initialState = {
   fragranceData: [],
   originalData: [],
-  loading: true
+  loading: true,
 };
 const fragranceReducer = (state = initialState, { type, payload }) => {
   // console.log(totalPages);
@@ -13,7 +13,7 @@ const fragranceReducer = (state = initialState, { type, payload }) => {
         ...state,
         fragranceData: payload,
         originalData: payload,
-        loading: false
+        loading: false,
       };
     }
     case PRODUCT_TYPE: {

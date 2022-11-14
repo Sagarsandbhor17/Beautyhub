@@ -11,6 +11,7 @@ import {
   MenuItem,
   Menu,
   MenuList,
+  Heading
 } from "@chakra-ui/react";
 import Navbar from "../Navbar/Navbar";
 import { ChevronDownIcon } from "@chakra-ui/icons";
@@ -19,7 +20,7 @@ import { NavLink } from "react-router-dom";
 import { PRODUCT_TYPE } from "../Redux/fragranceRedux/fragrance.type";
 
 const Fragrance = () => {
-  const { fragranceData, originalData } = useSelector(
+  const { fragranceData, originalData,loading } = useSelector(
     (store) => store.fragranceProducts
   );
   const dispatch = useDispatch();
@@ -76,7 +77,17 @@ const Fragrance = () => {
           </Box>
         </Box>
         <SimpleGrid columns={[2, null, 3]} spacing={[5, null, 10]}>
-          {fragranceData.map((elem) => (
+          {loading ? (
+            <Box mb="100" ml={["100","100","160","160"]}>
+              <Heading mt={100} fontSize={[24,28,28,28]}>loading. . .</Heading>
+              <Image
+                w={["60%", "60%", "65%", "75%"]}
+                style={{ height: "50%", margin: "auto", marginTop: "20px" }}
+                src="https://thumbs.gfycat.com/YearlyBountifulCygnet.webp"
+                alt="Loading..."
+              />
+            </Box>
+          ) : (fragranceData.map((elem) => (
             <Box
               alignSelf="normal"
               display="flex"
@@ -99,7 +110,7 @@ const Fragrance = () => {
                 SHOP NOW
               </Button>
             </Box>
-          ))}
+          )))}
         </SimpleGrid>
       </Box>
       <Footer />
