@@ -40,9 +40,11 @@ app.get("/", async (req, res) => {
 });
 
 app.post("/", async (req, res) => {
+  const {Id}=req.body;
   try {
     let cartItem = await Cart.findOne({
-      user: req.userId,
+      userId: Id,
+      user:req.userId,
       product: req.body.product,
     }).populate("product");
 
@@ -94,7 +96,7 @@ app.delete('/:id',async(req,res)=>{
 app.get('/:id',async(req,res)=>{
   let {id}=req.params;
   try{
-    let item=await Cart.findById(id).populate("product");
+    let item=await Cart.find({Id:id}).populate("product");
     res.status(201).send(item);
   }
   catch(e){
@@ -103,3 +105,4 @@ app.get('/:id',async(req,res)=>{
 })
 
 module.exports = app;
+
