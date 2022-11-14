@@ -11,12 +11,14 @@ import {
   Text,
   useDisclosure,
 } from "@chakra-ui/react";
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import { AiFillHome, AiOutlineMenu } from "react-icons/ai";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 import { ChevronRightIcon } from "@chakra-ui/icons";
 import LEFTnavDATA from "./leftNavData.json";
+import jwt_decode from "jwt-decode";
 import usaFlag from "../Image/usaFlag.png";
 
 const LeftDrawer = () => {
@@ -33,7 +35,17 @@ const LeftDrawer = () => {
   const [tools, setTools] = useState(false);
   const [newTrending, setNewTrending] = useState(false);
   const [buildRoutine, setBuildRoutine] = useState(false);
+  const [role, setRole] = useState("");
   const [blog, setBlog] = useState(false);
+  const { Token } = useSelector((store) => store.UserLogin.data);
+
+  useEffect(() => {
+    let userId = "";
+    if (Token) {
+      userId = jwt_decode(Token);
+    }
+    setRole(userId.role);
+  });
 
   return (
     <>
@@ -160,7 +172,9 @@ const LeftDrawer = () => {
                   display={"flex"}
                   justifyContent="space-between"
                 >
-                  <Text>Hair</Text>
+                  <Link to="/hair">
+                    <Text w="100px">Hair</Text>
+                  </Link>
                   <Text
                     style={hair ? { rotate: "90deg" } : { rotate: "0deg" }}
                     fontSize={"20"}
@@ -216,7 +230,9 @@ const LeftDrawer = () => {
                   display={"flex"}
                   justifyContent="space-between"
                 >
-                  <Text>Bath & Body</Text>
+                  <Link to="/bath&body">
+                    <Text>Bath & Body</Text>
+                  </Link>
                   <Text
                     style={bathBody ? { rotate: "90deg" } : { rotate: "0deg" }}
                     fontSize={"20"}
@@ -411,6 +427,15 @@ const LeftDrawer = () => {
                   </Text>
                 ))}
               </Box>
+              <Text
+                mt="3"
+                display={role == "admin" ? "block" : "none"}
+              >
+                <Link to="/admin">
+                  <Text>Admin</Text>
+                </Link>
+              </Text>
+
               {/* --------------------------- (First row) ---------------------- */}
 
               <Box

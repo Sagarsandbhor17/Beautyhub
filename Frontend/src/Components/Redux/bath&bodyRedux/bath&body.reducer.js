@@ -3,6 +3,7 @@ import { GET_PRODUCT, ADD_TO_CART, PRODUCT_TYPE } from "./bath&body.type";
 const initialState = {
   bathData: [],
   originalData: [],
+  loading: true,
 };
 const bathReducer = (state = initialState, { type, payload }) => {
   // console.log(totalPages);
@@ -12,6 +13,7 @@ const bathReducer = (state = initialState, { type, payload }) => {
         ...state,
         bathData: payload,
         originalData: payload,
+        loading: false,
       };
     }
     case PRODUCT_TYPE: {

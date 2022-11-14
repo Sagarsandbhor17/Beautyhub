@@ -48,6 +48,7 @@ const getCart = (id) => {
 const Navbar = () => {
   const [showSearch, setShowSearch] = useState(false);
   const [length, setLength] = useState(0);
+  const [role, setRole] = useState("");
   const { Token, gAuth } = useSelector((store) => store.UserLogin.data);
   const toast = useToast();
 
@@ -56,6 +57,7 @@ const Navbar = () => {
     if (Token) {
       userId = jwt_decode(Token);
     }
+    setRole(userId.role);
     getCart(userId.id).then((res) => {
       setLength(res.data.length);
     });
@@ -255,7 +257,9 @@ const Navbar = () => {
             <Box className={style.skinCareGrid}>
               <SkinCare />
             </Box>
+            <Text className={style.Hair}>
             <Link to="/hair">Hair</Link>{" "}
+            </Text>
             <Box className={style.HairGrid}>
               <HairOption />
             </Box>
@@ -291,13 +295,16 @@ const Navbar = () => {
             <Box className={style.BuiltRoutineGrid}>
               <BuiltRoutineOption />
             </Box>
-
-            <Text className={style.Blog}>
-              <Link to="/admin">Blog/Admin</Link>
-            </Text>
+            <Text className={style.Blog}>Blog</Text>
             <Box className={style.BlogGrid}>
               <BlogOption />
             </Box>
+            <Text
+              display={role == "admin" ? "block" : "none"}
+              className={style.Blog}
+            >
+              <Link to="/admin">Admin</Link>
+            </Text>
           </Box>
         </Grid>
       </Grid>

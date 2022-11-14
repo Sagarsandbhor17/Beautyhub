@@ -14,7 +14,7 @@ import Authprovider from "../Components/Private/Authprovider";
 import DummyProduct from "../Components/SingleProduct/DummyProduct";
 import AdminForm from "../Components/admin/admin";
 // import Multistep from "../Components/admin/admin";
-import Hair from "../Components/Hairs/Hair"
+import Hair from "../Components/Hairs/Hair";
 import Bath from "../Components/Bath&Body/Bath";
 import Fragrance from "../Components/Fragrance/Fragrance";
 
@@ -35,12 +35,10 @@ const AllRoutes = () => {
           <Authprovider>
             <Cart />
           </Authprovider>
+        }
+      />
 
-    
-      } />
-    
-   
-       <Route path="/dummyproduct" element={ <DummyProduct/>}/>  
+      <Route path="/dummyproduct" element={<DummyProduct />} />
       <Route
         path="/products/:id"
         element={
@@ -74,7 +72,14 @@ const AllRoutes = () => {
         }
       />
       {/* <Route path="/dummyproduct" element={ <DummyProduct/>}/>   */}
-      <Route path="/admin" element={<AdminForm/>} />
+      <Route
+        path="/admin"
+        element={
+          <Authprovider>
+            <AdminForm />
+          </Authprovider>
+        }
+      />
       {/* <Route path="/admin" element={<Multistep/>} /> */}
     </Routes>
   );

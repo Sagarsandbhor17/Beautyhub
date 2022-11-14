@@ -11,6 +11,7 @@ import {
   MenuItem,
   Menu,
   MenuList,
+  Heading,
 } from "@chakra-ui/react";
 import Navbar from "../Navbar/Navbar";
 import { ChevronDownIcon } from "@chakra-ui/icons";
@@ -19,9 +20,11 @@ import { NavLink } from "react-router-dom";
 import { PRODUCT_TYPE } from "../Redux/hairRedux/hair.type";
 
 const Hair = () => {
-  const { hairData, originalData } = useSelector((store) => store.hairProducts);
+  const { hairData, originalData, loading } = useSelector(
+    (store) => store.hairProducts
+  );
   const dispatch = useDispatch();
-console.log(hairData)
+  console.log(hairData);
   const handleCart = (elem) => {
     alert("Product Added");
     dispatch(addtoCart(elem));
@@ -78,30 +81,44 @@ console.log(hairData)
           </Box>
         </Box>
         <SimpleGrid columns={[2, null, 3]} spacing={[5, null, 10]}>
-          {hairData.map((elem) => (
-            <Box
-              alignSelf="normal"
-              display="flex"
-              flexDirection="column"
-              alignItems="center"
-              border="1px solid"
-              key={elem.id}
-            >
-              <NavLink to={`/products/${elem._id}`}>
-                <Image
-                  display="block"
-                  m="auto"
-                  boxSize="20vw"
-                  src={elem.product_image}
-                />
-              </NavLink>
-              <Text>{elem.productName}</Text>
-              <Text>$ {elem.product_price}</Text>
-              <Button mb=".5rem" onClick={() => handleCart(elem)}>
-                SHOP NOW
-              </Button>
+          {loading ? (
+            <Box mb="100" ml={["100", "100", "160", "160"]}>
+              <Heading mt={100} fontSize={[24, 28, 28, 28]}>
+                loading. . .
+              </Heading>
+              <Image
+                w={["60%", "60%", "65%", "75%"]}
+                style={{ height: "50%", margin: "auto", marginTop: "20px" }}
+                src="https://thumbs.gfycat.com/YearlyBountifulCygnet.webp"
+                alt="Loading..."
+              />
             </Box>
-          ))}
+          ) : (
+            hairData.map((elem) => (
+              <Box
+                alignSelf="normal"
+                display="flex"
+                flexDirection="column"
+                alignItems="center"
+                border="1px solid"
+                key={elem.id}
+              >
+                <NavLink to={`/products/${elem._id}`}>
+                  <Image
+                    display="block"
+                    m="auto"
+                    boxSize="20vw"
+                    src={elem.product_image}
+                  />
+                </NavLink>
+                <Text>{elem.productName}</Text>
+                <Text>$ {elem.product_price}</Text>
+                <Button mb=".5rem" onClick={() => handleCart(elem)}>
+                  SHOP NOW
+                </Button>
+              </Box>
+            ))
+          )}
         </SimpleGrid>
       </Box>
       <Footer />
