@@ -3,6 +3,7 @@ import { GET_PRODUCT, ADD_TO_CART, PRODUCT_TYPE } from "./hair.type";
 const initialState = {
   hairData: [],
   originalData: [],
+  loading: true,
 };
 const hairReducer = (state = initialState, { type, payload }) => {
   // console.log(totalPages);
@@ -12,6 +13,7 @@ const hairReducer = (state = initialState, { type, payload }) => {
         ...state,
         hairData: payload,
         originalData: payload,
+        loading: false,
       };
     }
     case PRODUCT_TYPE: {
