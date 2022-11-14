@@ -51,24 +51,24 @@ const SingleProduct = () => {
     let userId = "";
     if (Token) {
       userId = jwt_decode(Token);
+      toast({
+        title: "Product Added to Cart !",
+        status: "success",
+        duration: 2000,
+        isClosable: true,
+        position: "top",
+      });
+    } else {
+      toast({
+        title: "Please login First !",
+        status: "error",
+        duration: 2000,
+        isClosable: true,
+        position: "top",
+      });
     }
-    addTocart(Product._id, userId.id, userId.id).then((res) => {
-      alert("Product added!");
-    });
+    addTocart(Product._id, userId.id, userId.id).then((res) => {});
   };
-
-  // console.log(Product)
-  function send(e) {
-    dispatch(ADD(e));
-    toast({
-      title: "Product Added to Cart",
-      position: "top",
-
-      status: "success",
-      duration: 9000,
-      isClosable: true,
-    });
-  }
 
   function qty(e) {
     dispatch(ADD(e));
@@ -81,20 +81,6 @@ const SingleProduct = () => {
   return (
     <div>
       <Navbar />
-      <Box
-        background={"#232f3e"}
-        w={["100%", "100%", "100%", "100%"]}
-        color="white"
-        width={"100%"}
-        margin="auto"
-        h="40px"
-        _hover={{ bg: "white", color: "black" }}
-      >
-        <Text fontWeight={"bold"} textAlign="center" fontSize={"xl"}>
-          15% off or 20% off when you Spend $150+ with code SAVE20 +16-Piece
-          Beauty bag (Worth $174) @ $159|Shop Now
-        </Text>
-      </Box>
 
       <div className={style.details}>
         <div className={style.bigimg}>

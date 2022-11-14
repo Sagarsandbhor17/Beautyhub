@@ -12,22 +12,44 @@ import {
   Menu,
   MenuList,
   Heading,
+  useToast,
 } from "@chakra-ui/react";
 import Navbar from "../Navbar/Navbar";
 import { ChevronDownIcon } from "@chakra-ui/icons";
 import Footer from "../Footer/Footer";
 import { NavLink } from "react-router-dom";
 import { PRODUCT_TYPE } from "../Redux/hairRedux/hair.type";
+import jwt_decode from "jwt-decode";
 
 const Hair = () => {
   const { hairData, originalData, loading } = useSelector(
     (store) => store.hairProducts
   );
+  const toast = useToast();
+  const { Token } = useSelector((store) => store.UserLogin.data);
   const dispatch = useDispatch();
-  console.log(hairData);
+
   const handleCart = (elem) => {
-    alert("Product Added");
-    dispatch(addtoCart(elem));
+    let userId = "";
+    if (Token) {
+      userId = jwt_decode(Token);
+      dispatch(addtoCart(elem));
+      toast({
+        title: "Product Added to Cart !",
+        status: "success",
+        duration: 2000,
+        isClosable: true,
+        position: "top",
+      });
+    } else {
+      toast({
+        title: "Please login First !",
+        status: "error",
+        duration: 2000,
+        isClosable: true,
+        position: "top",
+      });
+    }
   };
 
   const filterProductType = (e) => {

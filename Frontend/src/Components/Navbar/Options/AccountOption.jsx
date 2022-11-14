@@ -27,7 +27,7 @@ const AccountOption = () => {
   const Logout = () => {
     toast({
       title: "You have logout successfully",
-      status: "success",
+      status: "info",
       duration: 1200,
       isClosable: true,
       position: "top",

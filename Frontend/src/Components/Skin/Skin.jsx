@@ -12,6 +12,7 @@ import {
   Menu,
   MenuList,
   Heading,
+  useToast,
 } from "@chakra-ui/react";
 import Navbar from "../Navbar/Navbar";
 import { ChevronDownIcon } from "@chakra-ui/icons";
@@ -21,12 +22,35 @@ import { NavLink } from "react-router-dom";
 import { PRODUCT_TYPE } from "../Redux/skinRedux/skin.types";
 
 const Skin = () => {
-  const { skinData, originalData, loading } = useSelector((store) => store.skinProducts);
+  const { skinData, originalData, loading } = useSelector(
+    (store) => store.skinProducts
+  );
+  const toast = useToast();
+  const { Token } = useSelector((store) => store.UserLogin.data);
+
   const dispatch = useDispatch();
 
   const handleCart = (elem) => {
-    alert("Product Added");
-    dispatch(addtoCart(elem));
+    let userId = "";
+    if (Token) {
+      userId = jwt_decode(Token);
+      dispatch(addtoCart(elem));
+      toast({
+        title: "Product Added to Cart !",
+        status: "success",
+        duration: 2000,
+        isClosable: true,
+        position: "top",
+      });
+    } else {
+      toast({
+        title: "Please login First !",
+        status: "error",
+        duration: 2000,
+        isClosable: true,
+        position: "top",
+      });
+    }
   };
 
   const filterProductType = (e) => {
@@ -121,8 +145,10 @@ const Skin = () => {
         </Box>
         <SimpleGrid columns={[2, null, 3]} spacing={[5, null, 10]}>
           {loading ? (
-            <Box mb="100" ml={["100","100","160","160"]}>
-              <Heading mt={100} fontSize={[24,28,28,28]}>loading. . .</Heading>
+            <Box mb="100" ml={["100", "100", "160", "160"]}>
+              <Heading mt={100} fontSize={[24, 28, 28, 28]}>
+                loading. . .
+              </Heading>
               <Image
                 w={["60%", "60%", "65%", "75%"]}
                 style={{ height: "50%", margin: "auto", marginTop: "20px" }}
