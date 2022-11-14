@@ -299,7 +299,9 @@ const Navbar = () => {
               <BuiltRoutineOption />
             </Box>
 
-            <Text className={style.Blog}>Blog</Text>
+            <Text className={style.Blog}>
+              <Link to="/admin">Blog/Admin</Link>
+            </Text>
             <Box className={style.BlogGrid}>
               <BlogOption />
             </Box>
