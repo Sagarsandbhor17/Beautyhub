@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Heading, useToast } from "@chakra-ui/react";
+import { Button, Heading, useToast } from "@chakra-ui/react";
 import {
   FormControl,
   FormLabel,
@@ -11,6 +11,7 @@ import {
 } from "@chakra-ui/react";
 // import { log } from 'console';
 import axios from "axios";
+import { Link } from "react-router-dom";
 const AdminForm = () => {
   const toast = useToast();
 
@@ -42,8 +43,11 @@ const AdminForm = () => {
     e.preventDefault();
     let res = await axios.post(
       "https://backend-beautyhub-production.up.railway.app/products",
-      product
+      {
+        product,
+      }
     );
+    console.log("product: ", product);
     toast({
       title: "Product Added !",
       position: "top",
@@ -51,6 +55,8 @@ const AdminForm = () => {
       duration: 9000,
       isClosable: true,
     });
+    setProduct("");
+    e.target.reset();
   };
 
   return (
@@ -196,6 +202,9 @@ const AdminForm = () => {
                   type="submit"
                   value="Submit"
                 />
+                <Link to="/">
+                  <Button>Go Back</Button>
+                </Link>
               </Flex>
             </FormControl>
           </form>
