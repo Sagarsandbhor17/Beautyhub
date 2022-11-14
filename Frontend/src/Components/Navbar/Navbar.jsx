@@ -52,7 +52,10 @@ const Navbar = () => {
   const toast = useToast();
 
   useEffect(() => {
-    const userId = jwt_decode(Token);
+    let userId = "";
+    if (Token) {
+      userId = jwt_decode(Token);
+    }
     getCart(userId.id).then((res) => {
       setLength(res.data.length);
     });
@@ -296,7 +299,9 @@ const Navbar = () => {
               <BuiltRoutineOption />
             </Box>
 
-            <Text className={style.Blog}>Blog</Text>
+            <Text className={style.Blog}>
+              <Link to="/admin">Blog/Admin</Link>
+            </Text>
             <Box className={style.BlogGrid}>
               <BlogOption />
             </Box>
