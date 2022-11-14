@@ -2,8 +2,8 @@ import { GET_PRODUCT, ADD_TO_CART, PRODUCT_TYPE } from "./skin.types";
 
 const initialState = {
   skinData: [],
-  originalData:[],
-  
+  originalData: [],
+  loading: true,
 };
 const skinReducer = (state = initialState, { type, payload }) => {
   // console.log(totalPages);
@@ -12,7 +12,8 @@ const skinReducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         skinData: payload,
-        originalData:payload,
+        originalData: payload,
+        loading: false,
       };
     }
     case PRODUCT_TYPE: {

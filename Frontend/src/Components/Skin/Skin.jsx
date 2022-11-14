@@ -11,6 +11,7 @@ import {
   MenuItem,
   Menu,
   MenuList,
+  Heading,
 } from "@chakra-ui/react";
 import Navbar from "../Navbar/Navbar";
 import { ChevronDownIcon } from "@chakra-ui/icons";
@@ -19,9 +20,8 @@ import jwt_decode from "jwt-decode";
 import { NavLink } from "react-router-dom";
 import { PRODUCT_TYPE } from "../Redux/skinRedux/skin.types";
 
-
 const Skin = () => {
-  const { skinData, originalData } = useSelector((store) => store.skinProducts);
+  const { skinData, originalData, loading } = useSelector((store) => store.skinProducts);
   const dispatch = useDispatch();
 
   const handleCart = (elem) => {
@@ -36,9 +36,9 @@ const Skin = () => {
     dispatch({ type: PRODUCT_TYPE, payload: filterSkin });
   };
 
-//   const sortProduct = () => {
-//   if()
-// }
+  //   const sortProduct = () => {
+  //   if()
+  // }
 
   useEffect(() => {
     dispatch(getData());
@@ -120,28 +120,42 @@ const Skin = () => {
           </Box>
         </Box>
         <SimpleGrid columns={[2, null, 3]} spacing={[5, null, 10]}>
-          {skinData.map((elem) => (
-            <Box
-              alignSelf="normal"
-              display="flex"
-              flexDirection="column"
-              alignItems="center"
-              border="1px solid"
-              key={elem.id}
-            >
-             <NavLink to={`/products/${elem._id}`} ><Image
-                display="block"
-                m="auto"
-                boxSize="20vw"
-                src={elem.product_image}
-              /></NavLink>
-              <Text>{elem.productName}</Text>
-              <Text>$ {elem.product_price}</Text>
-              <Button mb=".5rem" onClick={() => handleCart(elem)}>
-                SHOP NOW
-              </Button>
+          {loading ? (
+            <Box mb="100" ml={["100","100","160","160"]}>
+              <Heading mt={100} fontSize={[24,28,28,28]}>loading. . .</Heading>
+              <Image
+                w={["60%", "60%", "65%", "75%"]}
+                style={{ height: "50%", margin: "auto", marginTop: "20px" }}
+                src="https://thumbs.gfycat.com/YearlyBountifulCygnet.webp"
+                alt="Loading..."
+              />
             </Box>
-          ))}
+          ) : (
+            skinData.map((elem) => (
+              <Box
+                alignSelf="normal"
+                display="flex"
+                flexDirection="column"
+                alignItems="center"
+                border="1px solid"
+                key={elem.id}
+              >
+                <NavLink to={`/products/${elem._id}`}>
+                  <Image
+                    display="block"
+                    m="auto"
+                    boxSize="20vw"
+                    src={elem.product_image}
+                  />
+                </NavLink>
+                <Text>{elem.productName}</Text>
+                <Text>$ {elem.product_price}</Text>
+                <Button mb=".5rem" onClick={() => handleCart(elem)}>
+                  SHOP NOW
+                </Button>
+              </Box>
+            ))
+          )}
         </SimpleGrid>
       </Box>
       <Footer />
