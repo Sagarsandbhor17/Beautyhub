@@ -74,7 +74,7 @@ const AllRoutes = () => {
         }
       />
       {/* <Route path="/dummyproduct" element={ <DummyProduct/>}/>   */}
-      {/* <Route path="/admin" element={<AdminForm/>} /> */}
+      <Route path="/admin" element={<AdminForm/>} />
       {/* <Route path="/admin" element={<Multistep/>} /> */}
     </Routes>
   );

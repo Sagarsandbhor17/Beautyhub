@@ -48,7 +48,10 @@ const SingleProduct = () => {
   }, []);
 
   const addCart = () => {
-    const userId = jwt_decode(Token);
+    let userId = "";
+    if (Token) {
+      userId = jwt_decode(Token);
+    }
     addTocart(Product._id, userId.id, userId.id).then((res) => {
       alert("Product added!");
     });

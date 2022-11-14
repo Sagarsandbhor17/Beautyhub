@@ -99,7 +99,6 @@ const LeftDrawer = () => {
                     {el}
                   </Text>
                 ))}
-
                 {/* -----------(Sale)------------- */}
                 <Box
                   onClick={() => setSale(!sale)}
@@ -128,15 +127,13 @@ const LeftDrawer = () => {
                     {el}
                   </Text>
                 ))}
-
-                {/* -----------(Skin Care)------------- */}
-                <Box
-                  onClick={() => setSkinCare(!skinCare)}
-                  display={"flex"}
-                  justifyContent="space-between"
-                >
-                  <Text>Skin Care</Text>
+                {/* -----------(Skin Care)------------- */}{" "}
+                <Box display={"flex"} justifyContent="space-between">
+                  <Link to="skin">
+                    <Text w="100px">Skin Care</Text>
+                  </Link>
                   <Text
+                    onClick={() => setSkinCare(!skinCare)}
                     style={skinCare ? { rotate: "90deg" } : { rotate: "0deg" }}
                     fontSize={"20"}
                     fontWeight="bold"
@@ -157,7 +154,6 @@ const LeftDrawer = () => {
                     {el}
                   </Text>
                 ))}
-
                 {/* -----------(Hair)------------- */}
                 <Box
                   onClick={() => setHair(!hair)}
@@ -186,7 +182,6 @@ const LeftDrawer = () => {
                     {el}
                   </Text>
                 ))}
-
                 {/* -----------(Makeup)------------- */}
                 <Box
                   onClick={() => setMakeup(!makeup)}
@@ -215,7 +210,6 @@ const LeftDrawer = () => {
                     {el}
                   </Text>
                 ))}
-
                 {/* -----------(Bath & Body)------------- */}
                 <Box
                   onClick={() => setBathBody(!bathBody)}
@@ -244,7 +238,6 @@ const LeftDrawer = () => {
                     {el}
                   </Text>
                 ))}
-
                 {/* -----------(Fragrance)------------- */}
                 <Box
                   onClick={() => setFragrance(!fragrance)}
@@ -273,7 +266,6 @@ const LeftDrawer = () => {
                     {el}
                   </Text>
                 ))}
-
                 {/* -----------(Self-Care)------------- */}
                 <Box
                   onClick={() => setSelfCare(!selfCare)}
@@ -302,7 +294,6 @@ const LeftDrawer = () => {
                     {el}
                   </Text>
                 ))}
-
                 {/* -----------(Tools)------------- */}
                 <Box
                   onClick={() => setTools(!tools)}
@@ -331,7 +322,6 @@ const LeftDrawer = () => {
                     {el}
                   </Text>
                 ))}
-
                 {/* -----------(New & Trending)------------- */}
                 <Box
                   onClick={() => setNewTrending(!newTrending)}
@@ -362,7 +352,6 @@ const LeftDrawer = () => {
                     {el}
                   </Text>
                 ))}
-
                 {/* -----------(Build a Routine)------------- */}
                 <Box
                   onClick={() => setBuildRoutine(!buildRoutine)}
@@ -393,7 +382,6 @@ const LeftDrawer = () => {
                     {el}
                   </Text>
                 ))}
-
                 {/* -----------(Blog)------------- */}
                 <Box
                   onClick={() => setBlog(!blog)}
