@@ -14,7 +14,9 @@ import Authprovider from "../Components/Private/Authprovider";
 import DummyProduct from "../Components/SingleProduct/DummyProduct";
 import AdminForm from "../Components/admin/admin";
 // import Multistep from "../Components/admin/admin";
-
+import Hair from "../Components/Hairs/Hair"
+import Bath from "../Components/Bath&Body/Bath";
+import Fragrance from "../Components/Fragrance/Fragrance";
 
 const AllRoutes = () => {
   return (
@@ -22,6 +24,9 @@ const AllRoutes = () => {
       {/* <Route path="/" element={<Navbar/>}/>  */}
       <Route path="/" element={<LandingPage />} />
       <Route path="/skin" element={<Skin />} />
+      <Route path="/hair" element={<Hair />} />
+      <Route path="/fragrance" element={<Fragrance />} />
+      <Route path="/bath&body" element={<Bath />} />
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<Signup />} />
       <Route
@@ -69,7 +74,7 @@ const AllRoutes = () => {
         }
       />
       {/* <Route path="/dummyproduct" element={ <DummyProduct/>}/>   */}
-      <Route path="/admin" element={<AdminForm/>} />
+      {/* <Route path="/admin" element={<AdminForm/>} /> */}
       {/* <Route path="/admin" element={<Multistep/>} /> */}
     </Routes>
   );

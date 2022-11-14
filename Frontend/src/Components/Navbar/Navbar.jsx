@@ -237,17 +237,14 @@ const Navbar = () => {
             <Box className={style.HolydayGrid}>
               <HolydayOption />
             </Box>
-
             <Text className={style.Holyday}>Holyday</Text>
             <Box className={style.HolydayGrid}>
               <HolydayOption />
             </Box>
-
             <Text className={style.Sale}>Sale</Text>
             <Box className={style.SaleGrid}>
               <SaleOption />
             </Box>
-
             <Text className={style.skinCare}>
               {" "}
               <Link to="/skin">Skin Care</Link>
@@ -255,47 +252,42 @@ const Navbar = () => {
             <Box className={style.skinCareGrid}>
               <SkinCare />
             </Box>
-
-            <Text className={style.Hair}>Hair</Text>
+            <Link to="/hair">Hair</Link>{" "}
             <Box className={style.HairGrid}>
               <HairOption />
             </Box>
-
             <Text className={style.Makeup}>Makeup</Text>
             <Box className={style.MakeupGrid}>
               <MakeupOption />
             </Box>
-
-            <Text className={style.BathBody}>Bath & Body</Text>
+            <Text className={style.BathBody}>
+              <Link to="/bath&body"> Bath & Body</Link>{" "}
+            </Text>
             <Box className={style.BathBodyGrid}>
               <BathBodyOption />
             </Box>
-
-            <Text className={style.Fragrance}>Fragrance</Text>
+            <Text className={style.Fragrance}>
+              <Link to="/fragrance">Fragrance</Link>
+            </Text>
             <Box className={style.FragranceGrid}>
               <FragranceOption />
             </Box>
-
             <Text className={style.SelfCare}>Self Care</Text>
             <Box className={style.SelfCareGrid}>
               <SelfCareOption />
             </Box>
-
             <Text className={style.Tools}>Tools</Text>
             <Box className={style.ToolsGrid}>
               <ToolsOption />
             </Box>
-
             <Text className={style.NewTrending}>New & Trending</Text>
             <Box className={style.NewTrendingGrid}>
               <NewTrendingOption />
             </Box>
-
             <Text className={style.BuiltRoutine}>Built a Routine</Text>
             <Box className={style.BuiltRoutineGrid}>
               <BuiltRoutineOption />
             </Box>
-
             <Text className={style.Blog}>Blog</Text>
             <Box className={style.BlogGrid}>
               <BlogOption />
