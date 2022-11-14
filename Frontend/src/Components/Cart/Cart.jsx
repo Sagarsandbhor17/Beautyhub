@@ -40,6 +40,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import jwt_decode from "jwt-decode";
 import CartData from "./CartData";
+import loadingGif from "../loadingGif.webp";
 
 const getCart = (id) => {
   return axios.get(
@@ -59,6 +60,7 @@ export const Cart = () => {
   const [value, sevalue] = React.useState("");
   const [value1, setvalue] = React.useState("");
   const [cart, setCart] = useState([]);
+  const [loading, setLoading] = useState(true);
   const { Token } = useSelector((store) => store.UserLogin.data);
 
   useEffect(() => {
@@ -71,6 +73,7 @@ export const Cart = () => {
       userId = jwt_decode(Token);
     }
     getCart(userId.id).then((res) => {
+      setLoading(false);
       setCart(res.data);
     });
   };
@@ -124,7 +127,7 @@ export const Cart = () => {
       <br />
       <Flex className={style.flexcontainer}>
         <TableContainer w={["100%", "100%", "100%", "100%"]}>
-          <Table variant="simple">
+          <Table>
             <Thead>
               <Tr>
                 <Th>Items</Th>
@@ -133,19 +136,32 @@ export const Cart = () => {
                 <Th>Subtotal</Th>
               </Tr>
             </Thead>
-            <Tbody>
-              {cart.map((items) => (
-                <Tr>
-                  <CartData {...items} deleteData={deleteData} />
-                </Tr>
-              ))}
-              <Tr>
-                <Th textAlign={"right"} fontSize="lg">
-                  Subtotal : ${TotalPrice}
-                </Th>
-              </Tr>
-            </Tbody>
+            {loading ? (
+              <Box display={"flex"} alignItems="center" mb="16">
+                <Image
+                  w={["40%", "40%", "25%", "25%"]}
+                  style={{ height: "50%", margin: "auto" }}
+                  src={loadingGif}
+                  alt="Loading..."
+                />
+                <Heading fontSize={[24, 26, 25, 25]}>loading. . .</Heading>
+              </Box>
+            ) : (
+              cart.map((items) => (
+                <CartData
+                  product={items.product}
+                  quantity={items.quantity}
+                  _id={items._id}
+                  deleteData={deleteData}
+                />
+              ))
+            )}
           </Table>
+          <Box w="100%">
+            <Heading textAlign={"right"} fontSize="22px">
+              Subtotal : ${TotalPrice}
+            </Heading>
+          </Box>
         </TableContainer>
         <Box
           bg="#f8f8f8"

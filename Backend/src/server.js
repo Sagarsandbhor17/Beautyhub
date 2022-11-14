@@ -1,11 +1,13 @@
 const express = require("express");
+const dotenv=require("dotenv");
 var bodyParser = require("body-parser");
 const cors=require("cors");
 const user=require('./features/users/users.router');
 const product=require('./features/products/products.router');
 const cart=require('./features/cart/cart.router');
 const dbConnect=require('./config/db')
-let PORT =8080;
+dotenv.config();
+let PORT =process.env.PORT || 8080;
 
 const app = express();
 app.use(cors());
@@ -20,7 +22,7 @@ app.get('/' , (req , res) => {
   res.send("<div> <h1>LIFE IS AWESOME...</h1> <h3> YWelcome you are watching backend of Beauty hub a clone of Skin Store </h3> </div>")
 })
 
-app.listen(PORT, async () => {
+app.listen(PORT||8080, async () => {
   await dbConnect();
   console.log(`Listening on http://localhost:${PORT}`);
 });
