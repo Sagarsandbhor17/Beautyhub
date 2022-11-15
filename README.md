@@ -2,7 +2,7 @@
 
 
 # Team Details:-
-1. Sagar Sandbhor @Sagarsandbhor (as a Team Lead)
+1. Sagar Sandbhor(as a Team Lead)
 2. Abhishek Pratap Solanki (as a team member)
 3. Sombir (as a team member)
 4. Alisha Mohasim (as a team member)
