@@ -10,16 +10,14 @@
 
 
 # Project Details:-
-This project were completed by a team of 5 member during Masai School unit 3 construct week in 5 days.
-We have done this projct using HTML5, CSS, JavaScript, Node Modules and some external JavaScript library like:-
-1. JQuery (One of the most used JavaScript Library)
-2. Fabric.js ( We use this to make our web based editor functional ) etc.
+Beautyhub is an online retailer that sells premium beauty,clinical skincare,and luxury spa products..
 
-we have also used some local Data base to collect the data from main website.
-
-this was a clone of a # Web Video Editing Application ( www.animoto.com ). this company basically present you some basic templates
-on there static website and you can edit those templates in there Web based editor.
-
+# Features:-
+1. Signup Login 
+2. Products page
+3. Add to cart
+4. Address
+5. Admin (New product add)
 
 <img src="https://abhishek07788.github.io/static/media/animotoClone.00fd7884adbb39bfda54.gif" alt="Animoto.com"/>
 
