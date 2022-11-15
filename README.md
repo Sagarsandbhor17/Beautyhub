@@ -2,11 +2,11 @@
 
 
 # Team Details:-
-1. Rohan Mourya (as a Team Lead)
+1. Sagar Sandbhor @Sagarsandbhor (as a Team Lead)
 2. Abhishek Pratap Solanki (as a team member)
-3. Anmol Sharma (as a team member)
-4. Gaurav Shudhansu (as a team member)
-5. Sachin Kumar (as a team member)
+3. Sombir (as a team member)
+4. Alisha Mohasim (as a team member)
+5. Anshul Singha (as a team member)
 
 
 # Project Details:-
