@@ -2,11 +2,11 @@
 
 
 # Team Details:-
-1.[Sagar Sandbhor](https://sagarsandbhor17.github.io/)
-2.[Abhishek Pratap Solanki](https://abhishek07788.github.io/)
-3.[Sombir](https://sombir5.github.io/)
-4.[Alisha Mohasim](https://alishamohasin.github.io/)
-5.[Anshul Singla](https://anshul-singla.github.io/)
+1.[Sagar Sandbhor](https://sagarsandbhor17.github.io/) (as Team Lead)
+2.[Abhishek Pratap Solanki](https://abhishek07788.github.io/) (as team member)
+3.[Sombir](https://sombir5.github.io/) (as team member)
+4.[Alisha Mohasim](https://alishamohasin.github.io/) (as team member)
+5.[Anshul Singla](https://anshul-singla.github.io/) (as team member)
 
 
 # Project Details:-
