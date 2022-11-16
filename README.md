@@ -2,11 +2,11 @@
 
 
 # Team Details:-
-1. Sagar Sandbhor(as a Team Lead)
-2. Abhishek Pratap Solanki (as a team member)
-3. Sombir (as a team member)
-4. Alisha Mohasim (as a team member)
-5. Anshul Singla (as a team member)
+1. [https://sagarsandbhor17.github.io/](Sagar Sandbhor)
+2. [https://abhishek07788.github.io/](Abhishek Pratap Solanki)
+3. [https://sombir5.github.io/](Sombir)
+4. [https://alishamohasin.github.io/](Alisha Mohasim)
+5. [https://anshul-singla.github.io/](Anshul Singla)
 
 
 # Project Details:-
