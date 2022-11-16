@@ -6,7 +6,7 @@
 2. Abhishek Pratap Solanki (as a team member)
 3. Sombir (as a team member)
 4. Alisha Mohasim (as a team member)
-5. Anshul Singha (as a team member)
+5. Anshul Singla (as a team member)
 
 
 # Project Details:-
