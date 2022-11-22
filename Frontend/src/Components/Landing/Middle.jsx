@@ -16,40 +16,52 @@ const Middle = () => {
       </Text>
       <SimpleGrid columns={6} spacing={0} w="90%" m="auto" pl="2.5%" pr="2.5%">
         <Box>
-          <Image
-            boxSize="12vw"
-            src="https://static.thcdn.com/images/small/webp/widgets/121-us/58/Page-006-025258.png"
-          />
+          <Link to="/skin">
+            <Image
+              boxSize="12vw"
+              src="https://static.thcdn.com/images/small/webp/widgets/121-us/58/Page-006-025258.png"
+            />
+          </Link>
         </Box>
         <Box>
-          <Image
-            boxSize="12vw"
-            src="https://static.thcdn.com/images/small/webp/widgets/121-us/40/Page-005-025240.png"
-          />
+          <Link to="/skin">
+            <Image
+              boxSize="12vw"
+              src="https://static.thcdn.com/images/small/webp/widgets/121-us/40/Page-005-025240.png"
+            />
+          </Link>
         </Box>
         <Box>
-          <Image
-            boxSize="12vw"
-            src="https://static.thcdn.com/images/small/webp/widgets/121-us/21/Page-004-025221.png"
-          />
+          <Link to="/skin">
+            <Image
+              boxSize="12vw"
+              src="https://static.thcdn.com/images/small/webp/widgets/121-us/21/Page-004-025221.png"
+            />
+          </Link>
         </Box>
         <Box>
-          <Image
-            boxSize="12vw"
-            src="https://static.thcdn.com/images/small/webp/widgets/121-us/17/Page-003-025217.png"
-          />
+          <Link to="/skin">
+            <Image
+              boxSize="12vw"
+              src="https://static.thcdn.com/images/small/webp/widgets/121-us/17/Page-003-025217.png"
+            />
+          </Link>
         </Box>
         <Box>
-          <Image
-            boxSize="12vw"
-            src="https://static.thcdn.com/images/small/webp/widgets/121-us/09/Page-002-025209.png"
-          />
+          <Link to="/skin">
+            <Image
+              boxSize="12vw"
+              src="https://static.thcdn.com/images/small/webp/widgets/121-us/09/Page-002-025209.png"
+            />
+          </Link>
         </Box>
         <Box>
-          <Image
-            boxSize="12vw"
-            src="https://static.thcdn.com/images/small/webp/widgets/121-us/01/Page-001-025201.png"
-          />
+          <Link to="/skin">
+            <Image
+              boxSize="12vw"
+              src="https://static.thcdn.com/images/small/webp/widgets/121-us/01/Page-001-025201.png"
+            />
+          </Link>
         </Box>
       </SimpleGrid>
       <Text pt="2.5%" fontSize="3rem" textAlign="center">
@@ -81,7 +93,7 @@ const Middle = () => {
             spend $150 or more on the brand.
           </Text>
           <Button mt="auto" bgColor="white" borderRadius="0px">
-            SHOP NOW
+            <Link to="/skin"> SHOP NOW </Link>
           </Button>
         </Box>
         <Box
@@ -103,7 +115,7 @@ const Middle = () => {
             your natural beauty.
           </Text>
           <Button mt="auto" bgColor="white" borderRadius="0px">
-            SHOP NOW
+            <Link to="/skin"> SHOP NOW </Link>
           </Button>
         </Box>
         <Box
@@ -125,7 +137,7 @@ const Middle = () => {
             protect, and enhance skin tone and texture.
           </Text>
           <Button mt="auto" bgColor="white" borderRadius="0px">
-            SHOP NOW
+            <Link to="/skin"> SHOP NOW </Link>
           </Button>
         </Box>
         <Box
@@ -146,7 +158,7 @@ const Middle = () => {
             encourage skin regeneration and enhance natural beauty.
           </Text>
           <Button mt="auto" bgColor="white" borderRadius="0px">
-            SHOP NOW
+            <Link to="/skin"> SHOP NOW </Link>
           </Button>
         </Box>
         <Box
@@ -168,7 +180,7 @@ const Middle = () => {
             visibly smoother and firmer to the touch.
           </Text>
           <Button mt="auto" bgColor="white" borderRadius="0px">
-            SHOP NOW
+            <Link to="/skin"> SHOP NOW </Link>
           </Button>
         </Box>
         <Box
@@ -189,7 +201,7 @@ const Middle = () => {
             (Free Gift) when you spend $80 or more.
           </Text>
           <Button mt="auto" bgColor="white" borderRadius="0px">
-            SHOP NOW
+            <Link to="/skin"> SHOP NOW </Link>
           </Button>
         </Box>
         <Box
@@ -211,7 +223,7 @@ const Middle = () => {
             available at SkinStore!
           </Text>
           <Button mt="auto" bgColor="white" borderRadius="0px">
-            SHOP NOW
+            <Link to="/skin"> SHOP NOW </Link>
           </Button>
         </Box>
         <Box
@@ -232,7 +244,7 @@ const Middle = () => {
             beauty expert, DHC.
           </Text>
           <Button mt="auto" bgColor="white" borderRadius="0px">
-            SHOP NOW
+            <Link to="/skin"> SHOP NOW </Link>
           </Button>
         </Box>
         <Box
@@ -254,7 +266,7 @@ const Middle = () => {
           </Text>
 
           <Button mt="auto" bgColor="white" borderRadius="0px">
-            SHOP NOW
+            <Link to="/skin"> SHOP NOW </Link>
           </Button>
         </Box>
       </SimpleGrid>
@@ -298,7 +310,7 @@ const Middle = () => {
             <Button width="13em" mt="auto" bgColor="black" color="white">
               {" "}
               <HiOutlineShoppingBag />
-              &nbsp; SHOP NOW
+              &nbsp;<Link to="/skin"> SHOP NOW </Link>
             </Button>
           </Link>
         </Box>
@@ -331,7 +343,7 @@ const Middle = () => {
             <Button width="13em" mt="auto" bgColor="black" color="white">
               {" "}
               <HiOutlineShoppingBag />
-              &nbsp; SHOP NOW
+              &nbsp;<Link to="/skin"> SHOP NOW </Link>
             </Button>
           </Link>
         </Box>
@@ -365,7 +377,7 @@ const Middle = () => {
             <Button width="13em" mt="auto" bgColor="black" color="white">
               {" "}
               <HiOutlineShoppingBag />
-              &nbsp; SHOP NOW
+              &nbsp;<Link to="/skin"> SHOP NOW </Link>
             </Button>
           </Link>
         </Box>
@@ -396,7 +408,7 @@ const Middle = () => {
           <Button width="13em" mt="auto" bgColor="black" color="white">
             {" "}
             <HiOutlineShoppingBag />
-            &nbsp; SHOP NOW
+            &nbsp;<Link to="/skin"> SHOP NOW </Link>
           </Button>
         </Box>
       </SimpleGrid>
@@ -480,7 +492,7 @@ const Middle = () => {
             spend $150 or more on the brand.
           </Text>
           <Button mt="auto" bgColor="white" borderRadius="0px">
-            SHOP NOW
+            <Link to="/skin"> SHOP NOW </Link>
           </Button>
         </Box>
         <Box
@@ -501,7 +513,7 @@ const Middle = () => {
             spend $150 or more on the brand.
           </Text>
           <Button mt="auto" bgColor="white" borderRadius="0px">
-            SHOP NOW
+            <Link to="/skin"> SHOP NOW </Link>
           </Button>
         </Box>
         <Box
@@ -522,7 +534,7 @@ const Middle = () => {
             spend $150 or more on the brand.
           </Text>
           <Button mt="auto" bgColor="white" borderRadius="0px">
-            SHOP NOW
+            <Link to="/skin"> SHOP NOW </Link>
           </Button>
         </Box>
       </SimpleGrid>
