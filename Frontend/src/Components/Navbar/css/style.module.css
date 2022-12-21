@@ -17,15 +17,10 @@
 }
 
 /* ------------------------- (Third Row) ------------------- */
-
 .ThirdRow > p {
   cursor: pointer;
   margin-top: -5px;
-  padding-top: 5px;
-  padding-bottom: 15px;
-  padding-right: 8px;
-  padding-left: 8px;
-
+  padding: 5px 15px 8px 8px;
 }
 
 .ThirdRow > p:hover {
@@ -40,11 +35,12 @@
 .HolydayGrid {
   background: #ffffff;
   position: fixed;
-  width: 45%;
+  width: 100%;
   margin-top: 30px;
   display: none;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   padding-bottom: 10px;
+
 }
 
 .Holyday:hover + .HolydayGrid {
