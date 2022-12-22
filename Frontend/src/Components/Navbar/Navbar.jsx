@@ -227,13 +227,13 @@ const Navbar = () => {
         </Grid>
 
         {/* ----------------------- (Third Row) ----------------- */}
-        <Grid h="10" bg="#ffffff" display={["none", "none", "block", "block"]}>
+        <Grid h="10" bg="#ffffff"  display={["none", "none", "block", "block"]} >
           <Box
-            w={["70%", "70%", "95%", "70%"]}
-            ml={["20", "20", "2", "20"]}
+            w={["70%", "70%", "100%", "100%"]}
+            ml={["10", "10", "2", "10"]}
             color="gray"
             fontWeight={400}
-            fontSize="15"
+            fontSize={["" , "" ,"14","15"]}
             mt="1"
             display="flex"
             className={style.ThirdRow}
@@ -303,7 +303,7 @@ const Navbar = () => {
               display={role == "admin" ? "block" : "none"}
               className={style.Blog}
             >
-              <Link to="/admin">Admin</Link>
+              <Link to="/admin">Add Product</Link>
             </Text>
           </Box>
         </Grid>

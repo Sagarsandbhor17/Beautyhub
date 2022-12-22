@@ -6,7 +6,7 @@ import style from "../css/style.module.css";
 const HolydayOption = () => {
   return (
     <div>
-        <Grid className={style.HolydayOptionMainDiv} display={"flex"} justifyContent="space-around" textAlign="left" fontWeight={400}>
+        <Grid className={style.HolydayOptionMainDiv} display={"flex"} justifyContent="space-around" textAlign="left" >
         <Box>
             <Text><b>SkinStore's Holiday Shop</b></Text>
         </Box>
