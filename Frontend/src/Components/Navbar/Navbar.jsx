@@ -303,7 +303,7 @@ const Navbar = () => {
               display={role == "admin" ? "block" : "none"}
               className={style.Blog}
             >
-              <Link to="/admin">Admin</Link>
+              <Link to="/admin">Add Product</Link>
             </Text>
           </Box>
         </Grid>

@@ -3,6 +3,7 @@ import { Button, Heading, Image, Select, useToast ,FormControl,FormLabel,Input,B
 import axios from "axios";
 import { Link } from "react-router-dom";
 import './admin.css'
+import { useEffect } from "react";
 const AdminForm = () => {
   const toast = useToast();
 
@@ -48,6 +49,16 @@ const AdminForm = () => {
     e.target.reset();
     setPreview(false);
   };
+  useEffect(() => {
+    toast({
+      title: "Welcome Admin 😊",
+      description:"You can add ",
+      position: "top-left",
+      status: "success",
+      duration: 9000,
+      isClosable: true,
+    });
+  },[])
   console.log("product: ", product);
   return (
     <>
