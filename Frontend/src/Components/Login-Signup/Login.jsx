@@ -116,6 +116,7 @@ console.log('form:', form)
                 name="email"
                 value={email}
                 type="email"
+                // pattern=".+@beststartupever\.com"
               />
               <label>* Password</label>
 
@@ -130,7 +131,7 @@ console.log('form:', form)
                   onChange={handleChange}
                   name="password"
                   value={password}
-                  pattern=".{8,15}"
+                  pattern=".{8,20}"
                   required
                   title="Please enter password of Length 8 to 15 !"
                   type={show1 ? "text" : "password"}
