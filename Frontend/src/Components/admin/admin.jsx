@@ -1,19 +1,8 @@
 import React, { useState } from "react";
-import { Button, Heading, Image, Select, useToast } from "@chakra-ui/react";
-import {
-  FormControl,
-  FormLabel,
-  Input,
-  Box,
-  Flex,
-  Table,
-  Tbody,
-  Tr,
-  Td,
-} from "@chakra-ui/react";
-// import { log } from 'console';
+import { Button, Heading, Image, Select, useToast ,FormControl,FormLabel,Input,Box,Flex,Table,Tbody,Tr,Td,} from "@chakra-ui/react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import './admin.css'
 const AdminForm = () => {
   const toast = useToast();
 
@@ -67,7 +56,7 @@ const AdminForm = () => {
         height="fit-content"
         backgroundImage='https://img.freepik.com/free-vector/pattern-about-shopping_1061-495.jpg?auto=format&h=200'
       >
-      <Flex  justifyContent={preview ? "space-around":'center' } alignItems='center'>
+      <Flex className='admin_flex'  justifyContent={preview ? "space-around":'center' } alignItems='center'>
         <Box
           width="40%"
           border="2px solid"
@@ -151,13 +140,6 @@ const AdminForm = () => {
               </Flex>
               <Flex marginTop=".5rem">
                 <FormLabel width="30vw">Type of product</FormLabel>
-                {/* <Input
-                  borderBottom={"1px"}
-                  required
-                  type="text"
-                  name="product_type"
-                  onChange={handleChange}
-                /> */}
                 <Select placeholder='Select Type' name="product_type" onChange={handleChange}>
                   <option value='Skin Care'>Skin Care</option>
                   <option value='Hairs'>Hairs</option>
@@ -276,18 +258,6 @@ const AdminForm = () => {
                       </Tr>
                     </Tbody>
                   </Table>
-                  {/* <Flex >
-                    <Text as='b'>Product Name </Text>
-                    <Text > 
-                        {`${product.productName}`} 
-                    </Text>
-                  </Flex>
-                  <Flex  >
-                    <Text as='b'> </Text>
-                    <Text > 
-                        {}
-                    </Text>
-                  </Flex> */}
                 </Box>
               </Flex>
             </Box>

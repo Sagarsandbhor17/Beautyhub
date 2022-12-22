@@ -1,0 +1,10 @@
+@media screen and (max-width:990px) {
+
+    .admin_flex{
+        flex-direction: column;
+    
+    }
+    .admin_flex>div{
+        width: 70%;
+    }
+}    
