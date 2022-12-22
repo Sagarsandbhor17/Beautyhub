@@ -52,8 +52,10 @@ app.post("/login", async (req, res) => {
 
   // const refreshToken = jwt.sign({}, "REFRESH");
   return res.send({
+    status: true,
     Token,
     message: "You have signup Successfully",
+
   });
 });
 

@@ -10,7 +10,7 @@ dotenv.config();
 let PORT =process.env.PORT || 8080;
 
 const app = express();
-app.use(cors());
+app.use(cors({origin:'*'}));
 app.use(express.urlencoded({extended: true}));
 app.use(bodyParser.urlencoded({ extended: false}));
 app.use(bodyParser.json());

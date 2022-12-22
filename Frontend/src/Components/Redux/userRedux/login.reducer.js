@@ -35,6 +35,7 @@ export const LoginReducer = (state = loginInitial, { type, payload }) => {
       };
     }
     case user_login_success: {
+      console.log('payload:', payload)
       if(payload.status){
         localStorage.setItem("token", payload.Token);
       }

@@ -56,6 +56,7 @@ const Navbar = () => {
     let userId = "";
     if (Token) {
       userId = jwt_decode(Token);
+      console.log('userId:', userId)
     }
     setRole(userId.role);
     getCart(userId.id).then((res) => {
