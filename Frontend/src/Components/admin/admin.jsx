@@ -52,7 +52,7 @@ const AdminForm = () => {
   useEffect(() => {
     toast({
       title: "Welcome Admin 😊",
-      description:"You can add ",
+      description:"only You can add product ",
       position: "top-left",
       status: "success",
       duration: 9000,
