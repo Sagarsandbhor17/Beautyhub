@@ -129,9 +129,6 @@ const Signup = () => {
     setForm("");
     e.target.reset();
   };
-  console.log('form:', form);
-  console.log('confirm:', confirm);
-  console.log('confirm_Message:', confirm_Message)
   const { name, email, password, referral, number } = form;
 
   return (

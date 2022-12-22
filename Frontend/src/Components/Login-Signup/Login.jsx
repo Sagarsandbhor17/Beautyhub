@@ -33,23 +33,23 @@ const Login = () => {
   const { Token, message, gAuth } = useSelector(
     (store) => store.UserLogin.data
   );
-console.log('form:', form)
   const handleGoogle = () => {
     dispatch(Sigup_google());
   };
 
-  if (Token || gAuth) {
-    navigate("/");
-    toast({
-      title: message,
-      status: "success",
-      duration: 1200,
-      isClosable: true,
-      position: "top",
-    });
-  }
-
+  
   useEffect(() => {
+    if (Token || gAuth) {
+      navigate("/");
+      toast({
+        title: message || "Welcome User",
+        description:"You're already Loged In"  ,
+        status: "success",
+        duration: 3000,
+        isClosable: true,
+        position: "top-right",
+      });
+    }
     if (message == "Wrong Credential!")
       toast({
         title: "Wrong Credential!",
@@ -116,7 +116,6 @@ console.log('form:', form)
                 name="email"
                 value={email}
                 type="email"
-                // pattern=".+@beststartupever\.com"
               />
               <label>* Password</label>
 
