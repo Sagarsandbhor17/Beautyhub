@@ -44,13 +44,13 @@ import loadingGif from "../loadingGif.webp";
 
 const getCart = (id) => {
   return axios.get(
-    `https://backend-beautyhub-production.up.railway.app/cart/${id}`
+    `http://localhost:8080/cart/${id}`
   );
 };
 
 const deleteCart = (id) => {
   return axios.delete(
-    `https://backend-beautyhub-production.up.railway.app/cart/${id}`
+    `http://localhost:8080/cart/${id}`
   );
 };
 

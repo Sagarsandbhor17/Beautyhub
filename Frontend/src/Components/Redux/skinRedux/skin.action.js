@@ -6,7 +6,7 @@ export const getData = () => async (dispatch) => {
   try {
     const token = localStorage.getItem("token");
     const response = await axios.get(
-      `https://backend-beautyhub-production.up.railway.app/products/skincare`,
+      `http://localhost:8080/products/skincare`,
       { Authorization: token }
     );
     // console.log(response);
@@ -30,7 +30,7 @@ export const addtoCart = (elem) => async (dispatch) => {
     }
     // console.log(tokenData.id);
     const response = await axios.post(
-      `https://backend-beautyhub-production.up.railway.app/cart`,
+      `http://localhost:8080/cart`,
       { product: elem._id, user: tokenData.id, Id: tokenData.id },
       { headers: { Authorization: Token } }
     );
