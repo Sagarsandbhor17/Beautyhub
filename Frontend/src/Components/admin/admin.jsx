@@ -1,13 +1,15 @@
 import React, { useState } from "react";
-import { Button, Heading, useToast } from "@chakra-ui/react";
+import { Button, Heading, Image, Select, useToast } from "@chakra-ui/react";
 import {
   FormControl,
   FormLabel,
   Input,
   Box,
   Flex,
-  FormErrorMessage,
-  FormHelperText,
+  Table,
+  Tbody,
+  Tr,
+  Td,
 } from "@chakra-ui/react";
 // import { log } from 'console';
 import axios from "axios";
@@ -31,13 +33,12 @@ const AdminForm = () => {
     item_logo: "",
   };
   const [product, setProduct] = useState(initialStateProduct);
+  const [preview , setPreview] = useState(false);
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setProduct((prev) => ({ ...prev, [name]: value }));
-    // const handleChange = (e) => {
-    //   let { name, value } = e.target;
-    //   setForm();
-    // };
+    setProduct((prev) => ({ ...prev, [name] : value }));
+    console.log("product: ", product);
+    setPreview(true)
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -47,7 +48,6 @@ const AdminForm = () => {
         product,
       }
     );
-    console.log("product: ", product);
     toast({
       title: "Product Added !",
       position: "top",
@@ -55,32 +55,28 @@ const AdminForm = () => {
       duration: 9000,
       isClosable: true,
     });
-    setProduct("");
+    setProduct(initialStateProduct);
     e.target.reset();
+    setPreview(false);
   };
-
+  console.log("product: ", product);
   return (
     <>
       <Box
-        // backgroundImage='https://techcrunch.com/wp-content/uploads/2014/04/shutterstock_137342978.jpg'
-        width="100vw"
-        height="100vh"
-        paddingTop="50px"
-        // backgroundColor = "#fff"
-        // boxShadow= "0 8px 32px 0 rgba( 31, 38, 135, 0.37 )"
-        // backdropFilter= "blur( 13.5px )"
-        // webkitBackdropfilter= "blur( 13.5px )"
-        // borderRadius=" 10px"
-        // border=  "1px solid rgba( 255, 255, 255, 0.18 )"
+        width="98.5vw"
+        height="fit-content"
+        backgroundImage='https://img.freepik.com/free-vector/pattern-about-shopping_1061-495.jpg?auto=format&h=200'
       >
+      <Flex  justifyContent={preview ? "space-around":'center' } alignItems='center'>
         <Box
-          width="80vw"
+          width="40%"
           border="2px solid"
-          margin="0 auto"
+          margin="20px"
           padding="20px"
-          borderRadius=" 10px"
+          borderRadius=" 25px"
+          backgroundColor='#fff'
         >
-          <Heading>Welcome Admin</Heading>
+          <Heading size='lg' fontWeight='500' >Welcome Admin</Heading>
           <form action="" onSubmit={(e) => handleSubmit(e)}>
             <FormControl>
               <Flex marginTop=".5rem">
@@ -110,16 +106,6 @@ const AdminForm = () => {
                   required
                   type="text"
                   name="product_tag"
-                  onChange={handleChange}
-                />
-              </Flex>
-              <Flex marginTop=".5rem">
-                <FormLabel width="30vw">Product Tag Description</FormLabel>
-                <Input
-                  borderBottom={"1px"}
-                  required
-                  type="text"
-                  name="product_tag_text"
                   onChange={handleChange}
                 />
               </Flex>
@@ -165,35 +151,75 @@ const AdminForm = () => {
               </Flex>
               <Flex marginTop=".5rem">
                 <FormLabel width="30vw">Type of product</FormLabel>
-                <Input
+                {/* <Input
                   borderBottom={"1px"}
                   required
                   type="text"
                   name="product_type"
                   onChange={handleChange}
-                />
+                /> */}
+                <Select placeholder='Select Type' name="product_type" onChange={handleChange}>
+                  <option value='Skin Care'>Skin Care</option>
+                  <option value='Hairs'>Hairs</option>
+                  <option value='Bath & Body'>Bath & Body</option>
+                  <option value='Fragrance'>Fragrance</option>
+                </Select>
               </Flex>
               <Flex marginTop=".5rem">
                 <FormLabel width="30vw">Sub type of product</FormLabel>
-                <Input
-                  borderBottom={"1px"}
-                  required
-                  type="text"
-                  name="product_subtype"
-                  onChange={handleChange}
-                />
+                <Select placeholder='Select Sub Type' name="product_subtype" onChange={handleChange}>
+                  {
+                    product.product_type ==='Skin Care' ?
+                    <>
+                      <option value="Cleansers">Cleansers</option>
+                      <option value="Moisturizers">Moisturizers</option>
+                      <option value='Serums'>Serums</option>
+                      <option value='Masks'>Masks</option>
+                      <option value='Oils'>Oils</option>
+                      <option value='Lip Care'>Lip Care</option>
+                    </> :
+                    product.product_type ==='Fragrance' ?
+                    <>
+                      <option value="Body Spray">Body Spray</option>
+                      <option value="Eau de Toilette">Eau de Toilette</option>
+                      <option value='For Her'>For Her</option>
+                      <option value='For Him'>For Him</option> 
+                      <option value='Perfume'>Perfume</option> 
+                    </> 
+                    : 
+                    product.product_type ==='Bath & Body' ?
+                    <>
+                      <option value="Body Washes">Body Washes</option>
+                      <option value="Cleansing Bars">Cleansing Bars</option>
+                      <option value='Bath Salts'>Bath Salts</option>
+                      <option value='Bath Oils/Soak'>Bath Oils/Soak</option>
+                      <option value='Bath and Shower'>Bath and Shower</option>
+                    </> 
+                    : 
+                    product.product_type ==='Hairs' ?
+                    <>
+                      <option value="Hair Oil Products">Hair Oil Products</option>
+                      <option value="Shampoos">Shampoos</option>
+                      <option value='Hair Masks'>Hair Masks</option>
+                      <option value='Hair Conditioners'>Hair Conditioners</option>
+                      <option value='Hair Sprays'>Hair Sprays</option>
+                    </> 
+                    : 
+                    <option value=''>Please select Type first</option>
+                  }
+                </Select>
               </Flex>
               <Flex marginTop=".5rem">
                 <FormLabel width="30vw">Product Price</FormLabel>
                 <Input
                   borderBottom={"1px"}
                   required
-                  type="text"
+                  type="number"
                   name="product_price"
                   onChange={handleChange}
                 />
               </Flex>
-              <Flex marginTop=".5rem">
+              <Flex marginTop=".5rem" gap='1rem'>
                 <Input
                   borderBottom={"1px"}
                   required
@@ -209,9 +235,69 @@ const AdminForm = () => {
             </FormControl>
           </form>
         </Box>
+        <Box
+         width="40%"
+         border="2px solid"
+         margin="20px"
+         padding="20px"
+         borderRadius=" 25px"
+         backgroundColor='#fff'
+         height='fit-content'
+         display={preview ? "block" : "none"}
+         >
+          <Heading  size='lg' fontWeight='500' >
+            Preview Card
+          </Heading>
+        
+            <Box   margin='20px 0'>
+              <Flex  >
+                <Image src={product.product_image}
+                 w='40%' 
+                //  border='1px solid'
+                />
+                <Box   w='60%'> 
+                  <Table variant='simple'>
+                    <Tbody>
+                      <Tr>
+                        <Td>Product Name </Td>
+                        <Td>{product.productName}</Td>
+                      </Tr>
+                      <Tr>
+                        <Td>Price </Td>
+                        <Td>{`$ ${product.product_price}`}</Td>
+                      </Tr>
+                      <Tr>
+                        <Td>Type </Td>
+                        <Td>{product.product_type}</Td>
+                      </Tr>
+                      <Tr>
+                        <Td> Sub Type </Td>
+                        <Td>{product.product_subtype}</Td>
+                      </Tr>
+                    </Tbody>
+                  </Table>
+                  {/* <Flex >
+                    <Text as='b'>Product Name </Text>
+                    <Text > 
+                        {`${product.productName}`} 
+                    </Text>
+                  </Flex>
+                  <Flex  >
+                    <Text as='b'> </Text>
+                    <Text > 
+                        {}
+                    </Text>
+                  </Flex> */}
+                </Box>
+              </Flex>
+            </Box>
+          
+        </Box>
+      </Flex>
       </Box>
     </>
   );
 };
 
 export default AdminForm;
+
