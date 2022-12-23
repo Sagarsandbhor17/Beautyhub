@@ -6,7 +6,7 @@ const user = require("../Router/user.routes");
 const app = express();
 
 app.use(express.json());
-app.use(cors());
+app.use(cors({origin:'*'}));
 app.use("/user", user);
 
 app.listen(8080, async () => {

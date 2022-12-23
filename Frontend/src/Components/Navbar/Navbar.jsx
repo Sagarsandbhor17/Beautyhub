@@ -41,7 +41,7 @@ import jwt_decode from "jwt-decode";
 
 const getCart = (id) => {
   return axios.get(
-    `https://backend-beautyhub-production.up.railway.app/cart/${id}`
+    `http://localhost:8080/cart/${id}`
   );
 };
 
@@ -56,6 +56,7 @@ const Navbar = () => {
     let userId = "";
     if (Token) {
       userId = jwt_decode(Token);
+      console.log('userId:', userId)
     }
     setRole(userId.role);
     getCart(userId.id).then((res) => {

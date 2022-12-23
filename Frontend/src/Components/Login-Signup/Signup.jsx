@@ -26,11 +26,21 @@ const InitialState = {
   number: "",
   referral: "",
 };
+const confirmInitialState = {
+  conformation_email:"",
+  conformation_password:"",
+}
+const confirmMessageInitialState = {
+  message:""
+}
+
 
 const Signup = () => {
   const [show1, setShow1] = useState(false);
   const [show2, setShow2] = useState(false);
   const [form, setForm] = useState(InitialState);
+  const [confirm, setConForm] = useState(confirmInitialState);
+  const [confirm_Message , setConfirmMessage] = useState(confirmMessageInitialState)
   const toast = useToast();
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -78,14 +88,47 @@ const Signup = () => {
     let { name, value } = e.target;
     setForm((prev) => ({ ...prev, [name]: value }));
   };
+  const handleConfirmChange = (e) => {
+    let { name, value } = e.target;
+    setConForm((prev) => ({ ...prev, [name]: value }));
+  };
 
-  const handleSubmit = (e) => {
+  const handleFormValidation = (e) => {
     e.preventDefault();
+    if(form.email != confirm.conformation_email){
+      setConfirmMessage({
+        ...confirm_Message , message:"Email and confirm email doesn't match"
+      });
+      toast({
+        title: "Email and confirm email doesn't match",
+        status: "error",
+        duration: 4000,
+        isClosable: true,
+        position: "top",
+      });
+    }else if(form.password != confirm.conformation_password){
+      setConfirmMessage({
+        ...confirm_Message , message:"Password and confirm password doesn't match"
+      });
+      toast({
+        title: "Password and confirm password doesn't match",
+        status: "error",
+        duration: 4000,
+        isClosable: true,
+        position: "top",
+      });
+    }else{
+      setConfirmMessage(confirmMessageInitialState);
+      handleSubmit();
+    }
+
+  }
+  const handleSubmit = (e) => {
+    
     dispatch(SignupApi(form));
     setForm("");
     e.target.reset();
   };
-
   const { name, email, password, referral, number } = form;
 
   return (
@@ -164,7 +207,7 @@ const Signup = () => {
             Or create an email account
           </Text>
           <br />
-          <form onSubmit={handleSubmit} className={style.form}>
+          <form onSubmit={handleFormValidation} className={style.form}>
             <label>* Full Name</label>
             <Input
               onChange={handleChange}
@@ -182,7 +225,12 @@ const Signup = () => {
               type="email"
             />
             <label>* Confirm Email address</label>
-            <Input required type="email" />
+            <Input 
+              required 
+              type="email"
+             onChange={handleConfirmChange}
+             name="conformation_email" 
+            />
 
             <label>* Password</label>
             <InputGroup
@@ -225,6 +273,8 @@ const Signup = () => {
                 title="Please enter password of Length 8 to 15 !"
                 h="50px"
                 mb="23px"
+                name="conformation_password" 
+                onChange={handleConfirmChange}
               />
               <InputRightElement mr="4">
                 <Text onClick={() => setShow2(!show2)} mt="2">

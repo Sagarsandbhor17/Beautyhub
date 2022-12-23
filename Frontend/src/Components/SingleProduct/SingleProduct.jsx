@@ -14,7 +14,7 @@ import jwt_decode from "jwt-decode";
 import Navbar from "../Navbar/Navbar";
 
 const addTocart = (productID, userId, Id) => {
-  axios.post(`https://backend-beautyhub-production.up.railway.app/cart`, {
+  axios.post(`http://localhost:8080/cart`, {
     product: productID,
     user: userId,
     Id: Id,
@@ -37,7 +37,7 @@ const SingleProduct = () => {
 
       await axios
         .get(
-          `https://backend-beautyhub-production.up.railway.app/products/${id}`
+          `http://localhost:8080/products/${id}`
         )
         .then((res) => setProduct(res.data));
 

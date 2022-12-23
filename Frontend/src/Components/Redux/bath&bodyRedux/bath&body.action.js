@@ -6,7 +6,7 @@ export const getData = () => async (dispatch) => {
   try {
     const token = localStorage.getItem("token");
     const response = await axios.get(
-      `https://backend-beautyhub-production.up.railway.app/products/bath&body`,
+      `http://localhost:8080/products/bath&body`,
       { Authorization: token }
     );
     dispatch({
@@ -24,7 +24,7 @@ export const addtoCart = (elem) => async (dispatch) => {
     const token = localStorage.getItem("token");
     const tokenData = jwt_decode(token);
     const response = await axios.post(
-      `https://backend-beautyhub-production.up.railway.app/cart`,
+      `http://localhost:8080/cart`,
       { product: elem._id, user: tokenData.id, Id: tokenData.id },
       { headers: { Authorization: token } }
     );

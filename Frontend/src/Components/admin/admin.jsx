@@ -1,12 +1,16 @@
-import React, { useState } from "react";
+import React, { useState , useEffect} from "react";
 import { Button, Heading, Image, Select, useToast ,FormControl,FormLabel,Input,Box,Flex,Table,Tbody,Tr,Td,} from "@chakra-ui/react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import './admin.css'
-import { useEffect } from "react";
-const AdminForm = () => {
-  const toast = useToast();
+import { useSelector } from "react-redux";
+import jwt_decode from "jwt-decode";
 
+const AdminForm = () => {
+  const {Token} = useSelector(store => store.UserLogin.data);
+  const navigate = useNavigate();
+  const toast = useToast();
+  
   const initialStateProduct = {
     product_detail_link: "",
     product_image: "",
@@ -27,13 +31,12 @@ const AdminForm = () => {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setProduct((prev) => ({ ...prev, [name] : value }));
-    console.log("product: ", product);
     setPreview(true)
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
     let res = await axios.post(
-      "https://backend-beautyhub-production.up.railway.app/products",
+      "http://localhost:8080/products",
       {
         product,
       }
@@ -50,14 +53,27 @@ const AdminForm = () => {
     setPreview(false);
   };
   useEffect(() => {
-    toast({
-      title: "Welcome Admin 😊",
-      description:"only You can add product ",
-      position: "top-left",
-      status: "success",
-      duration: 9000,
-      isClosable: true,
-    });
+    const {role} = jwt_decode(Token);
+    if (role != "admin") {
+      console.log('role:', role)
+      navigate('/');
+      toast({
+        title: "Only Admin is Allowed",
+        status: "error",
+        duration: 1200,
+        isClosable: true,
+        position: "top",
+      });
+    }else{
+      toast({
+        title: "Welcome Admin 😊",
+        description:"only You can add product ",
+        position: "top-left",
+        status: "success",
+        duration: 9000,
+        isClosable: true,
+      });
+    }
   },[])
   console.log("product: ", product);
   return (
