@@ -75,7 +75,7 @@ const AdminFormToAddProduct = () => {
       });
     }
   },[])
-  console.log("product: ", product);
+  // console.log("product: ", product);
   return (
     <>
       <Box
