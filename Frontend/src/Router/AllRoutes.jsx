@@ -12,8 +12,7 @@ import SingleProduct from "../Components/SingleProduct/SingleProduct";
 import Navbar from "../Components/Navbar/Navbar";
 import Authprovider from "../Components/Private/Authprovider";
 import DummyProduct from "../Components/SingleProduct/DummyProduct";
-import AdminForm from "../Components/admin/admin";
-// import Multistep from "../Components/admin/admin";
+import Admin from "../Components/admin/Admin";
 import Hair from "../Components/Hairs/Hair";
 import Bath from "../Components/Bath&Body/Bath";
 import Fragrance from "../Components/Fragrance/Fragrance";
@@ -76,7 +75,7 @@ const AllRoutes = () => {
         path="/admin"
         element={
           <Authprovider>
-            <AdminForm />
+            <Admin />
           </Authprovider>
         }
       />
