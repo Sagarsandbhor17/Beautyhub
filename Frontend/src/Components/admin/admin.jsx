@@ -1,25 +1,35 @@
-import {  Flex, Heading, Radio, RadioGroup} from '@chakra-ui/react'
+import {  Box, Flex, Heading, Radio, RadioGroup, Select, Text} from '@chakra-ui/react'
 import React from 'react'
 import { useState } from 'react'
+import AdminFormDelete from './AdminFormDelete'
 import AdminFormToAddProduct from './AdminFormToAddProduct'
 
 const Admin = () => {
-    const options = ['Add Products', 'Delete Product']
+    // const options = ['Add Products', 'Delete Product']
     const [adminWork , setAdminWork] = useState('');
-    console.log('adminWork:', adminWork)
+    console.log('adminWork:', adminWork);
+    const handleChange = (e) => {
+      const {  value } = e.target;
+      setAdminWork(value);
+      
+    };
   return (
     <>
-        <RadioGroup onChange={(e) => {setAdminWork(e.target.value)}} >
-            <Flex>
-                <Radio value='1'>First</Radio>
-                <Radio value='2'>Second</Radio>
-                <Radio value='3'>Third</Radio>
-            </Flex>
-        </RadioGroup>
+    <Box >
+    <Flex  border='1px solid red' w={[ "100%" ,"70%" ,'50%']}p='30px' justifyContent='space-evenly' alignItems='center' margin='0 auto' borderRadius='20px' backgroundColor='#fff'>
+      <Text>
+        Select what you want to do:
+      </Text>
+      <Select placeholder='Select Type' name="product_type" onChange={handleChange}>
+        <option value='add'>Add Products</option>
+        <option value='delete'>Delete Product</option>
+      </Select>
+    </Flex>
+    </Box>
         
         {
-            false ? 
-            <Heading>LIFE IS AWESOME...(ADmin)</Heading>
+            adminWork == "delete" ? 
+            <AdminFormDelete/>
             : <AdminFormToAddProduct/>
         }
     </>

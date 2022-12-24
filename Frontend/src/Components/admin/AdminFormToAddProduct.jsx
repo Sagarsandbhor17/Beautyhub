@@ -92,7 +92,7 @@ const AdminFormToAddProduct = () => {
           borderRadius=" 25px"
           backgroundColor='#fff'
         >
-          <Heading size='lg' fontWeight='500' >Welcome Admin</Heading>
+          <Heading size='lg' fontWeight='500' >Add Product Form</Heading>
           <form action="" onSubmit={(e) => handleSubmit(e)}>
             <FormControl>
               <Flex marginTop=".5rem">
