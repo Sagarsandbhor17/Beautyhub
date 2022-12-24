@@ -44,13 +44,13 @@ import loadingGif from "../loadingGif.webp";
 
 const getCart = (id) => {
   return axios.get(
-    `http://localhost:8080/cart/${id}`
+    `https://fit-society.onrender.com/cart/${id}`
   );
 };
 
 const deleteCart = (id) => {
   return axios.delete(
-    `http://localhost:8080/cart/${id}`
+    `https://fit-society.onrender.com/cart/${id}`
   );
 };
 

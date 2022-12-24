@@ -15,7 +15,7 @@ export const userLogin = (formData) => async (dispatch) => {
   dispatch({ type: user_login_loading });
 
   try {
-    let res = await axios.post("http://localhost:8080/users/login", formData);
+    let res = await axios.post("https://fit-society.onrender.com/users/login", formData);
     console.log(res);
     dispatch({ type: user_login_success, payload: res.data });
   } catch (e) {

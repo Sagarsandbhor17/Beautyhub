@@ -6,7 +6,7 @@ export const getData = () => async (dispatch) => {
   try {
     const token = localStorage.getItem("token");
     const response = await axios.get(
-      `http://localhost:8080/products/skincare`,
+      `https://fit-society.onrender.com/products/skincare`,
       { Authorization: token }
     );
     // console.log(response);
@@ -30,7 +30,7 @@ export const addtoCart = (elem) => async (dispatch) => {
     }
     // console.log(tokenData.id);
     const response = await axios.post(
-      `http://localhost:8080/cart`,
+      `https://fit-society.onrender.com/cart`,
       { product: elem._id, user: tokenData.id, Id: tokenData.id },
       { headers: { Authorization: Token } }
     );

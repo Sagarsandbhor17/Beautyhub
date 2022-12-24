@@ -12,7 +12,7 @@ import SingleProduct from "../Components/SingleProduct/SingleProduct";
 import Navbar from "../Components/Navbar/Navbar";
 import Authprovider from "../Components/Private/Authprovider";
 import DummyProduct from "../Components/SingleProduct/DummyProduct";
-import Admin from "../Components/admin/Admin";
+import Admin from "../Components/admin/admin";
 import Hair from "../Components/Hairs/Hair";
 import Bath from "../Components/Bath&Body/Bath";
 import Fragrance from "../Components/Fragrance/Fragrance";

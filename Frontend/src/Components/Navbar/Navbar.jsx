@@ -41,7 +41,7 @@ import jwt_decode from "jwt-decode";
 
 const getCart = (id) => {
   return axios.get(
-    `http://localhost:8080/cart/${id}`
+    `https://fit-society.onrender.com/cart/${id}`
   );
 };
 

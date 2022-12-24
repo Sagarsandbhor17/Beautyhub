@@ -14,7 +14,7 @@ const AdminFormDelete = () => {
       console.log('product:', product);
       const getProduct = async ()=> {
           const response = await axios.get(
-              `http://localhost:8080/products/${productName}`,
+              `https://fit-society.onrender.com/products/${productName}`,
             );
             setProduct(response.data)
 
@@ -25,7 +25,7 @@ const AdminFormDelete = () => {
       const handleDelete = async(id) => {
         console.log('id:', id)
         const response = await axios.delete(
-            `http://localhost:8080/products/${productName}/${id}`,
+            `https://fit-society.onrender.com/products/${productName}/${id}`,
           );
           console.log('response:', response);
           getProduct();

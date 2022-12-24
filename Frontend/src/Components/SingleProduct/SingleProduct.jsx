@@ -14,7 +14,7 @@ import jwt_decode from "jwt-decode";
 import Navbar from "../Navbar/Navbar";
 
 const addTocart = (productID, userId, Id) => {
-  axios.post(`http://localhost:8080/cart`, {
+  axios.post(`https://fit-society.onrender.com/cart`, {
     product: productID,
     user: userId,
     Id: Id,
@@ -37,7 +37,7 @@ const SingleProduct = () => {
 
       await axios
         .get(
-          `http://localhost:8080/products/${id}`
+          `https://fit-society.onrender.com/products/${id}`
         )
         .then((res) => setProduct(res.data));
 

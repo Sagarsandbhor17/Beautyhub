@@ -6,7 +6,7 @@ export const getData = () => async (dispatch) => {
   try {
     const token = localStorage.getItem("token");
     const response = await axios.get(
-      `http://localhost:8080/products/fragrance`,
+      `https://fit-society.onrender.com/products/fragrance`,
       { Authorization: token }
     );
     dispatch({
@@ -24,7 +24,7 @@ export const addtoCart = (elem) => async (dispatch) => {
     const token = localStorage.getItem("token");
     const tokenData = jwt_decode(token);
     const response = await axios.post(
-      `http://localhost:8080/cart`,
+      `https://fit-society.onrender.com/cart`,
       { product: elem._id, user: tokenData.id, Id: tokenData.id },
       { headers: { Authorization: token } }
     );

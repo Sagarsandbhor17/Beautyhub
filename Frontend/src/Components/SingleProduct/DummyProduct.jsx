@@ -15,7 +15,7 @@ const DummyProduct = () => {
   async function getdata() {
     setloading(true);
     const data = await axios
-      .get("http://localhost:8080/products")
+      .get("https://fit-society.onrender.com/products")
       .then((res) => setdata(res.data));
     return data;
   }

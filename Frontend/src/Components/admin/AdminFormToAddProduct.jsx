@@ -36,7 +36,7 @@ const AdminFormToAddProduct = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     let res = await axios.post(
-      "http://localhost:8080/products",
+      "https://fit-society.onrender.com/products",
       {
         product,
       }

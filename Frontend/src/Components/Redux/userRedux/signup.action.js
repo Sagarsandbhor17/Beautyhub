@@ -10,7 +10,7 @@ export const SignupApi = (formData) => async (dispatch) => {
   // console.log('formData: ', formData);
   dispatch({ type: user_signup_loading });
   try {
-    let res = await axios.post("http://localhost:8080/users/signup", formData);
+    let res = await axios.post("https://fit-society.onrender.com/users/signup", formData);
     dispatch({ type: user_signup_success, payload: res.data });
   } catch(e) {
     console.log(e);
